@@ -47,11 +47,9 @@ Technical details for our HTC and HPC clusters.
 - Embarrassingly parallel workloads
 - LLM inference across multiple inputs
 
-**Resources:**
-- Large heterogeneous pool of compute nodes
-- CPU nodes with varying specifications
-- GPU nodes available (request with `+request_gpus = 1`)
-- Use `condor_status` to view current pool availability
+**Available GPUs:**
+- NVIDIA A100, L40S, A6000, and other models
+- Request with `+request_gpus = 1`
 
 **Storage:**
 - Home directory: `/home/netid/` (accessible from submit nodes)
@@ -76,13 +74,12 @@ Technical details for our HTC and HPC clusters.
 | gpu_zone2 | GPU computations | 20 days | |
 
 **Available GPUs:**
-- NVIDIA A40
-- NVIDIA A100
+- NVIDIA A40 (primary)
 - Other models available - use constraints to specify
 
 **Storage:**
-- Home directory: `/home/netid/` (NFS-based, accessible cluster-wide)
-- Job temporary storage: `/tmp/` (fast local, only during job runtime)
+- Home directory: `/home/netid/` (NetApp, mounted on all nodes at job start)
+- Create scratch directories within your home for temporary job files
 
 **Resources:**
 - Use `sinfo` command for current node availability

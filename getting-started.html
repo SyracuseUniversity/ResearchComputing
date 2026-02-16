@@ -399,13 +399,13 @@ python my_analysis.py</code></pre>
                 <div class="info-box">
                     <strong>For OrangeGrid (HTCondor):</strong>
                     <p>File: <code>job.sub</code></p>
-                    <pre><code>universe = vanilla
-executable = /usr/bin/python3
+                    <pre><code>executable = /usr/bin/python3
 arguments = my_analysis.py
 output = job.$(cluster).$(process).out
 error = job.$(cluster).$(process).err
 log = job.$(cluster).log
 queue 1</code></pre>
+                    <p><strong>Note:</strong> Your home directory is mounted on compute nodes, so no file transfer is needed!</p>
                 </div>
                 
                 <h3>Step 3: Submit the job</h3>
@@ -661,7 +661,7 @@ queue 1</code></pre>
                 <div class="highlight-box">
                     <h3>💾 Your Home Directory</h3>
                     <p><strong>Storage:</strong> You have a <strong>4TB home directory</strong> at <code>/home/netid/</code></p>
-                    <p>This is your persistent storage for scripts, code, data, and conda environments. It's accessible from all login and compute nodes on your assigned cluster.</p>
+                    <p>This NetApp-based storage is automatically mounted on all compute nodes when your jobs run. Use it for scripts, code, data, conda environments, and results. You can also create scratch directories within your home (like <code>~/scratch/</code>) for temporary files during computations.</p>
                 </div>
                 
                 <h2>SSH Connection</h2>
@@ -1224,10 +1224,7 @@ exit 0</code></pre>
                 </div>
                 
                 <p>Add this content:</p>
-                <pre><code># Specify the universe
-universe = vanilla
-
-# Point to your executable script
+                <pre><code># Point to your executable script
 executable = hello.sh
 
 # Output files
@@ -1298,8 +1295,7 @@ data = np.random.rand(100, 100)
 print(f"Mean: {np.mean(data)}")</code></pre>
                 
                 <p>Submit file (<code>python_job.sub</code>):</p>
-                <pre><code>universe = vanilla
-executable = /usr/bin/python3
+                <pre><code>executable = /usr/bin/python3
 arguments = analysis.py
 output = job.$(cluster).$(process).out
 error = job.$(cluster).$(process).err

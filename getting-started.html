@@ -1,0 +1,1448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Syracuse Research Computing: Cluster Basics</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f5f5;
+            min-height: 100vh;
+        }
+        
+        .container {
+            display: flex;
+            height: 100vh;
+        }
+        
+        /* Sidebar Navigation */
+        .sidebar {
+            width: 280px;
+            background: #000E54;
+            color: white;
+            padding: 20px;
+            overflow-y: auto;
+        }
+        
+        .sidebar h2 {
+            color: #F76900;
+            margin-bottom: 20px;
+            font-size: 1.3em;
+            border-bottom: 2px solid #F76900;
+            padding-bottom: 10px;
+        }
+        
+        .nav-item {
+            padding: 12px 15px;
+            margin: 5px 0;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: all 0.3s;
+            border-left: 3px solid transparent;
+        }
+        
+        .nav-item:hover {
+            background: rgba(247, 105, 0, 0.2);
+            border-left-color: #F76900;
+        }
+        
+        .nav-item.active {
+            background: rgba(247, 105, 0, 0.3);
+            border-left-color: #F76900;
+        }
+        
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            padding: 40px;
+            overflow-y: auto;
+        }
+        
+        .section {
+            display: none;
+            background: white;
+            border-radius: 10px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            animation: fadeIn 0.5s;
+        }
+        
+        .section.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        h1 {
+            color: #000E54;
+            margin-bottom: 20px;
+            font-size: 2.2em;
+            border-bottom: 3px solid #F76900;
+            padding-bottom: 10px;
+        }
+        
+        h2 {
+            color: #000E54;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+        
+        h3 {
+            color: #7f8c8d;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+        
+        p {
+            line-height: 1.6;
+            margin-bottom: 15px;
+            color: #555;
+        }
+        
+        .highlight-box {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        
+        .info-box {
+            background: #d1ecf1;
+            border-left: 4px solid #17a2b8;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        
+        .warning-box {
+            background: #f8d7da;
+            border-left: 4px solid #dc3545;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            color: #F76900;
+        }
+        
+        pre {
+            background: #000E54;
+            color: #ecf0f1;
+            padding: 20px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 15px 0;
+            line-height: 1.5;
+        }
+        
+        pre code {
+            background: none;
+            color: #ecf0f1;
+            padding: 0;
+        }
+        
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        .comparison-table th,
+        .comparison-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        .comparison-table th {
+            background: #F76900;
+            color: white;
+        }
+        
+        .comparison-table tr:nth-child(even) {
+            background: #f9f9f9;
+        }
+        
+        .visual-diagram {
+            background: white;
+            border: 2px solid #F76900;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        
+        .arrow {
+            font-size: 2em;
+            color: #F76900;
+            margin: 10px 0;
+        }
+        
+        ul, ol {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+            line-height: 1.6;
+        }
+        
+        .command-example {
+            background: #fff4ed;
+            border-left: 4px solid #F76900;
+            padding: 12px;
+            margin: 10px 0;
+            font-family: 'Courier New', monospace;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav class="sidebar">
+            <h2>Syracuse Research Computing</h2>
+            <div class="nav-item active" data-section="welcome">Welcome</div>
+            <div class="nav-item" data-section="interactive-vs-batch">Interactive vs. Batch</div>
+            <div class="nav-item" data-section="python-comparison">Python Example</div>
+            <div class="nav-item" data-section="linux-basics">Linux CLI Basics</div>
+            <div class="nav-item" data-section="understanding-resources">OrangeGrid vs Zest</div>
+            <div class="nav-item" data-section="connecting">Connecting</div>
+            <div class="nav-item" data-section="gpu-resources">GPU Resources</div>
+            <div class="nav-item" data-section="software">Software & Environments</div>
+            <div class="nav-item" data-section="first-job-zest">First Job: Zest</div>
+            <div class="nav-item" data-section="first-job-og">First Job: OrangeGrid</div>
+            <div class="nav-item" data-section="resources">Resources & Help</div>
+        </nav>
+        
+        <main class="main-content">
+            <!-- Welcome Section -->
+            <section id="welcome" class="section active">
+                <h1>Getting Started with Syracuse Research Computing</h1>
+                
+                <div class="info-box">
+                    <h3>✅ You've Been Assigned a Cluster Account!</h3>
+                    <p>You've been assigned access to one of Syracuse University's research computing clusters. This guide will help you transition from interactive computing to batch computing on your assigned resource.</p>
+                    <p><strong>Check your welcome email</strong> for your specific login information, assigned cluster, and home directory details.</p>
+                </div>
+                
+                <div class="highlight-box">
+                    <strong>What You'll Learn:</strong>
+                    <ul>
+                        <li>The fundamental difference between interactive and batch computing</li>
+                        <li>How to work in a Linux command-line environment</li>
+                        <li>Understanding the resource you've been assigned and why</li>
+                        <li>How to connect and submit your first computational job</li>
+                        <li>Managing software with conda, UV, and Singularity</li>
+                    </ul>
+                </div>
+                
+                <h2>How to Use This Guide</h2>
+                <p>Use the navigation menu on the left to jump to any section. Here's a suggested path:</p>
+                <ol>
+                    <li><strong>Interactive vs. Batch</strong> - Understand the fundamental shift in how you'll work</li>
+                    <li><strong>Python Example</strong> - See a concrete example of the difference</li>
+                    <li><strong>Linux CLI Basics</strong> - Learn essential commands (skip if you're comfortable with Linux)</li>
+                    <li><strong>OrangeGrid vs Zest</strong> - Understand your assigned cluster and how it works</li>
+                    <li><strong>Connecting</strong> - Get connected and learn about file transfers</li>
+                    <li><strong>Software</strong> - Set up your software environment (conda, UV, singularity)</li>
+                    <li><strong>First Job</strong> - Submit your first job (choose OrangeGrid or Zest based on your assignment)</li>
+                </ol>
+                
+                <div class="highlight-box">
+                    <strong>💡 Pro Tip:</strong> Keep your welcome email handy! It contains your specific login information, assigned resource, and any special instructions for your account.
+                </div>
+                
+                <div class="warning-box">
+                    <h3>⚠️ CRITICAL: Login Nodes vs. Compute Nodes</h3>
+                    <p><strong>The login node is NOT where your work runs.</strong> When you SSH in, you're on a shared login node used by all researchers to submit jobs.</p>
+                    
+                    <p><strong>Login nodes are ONLY for:</strong> light text editing, creating conda/UV environments, testing singularity containers load, submitting jobs, checking job status, and quick file operations.</p>
+                    
+                    <p><strong>Do NOT:</strong> run computational code, install software outside conda/UV/singularity, use IDEs, leave tmux sessions running, or keep unused SSH connections open.</p>
+                    
+                    <p><strong>Why?</strong> Login nodes are shared by hundreds of users. Your work runs on dedicated <strong>compute nodes</strong> after you submit it as a job.</p>
+                    
+                    <p>Need a development environment? Email <a href="mailto:researchcomputing@syr.edu">researchcomputing@syr.edu</a></p>
+                </div>
+            </section>
+            
+            <!-- Interactive vs Batch Section -->
+            <section id="interactive-vs-batch" class="section">
+                <h1>Interactive vs. Batch Computing</h1>
+                
+                <h2>What You're Used To: Interactive Computing</h2>
+                <p>On your laptop or desktop:</p>
+                <ul>
+                    <li>You click "Run" in your IDE (Jupyter, Spyder, RStudio, VSCode)</li>
+                    <li>Your code executes immediately</li>
+                    <li>You see results right away in the console or plots</li>
+                    <li>You can interact with your program while it runs</li>
+                </ul>
+                
+                <div class="visual-diagram">
+                    <h3>Interactive Computing Flow</h3>
+                    <p>👨‍💻 Write Code → ▶️ Click Run → ⚡ Immediate Execution → 📊 See Results</p>
+                </div>
+                
+                <h2>What's Different: Batch Computing</h2>
+                <p>On a cluster:</p>
+                <ul>
+                    <li>You write a script describing your job</li>
+                    <li>You submit the job to a queue</li>
+                    <li>The scheduler assigns resources when available</li>
+                    <li>Your job runs without interaction</li>
+                    <li>You retrieve results later from output files</li>
+                </ul>
+                
+                <div class="visual-diagram">
+                    <h3>Batch Computing Flow</h3>
+                    <p>📝 Write Script → 📤 Submit to Queue → ⏳ Wait for Resources → 🖥️ Job Runs → 📁 Check Output Files</p>
+                </div>
+                
+                <div class="warning-box">
+                    <strong>⚠️ Important:</strong> IDEs like Jupyter, Spyder, and VSCode are <strong>prohibited</strong> on the clusters. They interfere with other users and can impact the entire system. Use batch job submission instead.
+                </div>
+                
+                <div class="info-box">
+                    <h3>👥 You're Sharing the Login Node</h3>
+                    <p>When you SSH in, you land on a <strong>login node</strong> - a shared server that all users on your cluster use to submit jobs. It's like a lobby or reception desk, not your actual workspace.</p>
+                    <p><strong>Golden Rule:</strong> If it takes more than a few minutes or uses significant CPU/memory, it belongs in a job submission, not on the login node.</p>
+                    <p>Running code directly on login nodes slows down job submission for everyone and may result in processes being terminated.</p>
+                </div>
+                
+                <h2>Why Batch Computing?</h2>
+                <ul>
+                    <li><strong>Resource Sharing:</strong> Hundreds of researchers share the same hardware</li>
+                    <li><strong>Fair Scheduling:</strong> Everyone gets their turn based on priority</li>
+                    <li><strong>Efficiency:</strong> Resources are allocated optimally</li>
+                    <li><strong>Scale:</strong> Run jobs too large for any single desktop</li>
+                </ul>
+            </section>
+            
+            <!-- Python Comparison Section -->
+            <section id="python-comparison" class="section">
+                <h1>Python: Local vs. Cluster</h1>
+                
+                <h2>Running Python Locally (Interactive)</h2>
+                <p>On your laptop, you might work like this in Jupyter or VSCode:</p>
+                
+                <pre><code># You run this cell and see output immediately
+import numpy as np
+data = np.random.rand(1000, 1000)
+result = np.mean(data)
+print(f"Mean: {result}")
+# Output appears right away: Mean: 0.4998234...</code></pre>
+                
+                <h2>Running Python on the Cluster (Batch)</h2>
+                <p>Instead, you create files and submit them as a job.</p>
+                
+                <div class="warning-box">
+                    <h3>⚠️ Common Mistake for New Users</h3>
+                    <p><strong>When you SSH into the cluster and see a command prompt, you might think:</strong> "Great! I'm on the cluster, let me just run <code>python my_script.py</code> and see what happens!"</p>
+                    <p><strong>❌ This is wrong!</strong> You're on a shared login node, not a compute node. Running code directly impacts all other users.</p>
+                    <p><strong>✅ The right way:</strong> Create your script, create a submission file, and submit it as a job. The job runs on dedicated compute nodes where you have allocated resources.</p>
+                </div>
+                
+                <h3>Step 1: Create your Python script</h3>
+                <p>File: <code>my_analysis.py</code></p>
+                <pre><code>#!/usr/bin/env python3
+import numpy as np
+
+# Your computation here
+data = np.random.rand(1000, 1000)
+result = np.mean(data)
+
+# Save results to file instead of printing to screen
+with open('results.txt', 'w') as f:
+    f.write(f"Mean: {result}\n")
+
+print("Analysis complete!")</code></pre>
+                
+                <h3>Step 2: Create a job submission script</h3>
+                
+                <div class="info-box">
+                    <strong>For Zest (Slurm):</strong>
+                    <p>File: <code>submit_job.sh</code></p>
+                    <pre><code>#!/bin/bash
+#SBATCH --nodes=1
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=1
+#SBATCH --time=00:10:00
+#SBATCH --mail-type=ALL
+#SBATCH --mail-user=netid@syr.edu
+
+# Load Python environment
+module load anaconda3
+
+# Run your script
+python my_analysis.py</code></pre>
+                </div>
+                
+                <div class="info-box">
+                    <strong>For OrangeGrid (HTCondor):</strong>
+                    <p>File: <code>job.sub</code></p>
+                    <pre><code>universe = vanilla
+executable = /usr/bin/python3
+arguments = my_analysis.py
+output = job.$(cluster).$(process).out
+error = job.$(cluster).$(process).err
+log = job.$(cluster).log
+queue 1</code></pre>
+                </div>
+                
+                <h3>Step 3: Submit the job</h3>
+                <div class="command-example">
+                    # On Zest:<br>
+                    sbatch submit_job.sh
+                </div>
+                <div class="command-example">
+                    # On OrangeGrid:<br>
+                    condor_submit job.sub
+                </div>
+                
+                <h3>Step 4: Check status and retrieve results</h3>
+                <div class="command-example">
+                    # On Zest:<br>
+                    squeue  # Check job status<br>
+                    cat results.txt  # View your results
+                </div>
+                <div class="command-example">
+                    # On OrangeGrid:<br>
+                    condor_q  # Check job status<br>
+                    cat results.txt  # View your results
+                </div>
+                
+                <div class="highlight-box">
+                    <strong>Key Difference:</strong> Instead of seeing output immediately in a notebook, you submit the job, it runs when resources are available, and you retrieve results from output files later.
+                </div>
+            </section>
+            
+            <!-- Linux Basics Section -->
+            <section id="linux-basics" class="section">
+                <h1>Linux Command Line Basics</h1>
+                
+                <p>The clusters run Linux and use a command-line interface. There's no clicking, no windows - just commands.</p>
+                
+                <h2>Essential Commands</h2>
+                
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Command</th>
+                            <th>What It Does</th>
+                            <th>Example</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>pwd</code></td>
+                            <td>Print working directory (where am I?)</td>
+                            <td><code>pwd</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>ls</code></td>
+                            <td>List files in current directory</td>
+                            <td><code>ls -l</code> (detailed list)</td>
+                        </tr>
+                        <tr>
+                            <td><code>cd</code></td>
+                            <td>Change directory</td>
+                            <td><code>cd my_project</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>mkdir</code></td>
+                            <td>Make a new directory</td>
+                            <td><code>mkdir results</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>cp</code></td>
+                            <td>Copy files</td>
+                            <td><code>cp script.py backup.py</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>mv</code></td>
+                            <td>Move or rename files</td>
+                            <td><code>mv old.txt new.txt</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>rm</code></td>
+                            <td>Remove files</td>
+                            <td><code>rm temp.txt</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>cat</code></td>
+                            <td>Display file contents</td>
+                            <td><code>cat output.txt</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>nano</code></td>
+                            <td>Simple text editor</td>
+                            <td><code>nano script.py</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <h2>File Paths</h2>
+                <ul>
+                    <li><code>/home/netid/</code> - Your home directory</li>
+                    <li><code>.</code> - Current directory</li>
+                    <li><code>..</code> - Parent directory</li>
+                    <li><code>~</code> - Shortcut for your home directory</li>
+                </ul>
+                
+                <div class="command-example">
+                    # Navigate to home<br>
+                    cd ~<br>
+                    <br>
+                    # Create a project directory<br>
+                    mkdir my_research<br>
+                    cd my_research<br>
+                    <br>
+                    # List all files including hidden ones<br>
+                    ls -la<br>
+                    <br>
+                    # Go up one directory<br>
+                    cd ..
+                </div>
+                
+                <h2>Editing Files</h2>
+                <p>Use <code>nano</code> for simple text editing:</p>
+                <div class="command-example">
+                    nano my_script.py<br>
+                    # Edit your file, then:<br>
+                    # Ctrl+O to save<br>
+                    # Ctrl+X to exit
+                </div>
+            </section>
+            
+            <!-- Understanding Resources Section -->
+            <section id="understanding-resources" class="section">
+                <h1>OrangeGrid vs Zest: Understanding Your Cluster</h1>
+                
+                <p>Syracuse University operates two computing clusters, each optimized for different types of computational work. Your welcome email specifies which cluster you've been assigned based on your research needs.</p>
+                
+                <div class="highlight-box">
+                    <h3>💾 Your Home Directory</h3>
+                    <p><strong>Storage:</strong> By default, you have a <strong>4TB home directory</strong> at <code>/home/netid/</code></p>
+                    <p>This is your persistent storage for scripts, code, data, and conda environments. It's accessible from all login and compute nodes on your assigned cluster.</p>
+                </div>
+                
+                <h2>Our Two Clusters: Side by Side</h2>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 20px 0;">
+                    <!-- OrangeGrid Column -->
+                    <div style="background: #fff3e0; padding: 20px; border-radius: 8px; border-left: 5px solid #F76900;">
+                        <h3 style="color: #E65100; margin-top: 0;">OrangeGrid (HTCondor)</h3>
+                        <p><strong>High-Throughput Computing (HTC)</strong></p>
+                        
+                        <p><strong>Best for:</strong> Many independent jobs, parameter sweeps, batch processing, embarrassingly parallel workloads</p>
+                        
+                        <p><strong>Scheduler:</strong> HTCondor<br>
+                        <strong>Login:</strong> <code>its-og-loginX.syr.edu</code></p>
+                        
+                        <p><strong>Key Commands:</strong></p>
+                        <ul>
+                            <li>Submit: <code>condor_submit job.sub</code></li>
+                            <li>Status: <code>condor_q</code></li>
+                            <li>Cancel: <code>condor_rm jobid</code></li>
+                        </ul>
+                        
+                        <p><strong>GPUs:</strong> A100, L40S, A6000, and other models</p>
+                        
+                        <p>💻 <strong><a href="https://github.com/SyracuseUniversity/OrangeGridExamples" target="_blank">Code Examples</a></strong></p>
+                    </div>
+                    
+                    <!-- Zest Column -->
+                    <div style="background: #e3f2fd; padding: 20px; border-radius: 8px; border-left: 5px solid #2196F3;">
+                        <h3 style="color: #1976D2; margin-top: 0;">Zest (Slurm)</h3>
+                        <p><strong>High-Performance Computing (HPC)</strong></p>
+                        
+                        <p><strong>Best for:</strong> Parallel jobs, MPI, tightly-coupled computations, long-running workloads</p>
+                        
+                        <p><strong>Scheduler:</strong> Slurm<br>
+                        <strong>Login:</strong> <code>its-zest-loginX.syr.edu</code></p>
+                        
+                        <p><strong>Key Commands:</strong></p>
+                        <ul>
+                            <li>Submit: <code>sbatch script.sh</code></li>
+                            <li>Status: <code>squeue</code></li>
+                            <li>Cancel: <code>scancel jobid</code></li>
+                        </ul>
+                        
+                        <p><strong>GPUs:</strong> Primarily A40s</p>
+                        
+                        <p>💻 <strong><a href="https://github.com/SyracuseUniversity/ZestExamples" target="_blank">Code Examples</a></strong></p>
+                    </div>
+                </div>
+                
+                <p><strong>📊 For detailed technical specifications, resource limits, and partition details:</strong></p>
+                <ul>
+                    <li><a href="./resources/orangegrid-specifications.md">OrangeGrid Technical Specifications</a></li>
+                    <li><a href="./resources/zest-specifications.md">Zest Technical Specifications</a></li>
+                </ul>
+                
+                <div class="info-box">
+                    <h3>💡 Check Your Welcome Email</h3>
+                    <p>Your account welcome email specifies which cluster you've been assigned. If you're unsure, look for the login hostname (its-og-loginX or its-zest-loginX).</p>
+                    <p>The examples repositories linked above contain working job scripts you can adapt for your research!</p>
+                </div>
+                
+                <h2>Quick Command Comparison</h2>
+                
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Task</th>
+                            <th>OrangeGrid (HTCondor)</th>
+                            <th>Zest (Slurm)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Submit job</strong></td>
+                            <td><code>condor_submit job.sub</code></td>
+                            <td><code>sbatch script.sh</code></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Check status</strong></td>
+                            <td><code>condor_q netid</code></td>
+                            <td><code>squeue -u netid</code></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Cancel job</strong></td>
+                            <td><code>condor_rm jobid</code></td>
+                            <td><code>scancel jobid</code></td>
+                        </tr>
+                        <tr>
+                            <td><strong>View resources</strong></td>
+                            <td><code>condor_status</code></td>
+                            <td><code>sinfo</code></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Job history</strong></td>
+                            <td><code>condor_history</code></td>
+                            <td><code>sacct</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <h2>What If My Needs Change?</h2>
+                <p>Research evolves! If your computational needs change:</p>
+                <ul>
+                    <li>📧 Email us at <a href="mailto:researchcomputing@syr.edu">researchcomputing@syr.edu</a></li>
+                    <li>We can discuss moving you to a different cluster if appropriate</li>
+                    <li>We can provide access to both clusters if your work spans different types</li>
+                    <li>We're here to ensure you always have the right tools</li>
+                </ul>
+            </section>
+            
+            <!-- Connecting Section -->
+            <section id="connecting" class="section">
+                <h1>Connecting to the Cluster</h1>
+                
+                <div class="highlight-box">
+                    <h3>💾 Your Home Directory</h3>
+                    <p><strong>Storage:</strong> You have a <strong>4TB home directory</strong> at <code>/home/netid/</code></p>
+                    <p>This is your persistent storage for scripts, code, data, and conda environments. It's accessible from all login and compute nodes on your assigned cluster.</p>
+                </div>
+                
+                <h2>SSH Connection</h2>
+                <p>You'll connect using SSH (Secure Shell). Your welcome email contains your specific login node.</p>
+                
+                <h3>From Windows (Command Prompt or PowerShell)</h3>
+                <div class="command-example">
+                    ssh netid@its-zest-login1.syr.edu
+                </div>
+                
+                <h3>From Mac/Linux (Terminal)</h3>
+                <div class="command-example">
+                    ssh netid@its-zest-login1.syr.edu
+                </div>
+                
+                <h3>Using PuTTY (Windows)</h3>
+                <ol>
+                    <li>Download and install PuTTY</li>
+                    <li>Enter hostname: <code>its-zest-login1.syr.edu</code></li>
+                    <li>Click "Open" and enter your credentials</li>
+                </ol>
+                
+                <div class="warning-box">
+                    <strong>Off-Campus or Campus Wi-Fi?</strong>
+                    <p>You cannot connect directly from off-campus or campus Wi-Fi. You must first connect to:</p>
+                    <ul>
+                        <li><strong>Remote Desktop Services (RDS)</strong> - Recommended for most users</li>
+                        <li><strong>Azure VPN</strong> - Alternative if available to you</li>
+                    </ul>
+                    <p>Then use SSH from within RDS or VPN.</p>
+                    <p><strong>Connecting from a personal Linux device?</strong> Contact <a href="mailto:researchcomputing@syr.edu">researchcomputing@syr.edu</a> for additional connection options.</p>
+                </div>
+                
+                <h2>Once Connected: What to Do</h2>
+                
+                <div class="info-box">
+                    <h3>✅ Acceptable Activities on Login Nodes</h3>
+                    <p>You're now on a shared login node. Here's what you should do:</p>
+                    <ul>
+                        <li>Edit scripts with nano or vim (keep it brief)</li>
+                        <li>Create conda environments: <code>conda create -n myenv python=3.11</code></li>
+                        <li>Check singularity: <code>singularity exec container.sif echo "works"</code></li>
+                        <li>Submit jobs: <code>sbatch script.sh</code> or <code>condor_submit job.sub</code></li>
+                        <li>Check status: <code>squeue</code> or <code>condor_q</code></li>
+                        <li>Quick file operations: <code>ls</code>, <code>cp</code>, <code>mv</code></li>
+                    </ul>
+                </div>
+                
+                <div class="warning-box">
+                    <h3>❌ Do NOT Do These Things</h3>
+                    <ul>
+                        <li>Run: <code>python my_analysis.py</code> (submit as a job instead!)</li>
+                        <li>Test code by running it directly</li>
+                        <li>Install software outside of conda/UV/singularity</li>
+                        <li>Start tmux and leave it running indefinitely</li>
+                        <li>Keep connections open in your IDE when not actively editing</li>
+                    </ul>
+                    <p><strong>Remember:</strong> The login node is a gateway, not your workspace. Your code runs on compute nodes after you submit it as a job.</p>
+                </div>
+                
+                <div class="info-box">
+                    <h3>💡 Connection Best Practices</h3>
+                    <ul>
+                        <li><strong>Close connections when done</strong> - Don't leave SSH sessions or IDE connections open unnecessarily</li>
+                        <li><strong>Avoid stale tmux/screen sessions</strong> - Don't create persistent sessions and leave them running indefinitely</li>
+                        <li><strong>Why this matters:</strong> Each open connection consumes resources on the shared login node</li>
+                        <li><strong>Good practice:</strong> Connect → submit jobs/check status/light editing → disconnect</li>
+                    </ul>
+                </div>
+                
+                <h2>Transferring Files</h2>
+                
+                <div class="info-box">
+                    <h3>💡 Connection Best Practices</h3>
+                    <p><strong>Close connections when done:</strong> Don't leave SSH sessions or IDE connections open unnecessarily.</p>
+                    <p><strong>Avoid stale tmux/screen sessions:</strong> While these tools can be useful, don't create persistent sessions and leave them running indefinitely. The login node is not for long-running background processes.</p>
+                    <p><strong>Why this matters:</strong> Each open connection and running process consumes resources on the shared login node, impacting other users' ability to submit jobs efficiently.</p>
+                    <p><strong>Good practice:</strong> Connect, do what you need (submit jobs, check status, light editing), then disconnect.</p>
+                </div>
+                
+                <h3>Choosing the Right Transfer Method</h3>
+                
+                <p>You have several options for moving files to/from the cluster:</p>
+                
+                <h4>SCP (Command Line) - Quick Transfers</h4>
+                <p>Good for: Small to medium files, one-time transfers</p>
+                <div class="command-example">
+                    # Upload to cluster<br>
+                    scp myfile.py netid@its-zest-login1.syr.edu:~/my_project/<br>
+                    <br>
+                    # Download from cluster<br>
+                    scp netid@its-zest-login1.syr.edu:~/results.txt ./
+                </div>
+                
+                <h4>WinSCP (Windows GUI) - User-Friendly</h4>
+                <p>Good for: Windows users who prefer graphical interface, browsing files</p>
+                <ol>
+                    <li>Download and install WinSCP</li>
+                    <li>Enter hostname and credentials</li>
+                    <li>Drag and drop files between local and remote</li>
+                </ol>
+                <p><strong>Ideal if you're developing primarily on Windows</strong> and want an easy way to sync files.</p>
+                
+                <h4>rsync - Large Data Transfers</h4>
+                <p>Good for: Large datasets, resumable transfers, synchronizing directories</p>
+                <div class="command-example">
+                    # Sync local directory to cluster<br>
+                    rsync -avz --progress /local/data/ netid@cluster:~/data/<br>
+                    <br>
+                    # Download from cluster<br>
+                    rsync -avz --progress netid@cluster:~/results/ ./local_results/
+                </div>
+                
+                <p><strong>Why rsync for large data?</strong></p>
+                <ul>
+                    <li>✅ Can resume interrupted transfers (critical for multi-hour transfers)</li>
+                    <li>✅ Only transfers changed files (efficient for updates)</li>
+                    <li>✅ Shows progress and transfer speed</li>
+                    <li>✅ Handles connection timeouts better than SCP</li>
+                </ul>
+                
+                <div class="warning-box">
+                    <h3>⚠️ Large Data Transfers (TBs)</h3>
+                    <p><strong>Planning to move terabytes of data to your home directory?</strong></p>
+                    <p>📧 <strong>Contact us first:</strong> <a href="mailto:researchcomputing@syr.edu">researchcomputing@syr.edu</a></p>
+                    <p><strong>Why?</strong></p>
+                    <ul>
+                        <li>Azure VPN connections may timeout during multi-day transfers</li>
+                        <li>We can explore alternative remote-connection options</li>
+                        <li>We may be able to arrange more robust transfer methods</li>
+                        <li>We can help optimize the transfer for your specific situation</li>
+                    </ul>
+                    <p><strong>If using rsync for large transfers:</strong> Run it in <code>tmux</code> or <code>screen</code> so it continues if your SSH connection drops, then disconnect from the session (but let rsync keep running - this is an acceptable use of these tools).</p>
+                </div>
+                
+                <h3>Your Storage: 4TB Home Directory</h3>
+                <p>By default, you have <strong>4TB</strong> of storage in <code>/home/netid/</code></p>
+                <ul>
+                    <li>Accessible from all nodes on your cluster</li>
+                    <li>Persistent - data stays even after jobs finish</li>
+                    <li>Use for: scripts, code, data, conda environments, results</li>
+                    <li>Backed up regularly by ITS</li>
+                </ul>
+                
+                <h3>Using WinSCP (Windows)</h3>
+                <ol>
+                    <li>Download and install WinSCP</li>
+                    <li>Enter hostname and credentials</li>
+                    <li>Drag and drop files between local and remote</li>
+                </ol>
+            </section>
+            
+            <!-- GPU Resources Section -->
+            <section id="gpu-resources" class="section">
+                <h1>GPU Resources at Syracuse</h1>
+                
+                <div class="highlight-box">
+                    <h3>🎯 How GPU Access Works</h3>
+                    <p><strong>GPU access is determined during your consultation.</strong> We discuss your needs and assign you to the GPU resource that best matches your research requirements.</p>
+                    <p>If you need GPU access or want to discuss GPU options, email <a href="mailto:researchcomputing@syr.edu">researchcomputing@syr.edu</a>.</p>
+                </div>
+                
+                <p>Syracuse Research Computing offers extensive GPU resources across multiple platforms. With the surge in LLM and machine learning work, we've expanded our GPU capabilities significantly.</p>
+                
+                <h2>🎯 Primary Option: Cluster GPUs (Free)</h2>
+                
+                <div class="info-box">
+                    <h3>Why Clusters Are Usually the Best Choice</h3>
+                    <ul>
+                        <li><strong>✅ No Cost</strong> - Free for Syracuse researchers</li>
+                        <li><strong>✅ More GPUs</strong> - Access to our largest GPU pool</li>
+                        <li><strong>✅ Better Hardware</strong> - A40, A100, and other high-end GPUs</li>
+                        <li><strong>✅ Scalability</strong> - Run multiple jobs, queue as many as needed</li>
+                        <li><strong>✅ Proven Solutions</strong> - Works great for LLM fine-tuning, inference, training, and more</li>
+                    </ul>
+                </div>
+                
+                <p><strong>Over 90% of GPU requests are successfully served by our clusters.</strong> This includes researchers working with:</p>
+                <ul>
+                    <li>LLM fine-tuning and inference (LlamaCPP, Ollama, vLLM)</li>
+                    <li>Deep learning training (PyTorch, TensorFlow)</li>
+                    <li>Computer vision and image processing</li>
+                    <li>Molecular dynamics and simulations</li>
+                    <li>Scientific computing with GPU acceleration</li>
+                </ul>
+                
+                <h3>Available on Both Clusters</h3>
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Cluster</th>
+                            <th>GPU Access</th>
+                            <th>Best For</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Zest</strong></td>
+                            <td>Request with <code>--gres=gpu:1</code> in SBATCH</td>
+                            <td>Training jobs, multi-GPU, long-running workloads</td>
+                        </tr>
+                        <tr>
+                            <td><strong>OrangeGrid</strong></td>
+                            <td>Add <code>+request_gpus = 1</code> to submit file</td>
+                            <td>Many independent GPU jobs, inference batches</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div class="command-example">
+                    # Example: Request GPU on Zest<br>
+                    #SBATCH --partition=gpu<br>
+                    #SBATCH --gres=gpu:1<br>
+                    <br>
+                    # Example: Request GPU on OrangeGrid<br>
+                    +request_gpus = 1
+                </div>
+                
+                <h3>Popular GPU Workflows on the Cluster</h3>
+                
+                <h4>LLM Inference with Ollama</h4>
+                <p>Many researchers use Ollama for running local LLMs. Check out our <a href="https://github.com/SyracuseUniversity/OrangeGridExamples/tree/main/Ollama" target="_blank">Ollama examples on OrangeGrid</a>.</p>
+                
+                <h4>LLM Work with LlamaCPP</h4>
+                <p>LlamaCPP is excellent for efficient LLM inference and works great in our non-interactive environment.</p>
+                
+                <h4>PyTorch & TensorFlow</h4>
+                <p>See our examples for <a href="https://github.com/SyracuseUniversity/OrangeGridExamples/tree/main/PyTorch" target="_blank">PyTorch</a> and <a href="https://github.com/SyracuseUniversity/OrangeGridExamples/tree/main/tensorflow" target="_blank">TensorFlow</a> GPU jobs.</p>
+                
+                <h2>Alternative GPU Solutions</h2>
+                
+                <p>In some situations, cluster GPUs may not be the right fit. We have other options available for specific circumstances.</p>
+                
+                <h3>Azure Cloud GPUs (Paid Option)</h3>
+                <div class="info-box">
+                    <p><strong>You might be assigned Azure if:</strong></p>
+                    <ul>
+                        <li>You need dedicated GPU access for an extended period</li>
+                        <li>Your timeline cannot accommodate cluster queue times</li>
+                        <li>You have grant funding to cover cloud computing costs</li>
+                        <li>Your project requires specific Azure services or integrations</li>
+                    </ul>
+                    <p><strong>How it works:</strong></p>
+                    <ul>
+                        <li>Requires working with our business office for billing setup</li>
+                        <li>You pay for Azure VMs or endpoints on-demand</li>
+                        <li>More expensive than the free cluster option</li>
+                        <li>Best for specific circumstances, not general use</li>
+                    </ul>
+                </div>
+                
+                <h3>Google Colab (Development & Small Jobs)</h3>
+                <div class="info-box">
+                    <p><strong>When to use Colab:</strong></p>
+                    <ul>
+                        <li>Initial development and testing of code</li>
+                        <li>Short-term, small-scale experiments</li>
+                        <li>Learning and prototyping</li>
+                    </ul>
+                    <p><strong>Limitations:</strong></p>
+                    <ul>
+                        <li>Limited compute time and resources</li>
+                        <li>Not suitable for production workloads</li>
+                        <li>Best used as a stepping stone to cluster deployment</li>
+                    </ul>
+                    <p>See our guide: <a href="https://answers.atlassian.syr.edu/wiki/spaces/RESCOMP/pages/237371891/Using+Google+Colab+for+Research+Development" target="_blank">Using Google Colab for Research Development</a></p>
+                </div>
+                
+                <h2>How We Match You to GPU Resources</h2>
+                
+                <div class="visual-diagram">
+                    <h3>Our GPU Assignment Process</h3>
+                    <p style="margin-top: 20px;">📧 <strong>You contact us</strong> describing your GPU needs</p>
+                    <p>↓</p>
+                    <p>🤔 <strong>We discuss</strong> your workflow, software, timeline, and scale</p>
+                    <p>↓</p>
+                    <p>🎯 <strong>We recommend</strong> the best GPU resource (usually clusters)</p>
+                    <p>↓</p>
+                    <p>✅ <strong>We assign access</strong> and provide tailored examples/support</p>
+                    <p>↓</p>
+                    <p>🚀 <strong>You start computing</strong> with the right GPU resources</p>
+                </div>
+                
+                <div class="highlight-box">
+                    <h3>Why Clusters Win for Most GPU Work</h3>
+                    <p>Over 90% of GPU requests are successfully served by our clusters because:</p>
+                    <ul>
+                        <li><strong>It's free</strong> - No budget required, no billing complexity</li>
+                        <li><strong>It scales</strong> - More GPUs available, queue multiple jobs</li>
+                        <li><strong>It works</strong> - Proven workflows for LLMs, ML, simulations, and more</li>
+                        <li><strong>We support it</strong> - Extensive examples and documentation</li>
+                    </ul>
+                    <p><strong>Even if you think you need interactive GPU access, let's discuss first.</strong> Many researchers are surprised to find that batch GPU jobs meet their needs perfectly - and save them significant time and money.</p>
+                </div>
+                
+                <h2>Already Have GPU Access?</h2>
+                
+                <p>If you've been assigned GPU access on one of our clusters, review the examples repository and guides for your specific platform:</p>
+                <ul>
+                    <li><strong>OrangeGrid:</strong> Add <code>+request_gpus = 1</code> to your submit file</li>
+                    <li><strong>Zest:</strong> Add <code>#SBATCH --gres=gpu:1</code> to your script</li>
+                    <li>See job submission guides in the documentation sections above</li>
+                </ul>
+                
+                <h2>Need to Request or Change GPU Access?</h2>
+                
+                <p><strong>📧 Email us:</strong> <a href="mailto:researchcomputing@syr.edu">researchcomputing@syr.edu</a></p>
+                
+                <p><strong>Tell us about:</strong></p>
+                <ul>
+                    <li>Your research project and goals</li>
+                    <li>What software/frameworks you're using (PyTorch, TensorFlow, LLMs, etc.)</li>
+                    <li>Whether you've used GPUs or clusters before</li>
+                    <li>Your timeline and computing needs</li>
+                </ul>
+                
+                <p>We'll schedule a brief consultation to find the best GPU solution for your research - usually that's getting you started on the cluster with our examples and support!</p>
+            </section>
+            
+            <!-- Software Section -->
+            <section id="software" class="section">
+                <h1>Software & Environments</h1>
+                
+                <div class="warning-box">
+                    <strong>⚠️ Critical Information:</strong> You cannot install software directly on the clusters. Instead, use:
+                    <ul>
+                        <li><strong>Conda</strong> or <strong>UV</strong> for Python packages</li>
+                        <li><strong>Singularity</strong> containers for complex dependencies</li>
+                    </ul>
+                    <p><strong>Acceptable on login nodes:</strong> Creating and setting up these environments. This is light configuration work that's permitted.</p>
+                    <p><strong>NOT acceptable on login nodes:</strong> Testing or running code after installation. Once your environment is set up, submit a job to test it!</p>
+                </div>
+                
+                <h2>Using Conda Environments</h2>
+                <p>Conda lets you create isolated Python environments with the packages you need.</p>
+                
+                <h3>On Zest</h3>
+                <div class="command-example">
+                    # Load the Anaconda module<br>
+                    module load anaconda3<br>
+                    <br>
+                    # Create a new environment<br>
+                    conda create -n myenv python=3.11<br>
+                    <br>
+                    # Activate it<br>
+                    conda activate myenv<br>
+                    <br>
+                    # Install packages<br>
+                    conda install numpy pandas scikit-learn<br>
+                    pip install your-package-here
+                </div>
+                
+                <h3>Using in Job Scripts (Zest)</h3>
+                <pre><code>#!/bin/bash
+#SBATCH --nodes=1
+#SBATCH --ntasks=1
+
+module load anaconda3
+conda activate myenv
+
+python my_script.py</code></pre>
+                
+                <h2>Using UV (Modern Python Packaging)</h2>
+                <p>UV is a fast Python package installer. See examples in the <a href="https://github.com/SyracuseUniversity/OrangeGridExamples/tree/main/uv" target="_blank">OrangeGrid UV examples</a>.</p>
+                
+                <h2>Using Singularity Containers</h2>
+                <p>For complex software stacks or when you need specific system libraries:</p>
+                
+                <div class="command-example">
+                    # Convert Docker image to Singularity<br>
+                    singularity pull docker://tensorflow/tensorflow:latest-gpu<br>
+                    <br>
+                    # Run your code in the container<br>
+                    singularity exec tensorflow_latest-gpu.sif python my_script.py
+                </div>
+                
+                <h3>Using Containers in Job Scripts (Zest)</h3>
+                <pre><code>#!/bin/bash
+#SBATCH --nodes=1
+#SBATCH --gres=gpu:1
+
+singularity exec my_container.sif python my_ml_training.py</code></pre>
+                
+                <h2>Available Modules on Zest</h2>
+                <div class="command-example">
+                    # See all available software modules<br>
+                    module avail<br>
+                    <br>
+                    # Search for specific module<br>
+                    module spider python<br>
+                    <br>
+                    # Load a module<br>
+                    module load cuda/12.3
+                </div>
+                
+                <div class="info-box">
+                    <strong>Popular modules on Zest:</strong>
+                    <ul>
+                        <li>anaconda3/2023.9 - Python environment</li>
+                        <li>cuda/12.3 - NVIDIA CUDA libraries</li>
+                        <li>openmpi4/4.1.6 - MPI implementation</li>
+                        <li>gromacs/2023.2 - Molecular dynamics</li>
+                    </ul>
+                </div>
+            </section>
+            
+            <!-- First Job Zest Section -->
+            <section id="first-job-zest" class="section">
+                <h1>Your First Job on Zest</h1>
+                
+                <div class="highlight-box">
+                    <h3>📝 Important Reminder</h3>
+                    <p><strong>This is how you test your code on the cluster!</strong> You don't run <code>python script.py</code> directly on the login node - you submit it as a job. Even small tests should be submitted as jobs.</p>
+                    <p>Think of this as the "hello world" that teaches you the submission process you'll use for all your work.</p>
+                </div>
+                
+                <h2>Step 1: Connect to Zest</h2>
+                <div class="command-example">
+                    ssh netid@its-zest-login1.syr.edu
+                </div>
+                
+                <h2>Step 2: Create Your Python Script</h2>
+                <div class="command-example">
+                    nano hello_cluster.py
+                </div>
+                
+                <p>Add this content:</p>
+                <pre><code>#!/usr/bin/env python3
+import socket
+import datetime
+
+print("Hello from the cluster!")
+print(f"Running on: {socket.gethostname()}")
+print(f"Time: {datetime.datetime.now()}")
+
+# Do some computation
+result = sum(range(1000000))
+print(f"Computation result: {result}")
+
+# Save to file
+with open('hello_output.txt', 'w') as f:
+    f.write(f"Job ran on {socket.gethostname()}\n")
+    f.write(f"Result: {result}\n")</code></pre>
+                
+                <p>Save with Ctrl+O, exit with Ctrl+X.</p>
+                
+                <h2>Step 3: Create Job Submission Script</h2>
+                <div class="command-example">
+                    nano submit_hello.sh
+                </div>
+                
+                <p>Add this content (replace netid with your actual NetID):</p>
+                <pre><code>#!/bin/bash
+#SBATCH --nodes=1
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=1
+#SBATCH --time=00:05:00
+#SBATCH --mail-type=ALL
+#SBATCH --mail-user=netid@syr.edu
+
+# Load Python environment
+module load anaconda3
+
+# Run the script
+python hello_cluster.py</code></pre>
+                
+                <h2>Step 4: Submit the Job</h2>
+                <div class="command-example">
+                    sbatch submit_hello.sh
+                </div>
+                
+                <p>You'll see output like:</p>
+                <div class="command-example">
+                    Submitted batch job 12345
+                </div>
+                
+                <h2>Step 5: Check Job Status</h2>
+                <div class="command-example">
+                    # Check your jobs<br>
+                    squeue -u netid<br>
+                    <br>
+                    # See detailed info<br>
+                    scontrol show job 12345
+                </div>
+                
+                <h2>Step 6: View Results</h2>
+                <p>Once the job completes, check your output:</p>
+                <div class="command-example">
+                    # View the Slurm output file<br>
+                    cat slurm-12345.out<br>
+                    <br>
+                    # View your custom output<br>
+                    cat hello_output.txt
+                </div>
+                
+                <div class="highlight-box">
+                    <strong>Common Slurm Commands:</strong>
+                    <ul>
+                        <li><code>squeue</code> - View job queue</li>
+                        <li><code>scancel 12345</code> - Cancel job 12345</li>
+                        <li><code>sinfo</code> - View node information</li>
+                        <li><code>sacct</code> - View job accounting info</li>
+                    </ul>
+                </div>
+                
+                <h2>More Examples</h2>
+                <p>Check out the <a href="https://github.com/SyracuseUniversity/ZestExamples" target="_blank">Zest Examples repository</a> for:</p>
+                <ul>
+                    <li>GPU jobs</li>
+                    <li>MPI parallel jobs</li>
+                    <li>Python with custom environments</li>
+                    <li>GROMACS simulations</li>
+                </ul>
+            </section>
+            
+            <!-- First Job OrangeGrid Section -->
+            <section id="first-job-og" class="section">
+                <h1>Your First Job on OrangeGrid</h1>
+                
+                <div class="highlight-box">
+                    <h3>📝 Important Reminder</h3>
+                    <p><strong>This is how you test your code on the cluster!</strong> You don't run scripts directly on the login node - you submit them as jobs. Even small tests should be submitted to HTCondor.</p>
+                    <p>This "hello world" example teaches you the submission process you'll use for all your computational work.</p>
+                </div>
+                
+                <h2>Step 1: Connect to OrangeGrid</h2>
+                <div class="command-example">
+                    ssh netid@its-og-login3.syr.edu
+                </div>
+                
+                <h2>Step 2: Create Your Script</h2>
+                <div class="command-example">
+                    nano hello.sh
+                </div>
+                
+                <p>Add this content:</p>
+                <pre><code>#!/bin/bash
+set -e
+
+echo "Hello from OrangeGrid!"
+echo "Host name: $(hostname)"
+echo "Date: $(date)"
+echo "Kernel: $(uname -r)"
+
+# Do some work
+echo "Calculating..."
+python3 -c "print('Sum:', sum(range(1000000)))"
+
+echo "Job complete!"
+exit 0</code></pre>
+                
+                <p>Make it executable:</p>
+                <div class="command-example">
+                    chmod +x hello.sh
+                </div>
+                
+                <h2>Step 3: Create HTCondor Submit File</h2>
+                <div class="command-example">
+                    nano hello.sub
+                </div>
+                
+                <p>Add this content:</p>
+                <pre><code># Specify the universe
+universe = vanilla
+
+# Point to your executable script
+executable = hello.sh
+
+# Output files
+output = hello.$(cluster).$(process).out
+error = hello.$(cluster).$(process).err
+log = hello.$(cluster).log
+
+# Submit one job
+queue 1</code></pre>
+                
+                <h2>Step 4: Submit the Job</h2>
+                <div class="command-example">
+                    condor_submit hello.sub
+                </div>
+                
+                <p>You'll see:</p>
+                <div class="command-example">
+                    Submitting job(s).<br>
+                    1 job(s) submitted to cluster 54321.
+                </div>
+                
+                <h2>Step 5: Check Job Status</h2>
+                <div class="command-example">
+                    # Check your jobs<br>
+                    condor_q<br>
+                    <br>
+                    # Check specific user<br>
+                    condor_q netid<br>
+                    <br>
+                    # Watch continuously (update every 5 seconds)<br>
+                    watch -n 5 condor_q netid
+                </div>
+                
+                <h2>Understanding Job States</h2>
+                <ul>
+                    <li><strong>I</strong> - Idle (waiting in queue)</li>
+                    <li><strong>R</strong> - Running</li>
+                    <li><strong>H</strong> - Held (problem requiring manual intervention)</li>
+                    <li><strong>C</strong> - Completed</li>
+                </ul>
+                
+                <h2>Step 6: View Results</h2>
+                <div class="command-example">
+                    # View output<br>
+                    cat hello.54321.0.out<br>
+                    <br>
+                    # Check for errors<br>
+                    cat hello.54321.0.err
+                </div>
+                
+                <div class="highlight-box">
+                    <strong>Common HTCondor Commands:</strong>
+                    <ul>
+                        <li><code>condor_q</code> - View job queue</li>
+                        <li><code>condor_rm 54321</code> - Remove job 54321</li>
+                        <li><code>condor_status</code> - View available machines</li>
+                        <li><code>condor_userprio</code> - See who's using the pool</li>
+                    </ul>
+                </div>
+                
+                <h2>Running Python Jobs</h2>
+                <p>Create a Python script and submit it:</p>
+                
+                <p>Python script (<code>analysis.py</code>):</p>
+                <pre><code>#!/usr/bin/env python3
+import numpy as np
+data = np.random.rand(100, 100)
+print(f"Mean: {np.mean(data)}")</code></pre>
+                
+                <p>Submit file (<code>python_job.sub</code>):</p>
+                <pre><code>universe = vanilla
+executable = /usr/bin/python3
+arguments = analysis.py
+output = job.$(cluster).$(process).out
+error = job.$(cluster).$(process).err
+log = job.$(cluster).log
+queue 1</code></pre>
+                
+                <h2>More Examples</h2>
+                <p>Check out the <a href="https://github.com/SyracuseUniversity/OrangeGridExamples" target="_blank">OrangeGrid Examples repository</a> for:</p>
+                <ul>
+                    <li>PyTorch and TensorFlow jobs</li>
+                    <li>Multiple job submissions</li>
+                    <li>R and Julia examples</li>
+                    <li>GPU utilization</li>
+                </ul>
+            </section>
+            
+            <!-- Resources Section -->
+            <section id="resources" class="section">
+                <h1>Resources & Getting Help</h1>
+                
+                <h2>Documentation</h2>
+                <ul>
+                    <li><a href="https://answers.atlassian.syr.edu/wiki/spaces/RESCOMP/pages/164169568/Zest+Slurm+Support" target="_blank">Zest | Slurm Support Page</a></li>
+                    <li><a href="https://answers.atlassian.syr.edu/wiki/spaces/RESCOMP/pages/164169368/OrangeGrid+OG+HTCondor+Support" target="_blank">OrangeGrid | HTCondor Support Page</a></li>
+                    <li><a href="https://github.com/SyracuseUniversity/ZestExamples" target="_blank">Zest Examples Repository</a></li>
+                    <li><a href="https://github.com/SyracuseUniversity/OrangeGridExamples" target="_blank">OrangeGrid Examples Repository</a></li>
+                </ul>
+                
+                <h2>External Resources</h2>
+                
+                <h3>Slurm (Zest)</h3>
+                <ul>
+                    <li><a href="https://slurm.schedmd.com/quickstart.html" target="_blank">Slurm Quick Start Guide</a></li>
+                    <li><a href="https://slurm.schedmd.com/pdfs/summary.pdf" target="_blank">Slurm Command Cheat Sheet</a></li>
+                    <li><a href="https://slurm.schedmd.com/tutorials.html" target="_blank">Slurm Tutorials</a></li>
+                </ul>
+                
+                <h3>HTCondor (OrangeGrid)</h3>
+                <ul>
+                    <li><a href="https://htcondor.readthedocs.io/en/latest/users-manual/quick-start-guide.html" target="_blank">HTCondor Quick Start Guide</a></li>
+                    <li><a href="https://htcondor-wiki.cs.wisc.edu/index.cgi/wiki" target="_blank">HTCondor Wiki and FAQs</a></li>
+                    <li><a href="http://research.cs.wisc.edu/htcondor/tutorials/" target="_blank">HTCondor Tutorials</a></li>
+                </ul>
+                
+                <h2>Getting Help</h2>
+                
+                <div class="highlight-box">
+                    <h3>📧 Contact Research Computing</h3>
+                    <p><strong>Email:</strong> <a href="mailto:researchcomputing@syr.edu">researchcomputing@syr.edu</a></p>
+                    
+                    <p><strong>Need access?</strong> Email us to request a consultation. We'll discuss your research needs and match you to the right computing resource.</p>
+                    
+                    <p><strong>Already have access?</strong> Questions about:</p>
+                    <ul>
+                        <li>Job submission issues</li>
+                        <li>Software installation and containers</li>
+                        <li>Performance optimization</li>
+                        <li>Understanding your assigned resource</li>
+                        <li>Changing resources as your needs evolve</li>
+                    </ul>
+                </div>
+                
+                <h2>Quick Reference</h2>
+                
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Task</th>
+                            <th>Zest (Slurm)</th>
+                            <th>OrangeGrid (HTCondor)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Submit job</td>
+                            <td><code>sbatch script.sh</code></td>
+                            <td><code>condor_submit job.sub</code></td>
+                        </tr>
+                        <tr>
+                            <td>Check status</td>
+                            <td><code>squeue -u netid</code></td>
+                            <td><code>condor_q netid</code></td>
+                        </tr>
+                        <tr>
+                            <td>Cancel job</td>
+                            <td><code>scancel jobid</code></td>
+                            <td><code>condor_rm jobid</code></td>
+                        </tr>
+                        <tr>
+                            <td>View nodes</td>
+                            <td><code>sinfo</code></td>
+                            <td><code>condor_status</code></td>
+                        </tr>
+                        <tr>
+                            <td>Job history</td>
+                            <td><code>sacct</code></td>
+                            <td><code>condor_history</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <h2>Additional Syracuse Resources</h2>
+                <ul>
+                    <li><a href="https://researchcomputing.syr.edu/events/" target="_blank">Research Computing Events & Workshops</a></li>
+                    <li><a href="https://answers.atlassian.syr.edu/wiki/spaces/RESCOMP/pages/164170022/Configuring+SSH+Key+Pairs+for+Cluster+Access" target="_blank">SSH Key Configuration Guide</a></li>
+                    <li><a href="https://answers.atlassian.syr.edu/wiki/spaces/RESCOMP/pages/237371891/Using+Google+Colab+for+Research+Development" target="_blank">Using Google Colab for Development</a></li>
+                </ul>
+                
+                <div class="info-box">
+                    <h3>💡 Pro Tips</h3>
+                    <ul>
+                        <li>Start with small test jobs before scaling up</li>
+                        <li>Always specify resource requirements accurately</li>
+                        <li>Use email notifications to know when jobs complete</li>
+                        <li>Clone the example repositories to have working templates</li>
+                        <li>Join Research Computing workshops to learn best practices</li>
+                    </ul>
+                </div>
+            </section>
+        </main>
+    </div>
+    
+    <script>
+        // Navigation functionality
+        const navItems = document.querySelectorAll('.nav-item');
+        const sections = document.querySelectorAll('.section');
+        
+        navItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const targetSection = item.getAttribute('data-section');
+                
+                // Remove active class from all nav items and sections
+                navItems.forEach(nav => nav.classList.remove('active'));
+                sections.forEach(section => section.classList.remove('active'));
+                
+                // Add active class to clicked nav item and corresponding section
+                item.classList.add('active');
+                document.getElementById(targetSection).classList.add('active');
+                
+                // Scroll to top of content
+                document.querySelector('.main-content').scrollTop = 0;
+            });
+        });
+    </script>
+</body>
+</html>

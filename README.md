@@ -8,17 +8,19 @@ Welcome to Syracuse University's Research Computing documentation hub! This is y
 
 ## 🚀 Quick Start
 
-**Just got your cluster account?**
+**New to Research Computing at Syracuse?**
+1. 📧 **Request access:** Email [researchcomputing@syr.edu](mailto:researchcomputing@syr.edu)
+2. 🤝 **Consultation:** We'll schedule a meeting to discuss your research needs
+3. 🎯 **Get matched:** We'll assign you to the right computing resource
+4. 📖 **Get started:** Follow the guide for your assigned resource
+
+**Just received your account credentials?**
 1. 📖 Read our [Getting Started Guide](./getting-started/)
 2. 🔑 [Set up SSH keys](./access/ssh-keys.md) for easier login
-3. 🎯 [Choose your cluster](./getting-started/choosing-a-cluster.md) (Zest or OrangeGrid)
+3. 📚 Review documentation for your assigned resource (Zest, OrangeGrid, etc.)
 4. ✅ Submit your [first job](./getting-started/first-job.md)
 
-**Need GPUs?**
-- 📧 Email us first: [researchcomputing@syr.edu](mailto:researchcomputing@syr.edu)
-- 📚 Read [GPU Resources Overview](./resources/gpu-resources.md)
-
-**Looking for examples?**
+**Looking for code examples?**
 - [Zest Examples Repository](https://github.com/SyracuseUniversity/ZestExamples) - Slurm job examples
 - [OrangeGrid Examples Repository](https://github.com/SyracuseUniversity/OrangeGridExamples) - HTCondor job examples
 
@@ -32,7 +34,7 @@ Perfect for new users transitioning to cluster computing.
 - [**Interactive vs. Batch Computing**](./getting-started/interactive-vs-batch.md) - Understanding the fundamental shift
 - [**Python: Local vs. Cluster**](./getting-started/python-comparison.md) - See the difference with real examples
 - [**Linux Command Line Basics**](./getting-started/linux-basics.md) - Essential commands you need
-- [**Choosing Your Cluster**](./getting-started/choosing-a-cluster.md) - Zest vs. OrangeGrid
+- [**Understanding Your Assigned Resource**](./getting-started/understanding-resources.md) - What you've been given and why
 - [**Your First Job**](./getting-started/first-job.md) - Step-by-step walkthrough
 
 ### Cluster Documentation
@@ -68,13 +70,17 @@ How to connect to clusters from anywhere.
 - [**File Transfer**](./access/file-transfer.md) - SCP, WinSCP, and rsync
 
 ### Computing Resources
-Understanding your computing options at Syracuse.
+Understanding the resources available at Syracuse.
 
-- [**GPU Resources**](./resources/gpu-resources.md) - Clusters, VMs, Azure, and Colab
-- [**Azure for Research**](./resources/azure.md) - Cloud computing options
+> **Note:** Resources are assigned based on consultation with our team. We match you to the best option for your research needs.
+
+- [**Resource Overview**](./resources/overview.md) - All computing options explained
+- [**Cluster Computing**](./resources/clusters.md) - Zest (HPC) and OrangeGrid (HTC)
+- [**Custom Virtual Machines**](./resources/custom-vms.md) - AVHE and Crush environments
+- [**Azure Cloud Computing**](./resources/azure.md) - Paid cloud options
+- [**GPU Resources**](./resources/gpu-resources.md) - Where and how to access GPUs
 - [**Google Colab**](./resources/google-colab.md) - Development and prototyping
 - [**Storage Options**](./resources/storage.md) - Where to keep your data
-- [**Resource Comparison**](./resources/comparison.md) - Which option is right for you?
 
 ### Software & Environments
 Installing and managing software on the clusters.
@@ -111,9 +117,17 @@ Specific workflows and use cases.
 
 ### I need to...
 
+**Get access to computing resources**
+- [Request access via consultation](./support/getting-help.md#request-computing-resources)
+- Email [researchcomputing@syr.edu](mailto:researchcomputing@syr.edu)
+
 **Submit a job**
 - [Zest/Slurm job submission](./clusters/zest/job-submission.md)
 - [OrangeGrid/HTCondor job submission](./clusters/orangegrid/job-submission.md)
+
+**Understand my assigned resource**
+- [Understanding Your Resource](./getting-started/understanding-resources.md)
+- [Resource Overview](./resources/overview.md)
 
 **Use GPUs**
 - [GPU Resources overview](./resources/gpu-resources.md)
@@ -142,17 +156,18 @@ Specific workflows and use cases.
 
 ---
 
-## 💡 What's Different About Cluster Computing?
+## 💡 What's Different About Research Computing?
 
 Coming from a laptop or desktop? Here's what changes:
 
-| **Your Laptop** | **The Cluster** |
+| **Your Laptop** | **Research Computing** |
 |----------------|----------------|
 | Click "Run" in Jupyter/RStudio | Write a submission script |
 | See results immediately | Submit job to queue, check results later |
 | Use all resources yourself | Share with hundreds of researchers |
 | GUI and interactive tools | Command-line only, batch jobs |
 | Install software freely | Use conda/containers |
+| Pick your own hardware | We match you to the right resource |
 
 **Why batch computing?** It enables:
 - ✅ Sharing expensive resources fairly
@@ -160,24 +175,30 @@ Coming from a laptop or desktop? Here's what changes:
 - ✅ Queuing hundreds of jobs to run automatically
 - ✅ Accessing specialized hardware (GPUs, high-memory nodes)
 
+**Why consultation?** We ensure:
+- ✅ You get the right resource for your needs (not too little, not too much)
+- ✅ You don't pay for cloud resources when free clusters will work
+- ✅ Your workflow matches the resource capabilities
+- ✅ You have the best support and examples for your platform
+
 Learn more in our [Interactive vs. Batch Computing guide](./getting-started/interactive-vs-batch.md).
 
 ---
 
-## 🏫 Our Clusters at a Glance
+## 🏫 Our Computing Resources
 
-### Zest (Slurm)
-**High-Performance Computing**
+We offer multiple computing resources to match different research needs. **During your consultation, we'll help determine which resource is best for your work.**
 
-- **Best for:** Parallel jobs, MPI, GPUs, long runtimes
+### Zest - High-Performance Computing (HPC)
+
+- **Best for:** Parallel jobs, MPI, GPUs, long runtimes, tightly-coupled computations
 - **Scheduler:** Slurm
 - **Resources:** Multiple partitions, GPU nodes (A40, A100), high-memory nodes
 - **Max runtime:** 20-40 days
 - **Submit command:** `sbatch script.sh`
 - **Examples:** [ZestExamples](https://github.com/SyracuseUniversity/ZestExamples)
 
-### OrangeGrid (HTCondor)
-**High-Throughput Computing**
+### OrangeGrid - High-Throughput Computing (HTC)
 
 - **Best for:** Many independent jobs, parameter sweeps, batch processing
 - **Scheduler:** HTCondor
@@ -186,20 +207,50 @@ Learn more in our [Interactive vs. Batch Computing guide](./getting-started/inte
 - **Submit command:** `condor_submit job.sub`
 - **Examples:** [OrangeGridExamples](https://github.com/SyracuseUniversity/OrangeGridExamples)
 
-Not sure which to use? See our [cluster comparison guide](./getting-started/choosing-a-cluster.md).
+### Custom Virtual Machines
+
+**AVHE Environment**
+- CPU-only VMs for specific use cases
+- Persistent environment with more control
+- Assigned based on research requirements
+
+**Crush Environment**
+- Larger VMs with optional GPU support
+- For workloads requiring dedicated resources
+- Interactive or long-running services
+
+### Azure Cloud Computing (Paid)
+
+- On-demand cloud resources through Microsoft Azure
+- Best for dedicated GPU needs or specific timelines
+- Requires working with business office for billing
+- Cost-effective for certain research scenarios
+
+**Not sure what you need?** That's exactly why we start with a consultation! Email [researchcomputing@syr.edu](mailto:researchcomputing@syr.edu) to discuss your research.
 
 ---
 
 ## 📞 Getting Help
 
-### Request Cluster Access
-Email [researchcomputing@syr.edu](mailto:researchcomputing@syr.edu) with:
-- Your research project description
-- Which cluster you need (or let us help you decide)
-- Your advisor/PI information (if applicable)
+### Request Computing Resources
+**Start here if you're new or need access:**
+
+📧 Email [researchcomputing@syr.edu](mailto:researchcomputing@syr.edu) with:
+- Brief description of your research project
+- What you're trying to compute (simulations, data processing, machine learning, etc.)
+- Any specific requirements you know about (GPUs, large memory, long runtimes)
+- Your department and advisor/PI (if applicable)
+
+**What happens next:**
+1. We'll schedule a consultation meeting (remote or in-person)
+2. We'll discuss your workflow and computing needs
+3. We'll recommend the best resource for your work
+4. We'll set up your account and provide getting-started guidance
+
+**No need to know which resource you need!** That's our job. We'll match you to the right solution.
 
 ### Technical Support
-Have questions or issues?
+Already have access and need help?
 - 📧 **Email:** [researchcomputing@syr.edu](mailto:researchcomputing@syr.edu)
 - 📖 **Check:** [FAQ](./support/faq.md) and [Troubleshooting](./support/troubleshooting.md)
 - 💬 **Attend:** Our [workshops and office hours](./support/workshops.md)
@@ -229,23 +280,29 @@ Found a bug in the documentation? [Open an issue](https://github.com/SyracuseUni
 
 ## 🎓 Learning Path for New Users
 
-**Week 1: Basics**
-1. Read [Getting Started Guide](./getting-started/)
-2. [Set up SSH keys](./access/ssh-keys.md)
-3. Learn [Linux basics](./getting-started/linux-basics.md)
-4. Submit your [first simple job](./getting-started/first-job.md)
+**Before You Have Access**
+1. Email [researchcomputing@syr.edu](mailto:researchcomputing@syr.edu) to request consultation
+2. Prepare to discuss your research needs in the meeting
+3. We'll recommend the right resource and set up your account
+
+**Week 1: Getting Started**
+1. Receive your account credentials via email
+2. Read [Getting Started Guide](./getting-started/) for your assigned resource
+3. [Set up SSH keys](./access/ssh-keys.md)
+4. Learn [Linux basics](./getting-started/linux-basics.md) (if needed)
+5. Submit your [first simple job](./getting-started/first-job.md)
 
 **Week 2: Your Research**
-1. [Choose your cluster](./getting-started/choosing-a-cluster.md)
-2. Set up [software environment](./software/) (conda/singularity)
-3. Adapt one of our [examples](https://github.com/SyracuseUniversity/ZestExamples) to your code
+1. Review [examples](https://github.com/SyracuseUniversity/ZestExamples) for your platform
+2. Set up [software environment](./software/) (conda/singularity/modules)
+3. Adapt an example to your code
 4. Submit a real research job
 
 **Week 3: Optimization**
-1. Learn about [GPU resources](./resources/gpu-resources.md) (if needed)
-2. Optimize job parameters
+1. Learn about [GPU resources](./resources/gpu-resources.md) (if you have GPU access)
+2. Optimize job parameters for efficiency
 3. Set up efficient workflows
-4. Attend a [workshop](./support/workshops.md)
+4. Attend a [workshop](./support/workshops.md) to learn advanced techniques
 
 ---
 

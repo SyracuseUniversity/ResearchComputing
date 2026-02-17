@@ -4,7 +4,7 @@ Welcome to Syracuse University's Research Computing documentation. This reposito
 
 ---
 
-## 🚀 Quick Start
+## 🚀 Getting Started
 
 ### Need Computing Resources?
 

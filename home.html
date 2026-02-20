@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Syracuse Research Computing Documentation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f5f5;
+            min-height: 100vh;
+        }
+        
+        .container {
+            display: flex;
+            height: 100vh;
+        }
+        
+        .sidebar {
+            width: 280px;
+            background: #000E54;
+            color: white;
+            padding: 20px;
+            overflow-y: auto;
+        }
+        
+        .sidebar h2 {
+            color: #F76900;
+            margin-bottom: 20px;
+            font-size: 1.3em;
+            border-bottom: 2px solid #F76900;
+            padding-bottom: 10px;
+        }
+        
+        .nav-item {
+            padding: 12px 15px;
+            margin: 5px 0;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: all 0.3s;
+            border-left: 3px solid transparent;
+        }
+        
+        .nav-item:hover {
+            background: rgba(247, 105, 0, 0.2);
+            border-left-color: #F76900;
+        }
+        
+        .nav-item.active {
+            background: rgba(247, 105, 0, 0.3);
+            border-left-color: #F76900;
+        }
+        
+        .main-content {
+            flex: 1;
+            padding: 40px;
+            overflow-y: auto;
+        }
+        
+        .section {
+            display: none;
+            background: white;
+            border-radius: 10px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            animation: fadeIn 0.5s;
+        }
+        
+        .section.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        h1 {
+            color: #000E54;
+            margin-bottom: 20px;
+            font-size: 2.2em;
+            border-bottom: 3px solid #F76900;
+            padding-bottom: 10px;
+        }
+        
+        h2 {
+            color: #000E54;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+        
+        h3 {
+            color: #7f8c8d;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+        
+        p {
+            line-height: 1.6;
+            margin-bottom: 15px;
+            color: #555;
+        }
+        
+        .highlight-box {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        
+        .info-box {
+            background: #d1ecf1;
+            border-left: 4px solid #17a2b8;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        
+        .warning-box {
+            background: #f8d7da;
+            border-left: 4px solid #dc3545;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            color: #F76900;
+        }
+        
+        pre {
+            background: #000E54;
+            color: #ecf0f1;
+            padding: 20px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 15px 0;
+            line-height: 1.5;
+        }
+        
+        pre code {
+            background: none;
+            color: #ecf0f1;
+            padding: 0;
+        }
+        
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        .comparison-table th,
+        .comparison-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        .comparison-table th {
+            background: #F76900;
+            color: white;
+        }
+        
+        .comparison-table tr:nth-child(even) {
+            background: #f9f9f9;
+        }
+        
+        ul, ol {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+            line-height: 1.6;
+        }
+        
+        .command-example {
+            background: #fff4ed;
+            border-left: 4px solid #F76900;
+            padding: 12px;
+            margin: 10px 0;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .guide-card {
+            background: white;
+            border: 2px solid #F76900;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 15px 0;
+            transition: all 0.3s;
+        }
+        
+        .guide-card:hover {
+            box-shadow: 0 5px 15px rgba(247, 105, 0, 0.3);
+            transform: translateY(-2px);
+        }
+        
+        .guide-card h3 {
+            margin-top: 0;
+            color: #000E54;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav class="sidebar">
+            <h2>Documentation Home</h2>
+            <div class="nav-item active" data-section="overview">Overview</div>
+            <div class="nav-item" data-section="guides">Interactive Guides</div>
+            <div class="nav-item" data-section="specifications">Cluster Specs</div>
+            <div class="nav-item" data-section="examples">Code Examples</div>
+            <div class="nav-item" data-section="tasks">Common Tasks</div>
+            <div class="nav-item" data-section="reference">Quick Reference</div>
+            <div class="nav-item" data-section="help">Getting Help</div>
+        </nav>
+        
+        <main class="main-content">
+            <!-- Overview Section -->
+            <section id="overview" class="section active">
+                <h1>Syracuse Research Computing Documentation</h1>
+                
+                <p><strong>Welcome!</strong> This is your central hub for Syracuse University's research computing resources, including computing clusters, GPU access, software environments, and support.</p>
+                
+                <div class="highlight-box">
+                    <h3>🚀 New to Research Computing?</h3>
+                    <p><strong>Need computing resources?</strong> Email <a href="mailto:researchcomputing@syr.edu">researchcomputing@syr.edu</a> to request a consultation. <strong>Accounts are not active by default</strong> - all access begins with consultation to ensure proper resource assignment and compliance with data sensitivity requirements.</p>
+                    <p><strong>Just received credentials?</strong> Start with our <a href="getting-started.html">Getting Started Guide</a> to learn the basics of cluster computing.</p>
+                </div>
+                
+                <div class="info-box">
+                    <h3>📖 What's Different About Research Computing?</h3>
+                    <p>Coming from a laptop or desktop? Research clusters work differently:</p>
+                    <ul>
+                        <li><strong>Batch computing:</strong> Write scripts and submit jobs to a queue (not interactive)</li>
+                        <li><strong>Shared resources:</strong> Hundreds of researchers share the same hardware</li>
+                        <li><strong>Command-line only:</strong> No GUI tools or IDEs on clusters</li>
+                        <li><strong>Software management:</strong> Use conda, containers, or modules (can't install directly)</li>
+                    </ul>
+                    <p>This enables fair resource sharing, running jobs too large for any single computer, and accessing specialized hardware like GPUs.</p>
+                </div>
+                
+                <h2>Our Computing Resources</h2>
+                
+                <p>We operate two research computing clusters, private cloud environments, GPU infrastructure, and support cloud partnerships:</p>
+                
+                <ul>
+                    <li><strong>OrangeGrid</strong> - High-throughput computing cluster (over 80,000 cores)</li>
+                    <li><strong>Zest</strong> - High-performance computing cluster (over 25,000 cores)</li>
+                    <li><strong>SUrge</strong> - GPU infrastructure (hundreds of GPUs supporting both clusters)</li>
+                    <li><strong>AVHE</strong> - Private cloud for unique research needs</li>
+                    <li><strong>Crush</strong> - Virtual private cloud for computationally intense needs</li>
+                    <li><strong>Azure</strong> - Cloud partnership for specific use cases</li>
+                </ul>
+                
+                <p><strong>Learn more:</strong> See our complete <a href="resources-overview.html">Resources Overview</a> to understand all options.</p>
+                
+                <div class="warning-box">
+                    <h3>⚠️ Data Sensitivity & Compliance</h3>
+                    <p><strong>Tell us about data requirements upfront!</strong> Many grants and research projects have specific data security agreements (HIPAA, FERPA, export controls, etc.). Data sensitivity significantly impacts which computing resources are appropriate.</p>
+                    <p>Include this information when requesting access to ensure compliance and proper resource selection.</p>
+                </div>
+            </section>
+            
+            <!-- Interactive Guides Section -->
+            <section id="guides" class="section">
+                <h1>Interactive Documentation Guides</h1>
+                
+                <p>Our documentation is organized into interactive guides with navigable sections. Each guide covers a specific area:</p>
+                
+                <div class="guide-card">
+                    <h3>🚀 <a href="getting-started.html">Getting Started Guide</a></h3>
+                    <p><strong>For users who just received cluster credentials.</strong></p>
+                    <p>Learn the fundamentals of cluster computing:</p>
+                    <ul>
+                        <li>Interactive vs. batch computing concepts</li>
+                        <li>Python local vs. cluster comparison</li>
+                        <li>Linux command-line basics</li>
+                        <li>Understanding OrangeGrid vs Zest</li>
+                        <li>Connecting to clusters (on/off campus)</li>
+                        <li>File transfer methods (SCP, WinSCP, rsync)</li>
+                        <li>Software environments (conda, UV, singularity)</li>
+                        <li>GPU resources overview</li>
+                        <li>Your first job (step-by-step for both clusters)</li>
+                    </ul>
+                    <p><strong>Start here if you're new to clusters!</strong></p>
+                </div>
+                
+                <div class="guide-card">
+                    <h3>🖥️ <a href="resources-overview.html">Resources Overview</a></h3>
+                    <p><strong>Understand all our computing resources.</strong></p>
+                    <p>Comprehensive overview of everything we offer:</p>
+                    <ul>
+                        <li>OrangeGrid (HTC) - 80,000+ cores, many independent jobs</li>
+                        <li>Zest (HPC) - 25,000+ cores, parallel computing, InfiniBand</li>
+                        <li>SUrge (GPU Infrastructure) - Hundreds of GPUs</li>
+                        <li>AVHE (Private Cloud) - CPU VMs for unique needs</li>
+                        <li>Crush (Virtual Private Cloud) - Computationally intense solutions</li>
+                        <li>Azure Partnership - Cloud computing with usage-based costs</li>
+                        <li>How to request access with data compliance info</li>
+                    </ul>
+                    <p><strong>Good for understanding what we offer and which resource fits your needs.</strong></p>
+                </div>
+                
+                <div class="info-box">
+                    <h3>💡 How to Use These Guides</h3>
+                    <p>Each guide has a sidebar navigation allowing you to jump to any section. You can read straight through or skip to topics you need.</p>
+                    <p><strong>Tip:</strong> Bookmark the specific guide URLs for quick reference!</p>
+                </div>
+            </section>
+            
+            <!-- Cluster Specifications Section -->
+            <section id="specifications" class="section">
+                <h1>Cluster Specifications</h1>
+                
+                <p>Technical details for our HTC and HPC clusters.</p>
+                
+                <h2>OrangeGrid (HTCondor) - High-Throughput Computing</h2>
+                
+                <div class="info-box">
+                    <p><strong>Cluster Type:</strong> High-throughput computing cluster with over 80,000 cores</p>
+                    
+                    <p><strong>Best For:</strong></p>
+                    <ul>
+                        <li>Parameter sweeps and batch processing</li>
+                        <li>Many independent jobs (hundreds to thousands)</li>
+                        <li>Embarrassingly parallel workloads</li>
+                        <li>Single-node high-memory or GPU jobs</li>
+                        <li>LLM inference across multiple inputs</li>
+                    </ul>
+                    
+                    <p><strong>Resources:</strong></p>
+                    <ul>
+                        <li>Over 80,000 cores (AMD and Intel processors)</li>
+                        <li>Heterogeneous pool with varying configurations</li>
+                        <li>High-memory nodes available</li>
+                        <li>GPU nodes available (via SUrge infrastructure)</li>
+                    </ul>
+                    
+                    <p><strong>Available GPUs:</strong> NVIDIA A100, L40S, A6000 (via SUrge)<br>
+                    <strong>Request with:</strong> <code>+request_gpus = 1</code></p>
+                    
+                    <p><strong>Storage:</strong> 4TB home directory (NetApp, mounted on all nodes)<br>
+                    <strong>Access:</strong> SSH via <code>its-og-loginX.syr.edu</code></p>
+                </div>
+                
+                <p><strong>📊 Detailed specifications:</strong> <a href="./resources/orangegrid-specifications">OrangeGrid Technical Details</a></p>
+                
+                <h2>Zest (Slurm) - High-Performance Computing</h2>
+                
+                <div class="info-box">
+                    <p><strong>Cluster Type:</strong> High-performance computing cluster with over 25,000 cores and InfiniBand interconnect</p>
+                    
+                    <p><strong>Best For:</strong></p>
+                    <ul>
+                        <li>Multi-node parallel jobs (MPI)</li>
+                        <li>Tightly-coupled computations requiring fast interconnect</li>
+                        <li>Large-scale parallel workloads (hundreds of cores)</li>
+                        <li>GPU-accelerated research</li>
+                        <li>Long-running jobs (up to 40 days)</li>
+                        <li>High-memory workloads</li>
+                    </ul>
+                    
+                    <p><strong>Resources:</strong></p>
+                    <ul>
+                        <li>Over 25,000 cores interconnected with InfiniBand</li>
+                        <li>Multiple partitions optimized for different workloads</li>
+                        <li>Extended runtime options (longjobs partition: 40 days)</li>
+                    </ul>
+                    
+                    <p><strong>Available GPUs:</strong> NVIDIA A40 (primary, via SUrge)<br>
+                    <strong>Request with:</strong> <code>#SBATCH --gres=gpu:1</code></p>
+                    
+                    <p><strong>Storage:</strong> 4TB home directory (NetApp, mounted on all nodes)<br>
+                    <strong>Access:</strong> SSH via <code>its-zest-loginX.syr.edu</code></p>
+                </div>
+                
+                <h3>Zest Partitions</h3>
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Partition</th>
+                            <th>Purpose</th>
+                            <th>Max Runtime</th>
+                            <th>Default</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>normal</td>
+                            <td>CPU-intensive workloads</td>
+                            <td>20 days</td>
+                            <td>✓ Yes</td>
+                        </tr>
+                        <tr>
+                            <td>compute_zone2</td>
+                            <td>CPU-intensive workloads</td>
+                            <td>20 days</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>longjobs</td>
+                            <td>Extended runtime workloads</td>
+                            <td>40 days</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>gpu, gpu_zone2</td>
+                            <td>GPU computations</td>
+                            <td>20 days</td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <p><strong>📊 Detailed specifications:</strong> <a href="./resources/zest-specifications">Zest Technical Details</a></p>
+            </section>
+            
+            <!-- Code Examples Section -->
+            <section id="examples" class="section">
+                <h1>Code Examples</h1>
+                
+                <p>Ready-to-use examples for common tasks on both clusters.</p>
+                
+                <h2>OrangeGrid Examples</h2>
+                <div class="info-box">
+                    <p><strong>📁 Repository:</strong> <a href="https://github.com/SyracuseUniversity/OrangeGridExamples" target="_blank">OrangeGridExamples</a></p>
+                    
+                    <p><strong>Available Examples:</strong></p>
+                    <ul>
+                        <li>Basic HTCondor submission (hostname, simple scripts)</li>
+                        <li>Python jobs (conda, UV package manager)</li>
+                        <li>PyTorch and TensorFlow (GPU training)</li>
+                        <li>LLM work (Ollama, LlamaCPP)</li>
+                        <li>R and Julia examples</li>
+                        <li>Multiple job submission and arrays</li>
+                        <li>Parallelism patterns</li>
+                        <li>Blender rendering</li>
+                    </ul>
+                    
+                    <p><strong>Clone to your cluster home:</strong></p>
+                    <pre><code>git clone https://github.com/SyracuseUniversity/OrangeGridExamples.git</code></pre>
+                </div>
+                
+                <h2>Zest Examples</h2>
+                <div class="info-box">
+                    <p><strong>📁 Repository:</strong> <a href="https://github.com/SyracuseUniversity/ZestExamples" target="_blank">ZestExamples</a></p>
+                    
+                    <p><strong>Available Examples:</strong></p>
+                    <ul>
+                        <li>Basic Slurm job submission (hostname, simple scripts)</li>
+                        <li>Python jobs (anaconda, conda environments)</li>
+                        <li>GPU jobs (PyTorch, TensorFlow, CUDA)</li>
+                        <li>MPI parallel jobs</li>
+                        <li>GROMACS molecular dynamics</li>
+                        <li>Checkpointing long jobs</li>
+                    </ul>
+                    
+                    <p><strong>Clone to your cluster home:</strong></p>
+                    <pre><code>git clone https://github.com/SyracuseUniversity/ZestExamples.git</code></pre>
+                </div>
+                
+                <div class="highlight-box">
+                    <h3>💡 Using the Examples</h3>
+                    <p>Each example includes working code and submit files you can run directly or adapt to your research. They're organized by application type, making it easy to find relevant examples for your work.</p>
+                </div>
+            </section>
+            
+            <!-- Common Tasks Section -->
+            <section id="tasks" class="section">
+                <h1>Common Tasks</h1>
+                
+                <p>Quick reference for everyday cluster operations.</p>
+                
+                <h2>Job Submission</h2>
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Task</th>
+                            <th>OrangeGrid (HTCondor)</th>
+                            <th>Zest (Slurm)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Submit job</strong></td>
+                            <td><code>condor_submit job.sub</code></td>
+                            <td><code>sbatch script.sh</code></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Check status</strong></td>
+                            <td><code>condor_q netid</code></td>
+                            <td><code>squeue -u netid</code></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Cancel job</strong></td>
+                            <td><code>condor_rm jobid</code></td>
+                            <td><code>scancel jobid</code></td>
+                        </tr>
+                        <tr>
+                            <td><strong>View resources</strong></td>
+                            <td><code>condor_status</code></td>
+                            <td><code>sinfo</code></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Job history</strong></td>
+                            <td><code>condor_history netid</code></td>
+                            <td><code>sacct</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <h2>Software Management</h2>
+                
+                <h3>Create Conda Environment</h3>
+                <div class="command-example">
+                    # Load anaconda module (Zest only)<br>
+                    module load anaconda3<br>
+                    <br>
+                    # Create environment<br>
+                    conda create -n myenv python=3.11<br>
+                    <br>
+                    # Activate<br>
+                    conda activate myenv<br>
+                    <br>
+                    # Install packages<br>
+                    conda install numpy pandas<br>
+                    pip install your-package
+                </div>
+                
+                <h3>GPU Jobs</h3>
+                <p><strong>OrangeGrid:</strong> Add to submit file:</p>
+                <div class="command-example">
+                    +request_gpus = 1
+                </div>
+                
+                <p><strong>Zest:</strong> Add to SBATCH script:</p>
+                <div class="command-example">
+                    #SBATCH --partition=gpu_zone2,gpu<br>
+                    #SBATCH --gres=gpu:1
+                </div>
+                
+                <h3>File Transfer</h3>
+                <div class="command-example">
+                    # Upload to cluster<br>
+                    scp file.txt netid@cluster:~/path/<br>
+                    <br>
+                    # Download from cluster<br>
+                    scp netid@cluster:~/results.txt ./<br>
+                    <br>
+                    # Large transfers (resumable)<br>
+                    rsync -avz --progress /local/data/ netid@cluster:~/data/
+                </div>
+                
+                <p><strong>For large data transfers (TBs):</strong> Contact <a href="mailto:researchcomputing@syr.edu">researchcomputing@syr.edu</a> for optimized transfer options.</p>
+                
+                <h3>Load Software Modules (Zest Only)</h3>
+                <div class="command-example">
+                    # See available modules<br>
+                    module avail<br>
+                    <br>
+                    # Load module<br>
+                    module load anaconda3<br>
+                    <br>
+                    # List loaded modules<br>
+                    module list
+                </div>
+            </section>
+            
+            <!-- Quick Reference Section -->
+            <section id="reference" class="section">
+                <h1>Quick Command Reference</h1>
+                
+                <h2>OrangeGrid Commands (HTCondor)</h2>
+                <pre><code>condor_submit job.sub     # Submit job
+condor_q netid            # Check your jobs
+condor_rm jobid           # Cancel job
+condor_status             # View pool
+condor_userprio           # See priorities
+condor_history netid      # Job history</code></pre>
+                
+                <h2>Zest Commands (Slurm)</h2>
+                <pre><code>sbatch script.sh          # Submit job
+squeue -u netid           # Check your jobs
+scancel jobid             # Cancel job
+sinfo                     # View node info
+sacct                     # Job accounting
+module avail              # Available software</code></pre>
+                
+                <h2>Essential Linux Commands</h2>
+                <pre><code>pwd                       # Where am I?
+ls -la                    # List files
+cd directory              # Change directory
+nano file.txt             # Edit file
+cp file1 file2            # Copy file
+mv old new                # Move/rename
+rm file                   # Delete file
+mkdir newdir              # Create directory</code></pre>
+                
+                <div class="highlight-box">
+                    <h3>📚 Need More Detail?</h3>
+                    <p>See the <a href="getting-started.html">Getting Started Guide</a> for detailed explanations, examples, and step-by-step tutorials.</p>
+                </div>
+            </section>
+            
+            <!-- Getting Help Section -->
+            <section id="help" class="section">
+                <h1>Getting Help</h1>
+                
+                <h2>Request Computing Resources</h2>
+                
+                <div class="highlight-box">
+                    <p><strong>📧 Email:</strong> <a href="mailto:researchcomputing@syr.edu">researchcomputing@syr.edu</a></p>
+                    
+                    <p><strong>Include in your request:</strong></p>
+                    <ul>
+                        <li>Brief description of your research</li>
+                        <li>What you're trying to compute</li>
+                        <li><strong>Data sensitivity or compliance requirements</strong> (HIPAA, FERPA, grant agreements, etc.)</li>
+                        <li>Any specific requirements (GPUs, long runtime, large storage)</li>
+                        <li>Your department and PI/advisor</li>
+                    </ul>
+                    
+                    <p>We'll schedule a consultation to match you to the right resource and ensure compliance needs are met.</p>
+                </div>
+                
+                <h2>Technical Support</h2>
+                
+                <p>Already have access and need help?</p>
+                
+                <ul>
+                    <li>📧 <strong>Email:</strong> <a href="mailto:researchcomputing@syr.edu">researchcomputing@syr.edu</a></li>
+                    <li>📖 <strong>Check:</strong> <a href="getting-started.html">Getting Started Guide</a> for common topics</li>
+                    <li>💬 <strong>Attend:</strong> <a href="https://researchcomputing.syr.edu/events/" target="_blank">Workshops and office hours</a></li>
+                </ul>
+                
+                <h2>External Documentation</h2>
+                
+                <h3>Slurm (Zest)</h3>
+                <ul>
+                    <li><a href="https://slurm.schedmd.com/" target="_blank">Slurm Documentation</a></li>
+                    <li><a href="https://slurm.schedmd.com/pdfs/summary.pdf" target="_blank">Slurm Command Cheat Sheet (PDF)</a></li>
+                    <li><a href="https://slurm.schedmd.com/quickstart.html" target="_blank">Slurm Quick Start Guide</a></li>
+                </ul>
+                
+                <h3>HTCondor (OrangeGrid)</h3>
+                <ul>
+                    <li><a href="https://htcondor.readthedocs.io/" target="_blank">HTCondor Documentation</a></li>
+                    <li><a href="https://htcondor.readthedocs.io/en/latest/users-manual/quick-start-guide.html" target="_blank">HTCondor Quick Start</a></li>
+                </ul>
+                
+                <h3>Other Tools</h3>
+                <ul>
+                    <li><a href="https://docs.sylabs.io/guides/latest/user-guide/" target="_blank">Singularity User Guide</a></li>
+                    <li><a href="https://docs.conda.io/projects/conda/en/latest/user-guide/" target="_blank">Conda Documentation</a></li>
+                </ul>
+                
+                <h2>Syracuse Resources</h2>
+                
+                <ul>
+                    <li>🌐 <a href="https://researchcomputing.syr.edu" target="_blank">Research Computing Website</a></li>
+                    <li>📧 <a href="mailto:researchcomputing@syr.edu">Email Support</a></li>
+                    <li>📅 <a href="https://researchcomputing.syr.edu/events/" target="_blank">Events & Workshops</a></li>
+                </ul>
+                
+                <div class="info-box">
+                    <h3>💡 Found a Documentation Issue?</h3>
+                    <p><a href="https://github.com/SyracuseUniversity/ResearchComputing/issues" target="_blank">Open an issue</a> on GitHub or contact us directly. We welcome contributions and suggestions!</p>
+                </div>
+            </section>
+        </main>
+    </div>
+    
+    <script>
+        const navItems = document.querySelectorAll('.nav-item');
+        const sections = document.querySelectorAll('.section');
+        
+        navItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const targetSection = item.getAttribute('data-section');
+                
+                navItems.forEach(nav => nav.classList.remove('active'));
+                sections.forEach(section => section.classList.remove('active'));
+                
+                item.classList.add('active');
+                document.getElementById(targetSection).classList.add('active');
+                
+                document.querySelector('.main-content').scrollTop = 0;
+            });
+        });
+    </script>
+</body>
+</html>

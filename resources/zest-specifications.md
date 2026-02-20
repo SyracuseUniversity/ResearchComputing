@@ -104,22 +104,20 @@ sinfo -o "%n %c %m %f"  # Detailed: node, CPUs, memory, features
 
 ### Home Directory
 - **Path:** `/home/netid/`
-- **Type:** NFS-based
-- **Accessibility:** Available throughout the cluster
-- **Use for:** Scripts, code, small data files, conda environments
+- **Type:** NetApp storage, mounted on all nodes at job start
+- **Accessibility:** Available on login nodes and automatically mounted on compute nodes when your job runs
+- **Use for:** Scripts, code, data files, conda environments, results
 
-### Job Temporary Storage
-- **Path:** `/tmp/`
-- **Type:** Fast local storage on compute node
-- **Persistence:** Only during job runtime
-- **Use for:** Large temporary files, scratch space during computation
-- **Warning:** Files in `/tmp/` are deleted when job ends
+### Temporary Storage During Jobs
+- **Recommended:** Create scratch directories within your home directory
+- **Example:** `/home/netid/scratch/` or `/home/netid/job_temp/`
+- **Why?** Your home directory is already mounted on compute nodes, no need for separate temp storage
 
 ### Best Practices
-- Store code and small data in `/home/`
-- Use `/tmp/` for large temporary files during job execution
-- Clean up `/tmp/` at end of job if generating many files
-- For very large datasets, contact [researchcomputing@syr.edu](mailto:researchcomputing@syr.edu) about storage options
+- Store all your data in `/home/` - it's accessible everywhere
+- Create subdirectories for organization (data, scripts, results, scratch)
+- For large temporary files during computation, create a scratch directory in your home
+- Clean up large temporary files after jobs complete to manage your quota
 
 ---
 

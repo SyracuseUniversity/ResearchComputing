@@ -284,9 +284,9 @@ Maintained by Syracuse University Research Computing. We welcome contributions!
 
 <div align="center">
 
-**Syracuse University Research Computing**
+**Syracuse University Research Computing**  
 
-*Empowering research through advanced computing resources*
+*Empowering research through advanced computing resources*  
 
 [Website](https://researchcomputing.syr.edu) • [Email](mailto:researchcomputing@syr.edu) • [Events](https://researchcomputing.syr.edu/events/)
 

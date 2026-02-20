@@ -278,7 +278,6 @@ Maintained by Syracuse University Research Computing. We welcome contributions!
 
 **Last Updated:** February 2026  
 **Repository:** [github.com/SyracuseUniversity/ResearchComputing](https://github.com/SyracuseUniversity/ResearchComputing)  
-**Contributing:** See [CONTRIBUTING.md](./CONTRIBUTING.md)
 
 ---
 

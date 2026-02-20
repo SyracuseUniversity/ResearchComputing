@@ -30,10 +30,9 @@ OrangeGrid is a heterogeneous pool of compute resources designed for high-throug
 
 ### Basic Job Submission
 
-HTCondor uses a different model than Slurm. You specify what you need in a submit file:
+HTCondor uses submit files to define your job:
 
 ```htcondor
-universe = vanilla
 executable = my_script.sh
 
 # Request resources
@@ -51,6 +50,8 @@ log = job.$(cluster).log
 
 queue 1
 ```
+
+**Note:** Your home directory (`/home/netid/`) is automatically mounted on compute nodes, so your scripts and data are already accessible - no file transfer needed!
 
 ### CPU Requests
 
@@ -119,36 +120,22 @@ OrangeGrid has GPU nodes with various models. The scheduler will match your job 
 
 ### Home Directory
 - **Path:** `/home/netid/`
-- **Accessibility:** Available on submit/login nodes
-- **Use for:** Scripts, code, conda environments, small data files
-- **Important:** Not automatically available on compute nodes during job execution
+- **Type:** NetApp storage
+- **Accessibility:** Available on submit/login nodes and automatically mounted on compute nodes when your job runs
+- **Use for:** Scripts, code, data, conda environments, results
 
-### File Transfer
+### How Storage Works
 
-HTCondor transfers files to/from compute nodes. You don't need to manually transfer unless files are very large.
+Unlike some clusters, OrangeGrid mounts your home directory on compute nodes automatically. This means:
+- ✅ Your scripts are already accessible when jobs run
+- ✅ Your data files are available without transfer
+- ✅ Results are saved directly to your home directory
+- ✅ No need to specify file transfer in submit files
 
-**Automatic transfer (default):**
-```htcondor
-# By default, HTCondor transfers executable and creates output files
-executable = my_script.py
-output = results.txt
-```
-
-**Specify additional input files:**
-```htcondor
-# Transfer specific files to the job
-transfer_input_files = data.csv,config.txt
-
-# Transfer executable script
-executable = run_analysis.sh
-```
-
-**Important notes:**
-- Keep transferred files reasonably sized (< 1GB per file ideally)
-- For very large datasets, contact [researchcomputing@syr.edu](mailto:researchcomputing@syr.edu)
-- Output files automatically transferred back to submit directory
-
----
+**Best Practices:**
+- Organize with subdirectories: `~/data/`, `~/scripts/`, `~/results/`
+- Output files are automatically saved to the directory where you submit from (or specify paths)
+- For very large datasets (multi-TB), contact [researchcomputing@syr.edu](mailto:researchcomputing@syr.edu) to discuss optimal storage strategies
 
 ## Submitting Multiple Jobs
 
@@ -157,7 +144,6 @@ executable = run_analysis.sh
 Submit many similar jobs with one command:
 
 ```htcondor
-universe = vanilla
 executable = process.py
 arguments = input_$(Process).dat
 
@@ -258,7 +244,6 @@ condor_rm <jobid>
 ### Basic Python Job
 
 ```htcondor
-universe = vanilla
 executable = /usr/bin/python3
 arguments = my_script.py
 
@@ -275,7 +260,6 @@ queue 1
 ### GPU Job
 
 ```htcondor
-universe = vanilla
 executable = /usr/bin/python3
 arguments = train_model.py
 
@@ -302,7 +286,6 @@ python my_analysis.py
 
 **Submit file:**
 ```htcondor
-universe = vanilla
 executable = run_with_conda.sh
 
 request_cpus = 1
@@ -318,7 +301,6 @@ queue 1
 ### Parameter Sweep
 
 ```htcondor
-universe = vanilla
 executable = simulation.py
 arguments = --param $(Process)
 
@@ -336,10 +318,6 @@ queue 1000
 ---
 
 ## Important Notes
-
-### No File Transfer Needed for OrangeGrid
-
-Unlike some clusters, OrangeGrid does **NOT** require `should_transfer_files` or `when_to_transfer_output` directives. These are handled automatically. Omit these lines from your submit files.
 
 ### Interactive Development Prohibited
 

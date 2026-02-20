@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Syracuse Research Computing Resources</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f5f5;
+            min-height: 100vh;
+        }
+        
+        .container {
+            display: flex;
+            height: 100vh;
+        }
+        
+        .sidebar {
+            width: 280px;
+            background: #000E54;
+            color: white;
+            padding: 20px;
+            overflow-y: auto;
+        }
+        
+        .sidebar h2 {
+            color: #F76900;
+            margin-bottom: 20px;
+            font-size: 1.3em;
+            border-bottom: 2px solid #F76900;
+            padding-bottom: 10px;
+        }
+        
+        .nav-item {
+            padding: 12px 15px;
+            margin: 5px 0;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: all 0.3s;
+            border-left: 3px solid transparent;
+        }
+        
+        .nav-item:hover {
+            background: rgba(247, 105, 0, 0.2);
+            border-left-color: #F76900;
+        }
+        
+        .nav-item.active {
+            background: rgba(247, 105, 0, 0.3);
+            border-left-color: #F76900;
+        }
+        
+        .main-content {
+            flex: 1;
+            padding: 40px;
+            overflow-y: auto;
+        }
+        
+        .section {
+            display: none;
+            background: white;
+            border-radius: 10px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            animation: fadeIn 0.5s;
+        }
+        
+        .section.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        h1 {
+            color: #000E54;
+            margin-bottom: 20px;
+            font-size: 2.2em;
+            border-bottom: 3px solid #F76900;
+            padding-bottom: 10px;
+        }
+        
+        h2 {
+            color: #000E54;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+        
+        h3 {
+            color: #7f8c8d;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+        
+        p {
+            line-height: 1.6;
+            margin-bottom: 15px;
+            color: #555;
+        }
+        
+        .highlight-box {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        
+        .info-box {
+            background: #d1ecf1;
+            border-left: 4px solid #17a2b8;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        
+        .warning-box {
+            background: #f8d7da;
+            border-left: 4px solid #dc3545;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        
+        .resource-card {
+            background: white;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            padding: 25px;
+            margin: 20px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .resource-card h2 {
+            margin-top: 0;
+            color: #000E54;
+        }
+        
+        .resource-card.orange {
+            border-left: 6px solid #F76900;
+        }
+        
+        .resource-card.blue {
+            border-left: 6px solid #2196F3;
+        }
+        
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        .comparison-table th,
+        .comparison-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        .comparison-table th {
+            background: #F76900;
+            color: white;
+        }
+        
+        .comparison-table tr:nth-child(even) {
+            background: #f9f9f9;
+        }
+        
+        ul, ol {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+            line-height: 1.6;
+        }
+        
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            color: #F76900;
+        }
+        
+        .back-link {
+            display: inline-block;
+            background: #000E54;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            margin-bottom: 20px;
+        }
+        
+        .back-link:hover {
+            background: #F76900;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav class="sidebar">
+            <h2>Computing Resources</h2>
+            <div class="nav-item active" data-section="overview">Overview</div>
+            <div class="nav-item" data-section="orangegrid">OrangeGrid (HTC)</div>
+            <div class="nav-item" data-section="zest">Zest (HPC)</div>
+            <div class="nav-item" data-section="surge">SUrge (GPUs)</div>
+            <div class="nav-item" data-section="avhe">AVHE Cloud</div>
+            <div class="nav-item" data-section="crush">Crush Cloud</div>
+            <div class="nav-item" data-section="cloud">Azure Partnership</div>
+            <div class="nav-item" data-section="requesting">Requesting Access</div>
+        </nav>
+        
+        <main class="main-content">
+            <!-- Overview Section -->
+            <section id="overview" class="section active">
+                <a href="getting-started.html" class="back-link">← Back to Getting Started</a>
+                
+                <h1>Syracuse Research Computing Resources</h1>
+                
+                <div class="highlight-box">
+                    <h3>🤝 Consultation-Based Resource Assignment</h3>
+                    <p>We don't offer à la carte services. Instead, we work with you to understand your research needs and match you to the optimal computing solution. This ensures you have the right resources, proper support, and meet any compliance requirements.</p>
+                    <p><strong>📧 Start here:</strong> <a href="mailto:researchcomputing@syr.edu">researchcomputing@syr.edu</a></p>
+                </div>
+                
+                <h2>Our Computing Resources</h2>
+                
+                <p>Syracuse Research Computing provides a range of computing resources to support diverse research needs:</p>
+                
+                <ul>
+                    <li><strong>OrangeGrid</strong>, a high-throughput computing (HTC) cluster</li>
+                    <li><strong>Zest</strong>, a high-performance computing (HPC) cluster</li>
+                    <li><strong>Academic Virtual Hosting Environment</strong> (AVHE), a private cloud focused on the unique needs of the research community</li>
+                    <li><strong>Crush</strong>, a virtual private cloud for computationally intense research computing needs</li>
+                    <li><strong>SUrge</strong>, a growing computing cluster with hundreds of GPUs, supporting GPU enabled applications and allowing development with CUDA and OpenCL</li>
+                </ul>
+                
+                <p>Through our continued partnerships, we also support research computing needs in the cloud, including Microsoft Azure.</p>
+                
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Resource</th>
+                            <th>Type</th>
+                            <th>Cost</th>
+                            <th>Best For</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>OrangeGrid</strong></td>
+                            <td>HTC Cluster</td>
+                            <td>No charge</td>
+                            <td>Many independent jobs</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Zest</strong></td>
+                            <td>HPC Cluster</td>
+                            <td>No charge</td>
+                            <td>Parallel, multi-node jobs</td>
+                        </tr>
+                        <tr>
+                            <td><strong>SUrge</strong></td>
+                            <td>GPU Infrastructure</td>
+                            <td>No charge</td>
+                            <td>Provides GPUs to clusters</td>
+                        </tr>
+                        <tr>
+                            <td><strong>AVHE</strong></td>
+                            <td>Private Cloud</td>
+                            <td>No charge</td>
+                            <td>CPU VMs, unique research needs</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Crush</strong></td>
+                            <td>Private Cloud</td>
+                            <td>No charge</td>
+                            <td>Intense computing, dynamic solutions</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Cloud (Azure)</strong></td>
+                            <td>Cloud Partnership</td>
+                            <td>Usage-based cost</td>
+                            <td>Specific needs, cloud services</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div class="warning-box">
+                    <h3>⚠️ Data Sensitivity & Compliance Requirements</h3>
+                    <p><strong>Before requesting resources, tell us about your data:</strong></p>
+                    <ul>
+                        <li><strong>Sensitive data?</strong> HIPAA, FERPA, controlled exports, or other regulated data</li>
+                        <li><strong>Grant requirements?</strong> Many funding sources have specific data security agreements</li>
+                        <li><strong>Compliance needs?</strong> IRB approvals, data use agreements, export controls</li>
+                    </ul>
+                    <p><strong>Why this matters:</strong> Data sensitivity requirements significantly impact which computing resources are appropriate and how we configure your access. Some resources cannot be used for certain data types.</p>
+                    <p>We need this information during your consultation to ensure compliance and proper resource selection.</p>
+                </div>
+                
+                <h2>What We Need to Know</h2>
+                
+                <p>When requesting computing resources, provide information about:</p>
+                
+                <h3>Computational Requirements</h3>
+                <ul>
+                    <li><strong>CPU needs:</strong> How many cores? Parallel or independent jobs?</li>
+                    <li><strong>Memory needs:</strong> How much RAM per job?</li>
+                    <li><strong>Storage needs:</strong> How much data? How long to keep it?</li>
+                    <li><strong>GPU needs:</strong> What type of work? How many GPUs?</li>
+                    <li><strong>Runtime:</strong> Minutes, hours, days, or weeks per job?</li>
+                </ul>
+                
+                <h3>Data & Compliance Requirements</h3>
+                <ul>
+                    <li><strong>Data sensitivity level:</strong> Public, restricted, controlled?</li>
+                    <li><strong>Compliance requirements:</strong> HIPAA, FERPA, ITAR, CUI, etc.?</li>
+                    <li><strong>Grant-specific agreements:</strong> NIH, NSF, DOD data requirements?</li>
+                    <li><strong>IRB or data use agreements:</strong> Any restrictions on data handling?</li>
+                </ul>
+                
+                <h3>Workflow Information</h3>
+                <ul>
+                    <li><strong>Software/tools:</strong> What will you be running?</li>
+                    <li><strong>Interactivity needs:</strong> Batch-friendly or requires GUI?</li>
+                    <li><strong>Timeline:</strong> When do you need results?</li>
+                    <li><strong>Scale:</strong> One-time analysis or ongoing research?</li>
+                </ul>
+                
+                <div class="info-box">
+                    <h3>📧 Email Template</h3>
+                    <p>Send to <a href="mailto:researchcomputing@syr.edu">researchcomputing@syr.edu</a>:</p>
+                    <p style="font-style: italic; margin-left: 20px;">
+                        Subject: Research Computing Resource Request<br><br>
+                        
+                        Research project: [Brief description]<br>
+                        Department: [Your department]<br>
+                        PI/Advisor: [If applicable]<br><br>
+                        
+                        Computational needs:<br>
+                        - CPUs: [e.g., 4 cores per job, 100 jobs]<br>
+                        - Memory: [e.g., 16GB per job]<br>
+                        - Storage: [e.g., 500GB dataset]<br>
+                        - GPUs: [e.g., Yes/No, what for]<br>
+                        - Runtime: [e.g., 6 hours per job]<br><br>
+                        
+                        Data sensitivity:<br>
+                        - Sensitive data: [Yes/No - describe type]<br>
+                        - Compliance: [HIPAA/FERPA/ITAR/etc. or None]<br>
+                        - Grant requirements: [Any specific data agreements]<br><br>
+                        
+                        Software: [What you'll be running]<br>
+                        Timeline: [When you need to start]
+                    </p>
+                </div>
+            </section>
+            
+            <!-- OrangeGrid Section -->
+            <section id="orangegrid" class="section">
+                <a href="getting-started.html" class="back-link">← Back to Getting Started</a>
+                
+                <div class="resource-card orange">
+                    <h1>OrangeGrid - High-Throughput Computing</h1>
+                    
+                    <p><strong>Cluster Type:</strong> High-Throughput Computing (HTC) | <strong>Scheduler:</strong> HTCondor</p>
+                    
+                    <h2>What is OrangeGrid?</h2>
+                    <p>OrangeGrid is Syracuse University's largest computing cluster with <strong>over 80,000 cores</strong>, optimized to perform a large number of parallel jobs and provide high processing capacity over extended periods. The cluster utilizes a mixture of dedicated and scavenged compute nodes managed by HTCondor.</p>
+                    
+                    <div class="info-box">
+                        <h3>💡 Best For</h3>
+                        <ul>
+                            <li><strong>Many independent jobs:</strong> Hundreds to thousands of jobs that can run in any order</li>
+                            <li><strong>Parameter sweeps:</strong> Running the same analysis with different parameters</li>
+                            <li><strong>Batch processing:</strong> Processing large numbers of files independently</li>
+                            <li><strong>Embarrassingly parallel:</strong> Jobs with no inter-job communication</li>
+                            <li><strong>Single-node GPU jobs:</strong> GPU work that fits on one node</li>
+                            <li><strong>High-memory single-node jobs:</strong> Large RAM requirements on one machine</li>
+                        </ul>
+                    </div>
+                    
+                    <h2>Technical Overview</h2>
+                    
+                    <p><strong>Scale:</strong> Over 80,000 cores across heterogeneous pool of compute nodes</p>
+                    
+                    <p><strong>CPU Architecture:</strong></p>
+                    <ul>
+                        <li>Mix of AMD and Intel processors</li>
+                        <li>Varying core counts and configurations</li>
+                        <li>Opportunistic scheduling matches jobs to available resources</li>
+                    </ul>
+                    
+                    <p><strong>GPU Capabilities:</strong></p>
+                    <ul>
+                        <li>GPU nodes available through SUrge infrastructure</li>
+                        <li>Models include: NVIDIA A100, L40S, A6000, and others</li>
+                        <li>Request with <code>+request_gpus = 1</code> in submit files</li>
+                        <li>Best for single-node GPU jobs (training, inference, rendering)</li>
+                    </ul>
+                    
+                    <p><strong>Job Characteristics:</strong></p>
+                    <ul>
+                        <li>Single-node jobs (one job per machine)</li>
+                        <li>High-core count available (up to 64+ cores per node on some machines)</li>
+                        <li>High-memory nodes available (256GB+ on select nodes)</li>
+                        <li>Fair-share scheduling across all users</li>
+                    </ul>
+                    
+                    <p><strong>Storage:</strong> 4TB home directory (default), NetApp-based, automatically mounted on compute nodes</p>
+                    
+                    <p><strong>Access:</strong> SSH via <code>its-og-loginX.syr.edu</code></p>
+                    
+                    <h2>How It Works</h2>
+                    
+                    <p>Submit jobs using HTCondor submit files. Each job runs independently on an available node in the pool:</p>
+                    
+                    <ol>
+                        <li>Create your script and HTCondor submit file</li>
+                        <li>Submit with <code>condor_submit job.sub</code></li>
+                        <li>HTCondor matches your job to available resources</li>
+                        <li>Job runs when resources become available</li>
+                        <li>Results saved to your home directory</li>
+                    </ol>
+                    
+                    <div class="highlight-box">
+                        <h3>📚 Learn More</h3>
+                        <ul>
+                            <li><a href="./resources/orangegrid-specifications.md">Technical Specifications</a></li>
+                            <li><a href="https://github.com/SyracuseUniversity/OrangeGridExamples" target="_blank">Code Examples Repository</a></li>
+                            <li><a href="./clusters/orangegrid/job-submission.md">Job Submission Guide</a></li>
+                        </ul>
+                    </div>
+                    
+                    <h2>Typical Use Cases</h2>
+                    <ul>
+                        <li>Processing thousands of images with the same pipeline</li>
+                        <li>Running parameter sweeps for optimization studies</li>
+                        <li>LLM inference or fine-tuning across multiple datasets</li>
+                        <li>Batch data analysis (R, Python, Julia)</li>
+                        <li>Rendering farms (Blender, etc.)</li>
+                        <li>Monte Carlo or stochastic simulations</li>
+                    </ul>
+                </div>
+            </section>
+            
+            <!-- Zest Section -->
+            <section id="zest" class="section">
+                <a href="getting-started.html" class="back-link">← Back to Getting Started</a>
+                
+                <div class="resource-card blue">
+                    <h1>Zest - High-Performance Computing</h1>
+                    
+                    <p><strong>Cluster Type:</strong> High-Performance Computing (HPC) | <strong>Scheduler:</strong> Slurm</p>
+                    
+                    <h2>What is Zest?</h2>
+                    <p>Zest is Syracuse University's high-performance computing cluster with <strong>over 25,000 cores</strong>, designed for research work that requires tying together multiple compute nodes or cannot be split into smaller components. Compute nodes are interconnected with InfiniBand to pass information between nodes with much lower latency than Ethernet.</p>
+                    
+                    <div class="info-box">
+                        <h3>💡 Best For</h3>
+                        <ul>
+                            <li><strong>Multi-node parallel jobs:</strong> MPI computations spanning multiple nodes</li>
+                            <li><strong>Tightly-coupled work:</strong> Jobs requiring fast node-to-node communication via InfiniBand</li>
+                            <li><strong>Large-scale parallel:</strong> Hundreds of cores working together on one problem</li>
+                            <li><strong>GPU-accelerated research:</strong> Machine learning, molecular dynamics, simulations</li>
+                            <li><strong>Long-running jobs:</strong> Days or weeks of continuous computation (up to 40 days)</li>
+                            <li><strong>High-memory workloads:</strong> Jobs requiring substantial RAM</li>
+                        </ul>
+                    </div>
+                    
+                    <h2>Technical Overview</h2>
+                    
+                    <p><strong>Scale:</strong> Over 25,000 cores with InfiniBand interconnect</p>
+                    
+                    <p><strong>Architecture:</strong></p>
+                    <ul>
+                        <li>Traditional HPC cluster with uniform compute nodes</li>
+                        <li>InfiniBand fabric for low-latency node-to-node communication</li>
+                        <li>Optimized for MPI and parallel workloads</li>
+                        <li>Multiple partitions for different workload types</li>
+                    </ul>
+                    
+                    <p><strong>Job Capabilities:</strong></p>
+                    <ul>
+                        <li>Multi-node jobs (scale across dozens or hundreds of nodes)</li>
+                        <li>MPI parallel computing with fast interconnect</li>
+                        <li>High core count (hundreds of cores per job)</li>
+                        <li>High-memory configurations available</li>
+                        <li>Extended runtimes (20-40 days depending on partition)</li>
+                    </ul>
+                    
+                    <p><strong>GPU Capabilities:</strong></p>
+                    <ul>
+                        <li>GPU nodes available through SUrge infrastructure</li>
+                        <li>Primarily NVIDIA A40 GPUs</li>
+                        <li>Request with <code>--gres=gpu:1</code> in SBATCH scripts</li>
+                        <li>GPU partitions available for accelerated computing</li>
+                    </ul>
+                    
+                    <p><strong>Storage:</strong> 4TB home directory (default), NetApp-based, automatically mounted on all compute nodes</p>
+                    
+                    <p><strong>Access:</strong> SSH via <code>its-zest-loginX.syr.edu</code></p>
+                    
+                    <h2>How It Works</h2>
+                    
+                    <p>Submit jobs using Slurm batch scripts. The scheduler allocates resources based on your requirements:</p>
+                    
+                    <ol>
+                        <li>Create your SBATCH script with resource requests</li>
+                        <li>Submit with <code>sbatch script.sh</code></li>
+                        <li>Slurm schedules based on availability and priority</li>
+                        <li>Job runs on allocated compute nodes</li>
+                        <li>Results saved to your home directory</li>
+                    </ol>
+                    
+                    <div class="highlight-box">
+                        <h3>📚 Learn More</h3>
+                        <ul>
+                            <li><a href="./resources/zest-specifications.md">Technical Specifications</a></li>
+                            <li><a href="https://github.com/SyracuseUniversity/ZestExamples" target="_blank">Code Examples Repository</a></li>
+                            <li><a href="./clusters/zest/job-submission.md">Job Submission Guide</a></li>
+                        </ul>
+                    </div>
+                    
+                    <h2>Typical Use Cases</h2>
+                    <ul>
+                        <li>Molecular dynamics simulations (GROMACS, NAMD)</li>
+                        <li>Deep learning model training with GPUs</li>
+                        <li>Computational fluid dynamics</li>
+                        <li>Multi-node parallel computations (MPI)</li>
+                        <li>Weather/climate modeling</li>
+                        <li>Finite element analysis</li>
+                    </ul>
+                </div>
+            </section>
+            
+            <!-- SUrge Section -->
+            <section id="surge" class="section">
+                <a href="getting-started.html" class="back-link">← Back to Getting Started</a>
+                
+                <div class="resource-card">
+                    <h1>SUrge - GPU Infrastructure</h1>
+                    
+                    <p><strong>Type:</strong> GPU Computing Cluster | <strong>Scale:</strong> Hundreds of GPUs</p>
+                    
+                    <h2>What is SUrge?</h2>
+                    <p>SUrge is a growing computing cluster with <strong>hundreds of GPUs</strong> that provides GPU resources to both OrangeGrid and Zest clusters. It supports GPU-enabled applications and enables development with CUDA and OpenCL.</p>
+                    
+                    <div class="info-box">
+                        <h3>🔑 Important: SUrge is Infrastructure, Not Standalone Access</h3>
+                        <p><strong>You don't request "SUrge access" directly.</strong> SUrge provides the GPU infrastructure that powers GPU computing on our clusters.</p>
+                        <p><strong>To use SUrge GPUs:</strong></p>
+                        <ul>
+                            <li>Request cluster access (OrangeGrid or Zest)</li>
+                            <li>Submit GPU jobs through the cluster schedulers</li>
+                            <li>Your jobs automatically use SUrge GPU nodes when requesting GPUs</li>
+                        </ul>
+                    </div>
+                    
+                    <h2>GPU Hardware</h2>
+                    
+                    <p><strong>Available GPU Models (hundreds total):</strong></p>
+                    <ul>
+                        <li>NVIDIA A100 (80GB) - Top-tier compute GPUs</li>
+                        <li>NVIDIA L40S (48GB) - High-performance datacenter GPUs</li>
+                        <li>NVIDIA A6000 - Workstation-class GPUs</li>
+                        <li>NVIDIA A40 - Datacenter GPUs</li>
+                        <li>NVIDIA RTX series - Various models</li>
+                        <li>And other NVIDIA GPU models</li>
+                    </ul>
+                    
+                    <h2>How SUrge Integrates with Clusters</h2>
+                    
+                    <p><strong>OrangeGrid + SUrge:</strong></p>
+                    <ul>
+                        <li>Submit HTCondor jobs requesting GPUs</li>
+                        <li>HTCondor scheduler assigns jobs to available SUrge GPU nodes</li>
+                        <li>Great for many independent GPU jobs (batch inference, parameter sweeps with GPUs)</li>
+                    </ul>
+                    
+                    <p><strong>Zest + SUrge:</strong></p>
+                    <ul>
+                        <li>Submit Slurm jobs to GPU partitions</li>
+                        <li>Slurm scheduler allocates SUrge GPU nodes to your job</li>
+                        <li>Great for GPU-accelerated parallel jobs, multi-GPU training, long GPU workloads</li>
+                    </ul>
+                    
+                    <h2>Supported Applications</h2>
+                    
+                    <p><strong>CUDA and OpenCL development:</strong></p>
+                    <ul>
+                        <li>NVIDIA CUDA toolkit available</li>
+                        <li>cuDNN for deep learning</li>
+                        <li>OpenCL for cross-platform GPU computing</li>
+                    </ul>
+                    
+                    <p><strong>Common GPU workloads:</strong></p>
+                    <ul>
+                        <li>Deep learning training (PyTorch, TensorFlow, JAX)</li>
+                        <li>LLM fine-tuning and inference</li>
+                        <li>Molecular dynamics (GPU-accelerated GROMACS, NAMD)</li>
+                        <li>Computer vision and image processing</li>
+                        <li>Scientific simulations with GPU acceleration</li>
+                        <li>Rendering and visualization</li>
+                    </ul>
+                    
+                    <div class="highlight-box">
+                        <h3>📚 GPU Job Examples</h3>
+                        <ul>
+                            <li><a href="https://github.com/SyracuseUniversity/OrangeGridExamples" target="_blank">OrangeGrid GPU Examples</a> - PyTorch, TensorFlow, Ollama</li>
+                            <li><a href="https://github.com/SyracuseUniversity/ZestExamples" target="_blank">Zest GPU Examples</a> - CUDA, GPU jobs</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="info-box">
+                        <h3>💡 How to Access GPU Resources</h3>
+                        <p>When you request cluster access and indicate GPU needs during consultation, we'll assign you to the appropriate cluster (OrangeGrid or Zest) based on your workflow. You'll then submit GPU jobs through that cluster's scheduler, and they'll run on SUrge GPU nodes.</p>
+                        <p><strong>📧 Email:</strong> <a href="mailto:researchcomputing@syr.edu">researchcomputing@syr.edu</a> to discuss GPU computing needs.</p>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- AVHE Section -->
+            <section id="avhe" class="section">
+                <a href="getting-started.html" class="back-link">← Back to Getting Started</a>
+                
+                <div class="resource-card">
+                    <h1>Academic Virtual Hosting Environment (AVHE)</h1>
+                    
+                    <p><strong>Type:</strong> Private Cloud | <strong>Cost:</strong> No charge to researchers</p>
+                    
+                    <h2>What is AVHE?</h2>
+                    <p>The Academic Virtual Hosting Environment (AVHE) is a private cloud focused on the unique needs of the research community. It uses virtualization to provide flexibility and hardware sharing, allowing multiple researchers to operate on underlying server and storage infrastructure. This lowers the entry barrier for small to medium-sized research efforts.</p>
+                    
+                    <div class="info-box">
+                        <h3>💡 What AVHE Supports</h3>
+                        <ul>
+                            <li><strong>Traditional and non-traditional computational research</strong></li>
+                            <li><strong>CPU-only virtual machines</strong> (Linux and Windows)</li>
+                            <li><strong>Small to medium-sized clustered research environments</strong></li>
+                            <li><strong>Persistent environments</strong> for long-running services</li>
+                            <li><strong>Medium-scale storage</strong> for research data and archives</li>
+                        </ul>
+                    </div>
+                    
+                    <h2>Key Features</h2>
+                    
+                    <p><strong>Virtualization Benefits:</strong></p>
+                    <ul>
+                        <li>High availability with automatic workload migration on hardware failure</li>
+                        <li>Flexible resource allocation</li>
+                        <li>Multiple researchers can share underlying infrastructure</li>
+                        <li>Backup services provided to all researchers</li>
+                    </ul>
+                    
+                    <p><strong>Platform Options:</strong></p>
+                    <ul>
+                        <li>Linux VMs (various distributions)</li>
+                        <li>Windows VMs</li>
+                        <li>Custom configurations based on research needs</li>
+                    </ul>
+                    
+                    <p><strong>Storage:</strong></p>
+                    <ul>
+                        <li>Medium-scale storage included</li>
+                        <li>Research data storage and archiving supported</li>
+                        <li>Over 3 petabytes of research data currently hosted</li>
+                        <li>Backup services available</li>
+                    </ul>
+                    
+                    <h2>When AVHE is Appropriate</h2>
+                    <ul>
+                        <li>Small to medium-sized research projects</li>
+                        <li>CPU-only computational needs</li>
+                        <li>Workflows requiring persistent, dedicated environments</li>
+                        <li>Building custom research computing environments</li>
+                        <li>Applications not suitable for batch cluster submission</li>
+                    </ul>
+                    
+                    <h2>Access & Support</h2>
+                    <p>AVHE VMs are assigned based on consultation. If assigned an AVHE VM, you'll receive:</p>
+                    <ul>
+                        <li>Specific IP address for SSH access</li>
+                        <li>Configuration details for your VM</li>
+                        <li>Setup guidance and support</li>
+                    </ul>
+                    
+                    <div class="warning-box">
+                        <h3>⚠️ Data Compliance</h3>
+                        <p>AVHE environments can be configured to meet various compliance requirements. Discuss data sensitivity needs during your consultation to ensure proper security configurations.</p>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Crush Section -->
+            <section id="crush" class="section">
+                <a href="getting-started.html" class="back-link">← Back to Getting Started</a>
+                
+                <div class="resource-card">
+                    <h1>Crush - Virtual Private Cloud</h1>
+                    
+                    <p><strong>Type:</strong> Virtual Private Cloud | <strong>Cost:</strong> No charge to researchers</p>
+                    
+                    <h2>What is Crush?</h2>
+                    <p>Crush is a virtual private cloud for computationally intense research computing needs. This infrastructure supports both our research clusters and provides dynamic solutions for specialized research requirements that extend beyond standard cluster configurations.</p>
+                    
+                    <div class="info-box">
+                        <h3>💡 What Crush Supports</h3>
+                        <ul>
+                            <li><strong>Cluster infrastructure:</strong> Provides compute resources that power OrangeGrid and Zest</li>
+                            <li><strong>Dynamic solutions:</strong> Custom configurations for intense computational needs</li>
+                            <li><strong>Specialized workloads:</strong> Research that requires tailored environments</li>
+                            <li><strong>Flexible resource allocation:</strong> Solutions matched to unique research workflows</li>
+                        </ul>
+                    </div>
+                    
+                    <h2>Capabilities</h2>
+                    
+                    <p>Crush enables us to provide flexible computing resources that support both standard cluster operations and specialized research needs:</p>
+                    
+                    <ul>
+                        <li><strong>Computationally intense workloads:</strong> High-performance configurations</li>
+                        <li><strong>Large memory environments:</strong> Configurations exceeding standard cluster nodes</li>
+                        <li><strong>Specialized GPU access:</strong> When specific GPU configurations are needed</li>
+                        <li><strong>Custom software stacks:</strong> Environments requiring specific configurations</li>
+                        <li><strong>Long-running services:</strong> Persistent computational environments</li>
+                    </ul>
+                    
+                    <h2>Resource Assignment</h2>
+                    <p>Crush-based solutions are determined collaboratively during consultation based on research requirements. We assess whether standard cluster resources meet your needs, or if a Crush-based dynamic solution is more appropriate.</p>
+                    
+                    <div class="warning-box">
+                        <h3>⚠️ Assignment Process</h3>
+                        <p>Crush resources are assigned based on specific research requirements that cannot be met by our standard cluster offerings. Contact <a href="mailto:researchcomputing@syr.edu">researchcomputing@syr.edu</a> to discuss your needs.</p>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Cloud Section -->
+            <section id="cloud" class="section">
+                <a href="getting-started.html" class="back-link">← Back to Getting Started</a>
+                
+                <div class="resource-card">
+                    <h1>Azure Cloud Partnership</h1>
+                    
+                    <h2>Cloud Computing Through Microsoft Azure</h2>
+                    <p>Through our continued partnership with Microsoft Azure, we can support research computing needs in the cloud. This option is available for specific scenarios where on-premises resources don't align with research requirements.</p>
+                    
+                    <div class="warning-box">
+                        <h3>⚠️ Usage-Based Cost</h3>
+                        <p><strong>Cloud computing involves usage-based costs that will be billed to your project.</strong></p>
+                        <p>You'll work with our business office to set up billing arrangements. Costs vary based on resources used (compute time, storage, data transfer, etc.).</p>
+                    </div>
+                    
+                    <div class="info-box">
+                        <h3>💡 When Cloud Solutions Are Appropriate</h3>
+                        <ul>
+                            <li><strong>Specific timelines:</strong> Project deadlines that can't accommodate cluster queue times</li>
+                            <li><strong>Dedicated resources:</strong> Need guaranteed access for extended periods</li>
+                            <li><strong>Azure-specific services:</strong> Research requires Azure ML, specific cloud APIs, or integrations</li>
+                            <li><strong>Grant-funded cloud work:</strong> Project budget specifically includes cloud computing</li>
+                            <li><strong>Scalability beyond on-prem:</strong> Temporary need for resources beyond our infrastructure</li>
+                        </ul>
+                    </div>
+                    
+                    <h2>What Azure Offers</h2>
+                    
+                    <ul>
+                        <li><strong>Compute VMs:</strong> On-demand virtual machines with various configurations</li>
+                        <li><strong>GPU instances:</strong> High-end NVIDIA GPUs available</li>
+                        <li><strong>Azure ML:</strong> Machine learning platform and services</li>
+                        <li><strong>Scalable storage:</strong> Blob storage, file shares, managed databases</li>
+                        <li><strong>Specialized services:</strong> Various Azure cloud services for research</li>
+                    </ul>
+                    
+                    <h2>Cost Considerations</h2>
+                    
+                    <p><strong>Important factors:</strong></p>
+                    <ul>
+                        <li>Charged by usage (compute hours, storage, data transfer)</li>
+                        <li>Costs can scale quickly with continuous use</li>
+                        <li>Budget planning required</li>
+                        <li>Business office coordination for billing</li>
+                    </ul>
+                    
+                    <p><strong>Cost comparison:</strong> For most workloads, our clusters provide substantially more computational capacity at no direct charge than equivalent cloud spending would deliver. We'll help analyze whether cloud is cost-effective for your specific needs.</p>
+                    
+                    <h2>Getting Started with Azure</h2>
+                    
+                    <p>During your consultation, we'll review:</p>
+                    <ol>
+                        <li>Whether cloud computing is appropriate for your research</li>
+                        <li>Estimated costs based on your requirements</li>
+                        <li>Funding source and budget availability</li>
+                        <li>Business office billing setup process</li>
+                        <li>Alternative on-premises options that may better suit your needs</li>
+                    </ol>
+                    
+                    <div class="highlight-box">
+                        <h3>📧 Interested in Cloud Computing?</h3>
+                        <p>Email <a href="mailto:researchcomputing@syr.edu">researchcomputing@syr.edu</a> with:</p>
+                        <ul>
+                            <li>Your research project and timeline</li>
+                            <li>Why you're considering cloud computing</li>
+                            <li>Your funding source and budget</li>
+                            <li>Computational requirements (CPU, GPU, storage)</li>
+                        </ul>
+                        <p>We'll schedule a consultation to review options and help determine if cloud computing is the right fit - or if our no-cost on-premises resources can meet your needs.</p>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Requesting Access Section -->
+            <section id="requesting" class="section">
+                <a href="getting-started.html" class="back-link">← Back to Getting Started</a>
+                
+                <h1>Requesting Computing Resources</h1>
+                
+                <p>Access to Syracuse Research Computing resources begins with a consultation. This ensures you're matched to the right resource and that we understand any compliance or data security requirements.</p>
+                
+                <h2>The Consultation Process</h2>
+                
+                <div style="background: white; border: 2px solid #F76900; border-radius: 8px; padding: 20px; margin: 20px 0; text-align: center;">
+                    <h3>How It Works</h3>
+                    <p style="margin-top: 20px;">📧 <strong>1. Email us</strong> at researchcomputing@syr.edu</p>
+                    <p>↓</p>
+                    <p>🤝 <strong>2. We schedule</strong> a consultation (remote or in-person)</p>
+                    <p>↓</p>
+                    <p>💬 <strong>3. We discuss</strong> your research, computational needs, and data requirements</p>
+                    <p>↓</p>
+                    <p>🎯 <strong>4. We recommend</strong> the optimal resource(s) for your work</p>
+                    <p>↓</p>
+                    <p>✅ <strong>5. We set up</strong> your account with appropriate access and configurations</p>
+                    <p>↓</p>
+                    <p>🚀 <strong>6. We support</strong> you with examples, documentation, and troubleshooting</p>
+                </div>
+                
+                <h2>What to Include in Your Request</h2>
+                
+                <h3>Research Overview</h3>
+                <ul>
+                    <li>Brief description of your research project</li>
+                    <li>Your department and PI/advisor (if applicable)</li>
+                    <li>Timeline for when you need to start computing</li>
+                    <li>Funding source (if requesting cloud resources)</li>
+                </ul>
+                
+                <h3>Computational Requirements</h3>
+                
+                <div class="info-box">
+                    <strong>Help us understand your computing needs:</strong>
+                    <ul>
+                        <li><strong>CPUs:</strong> How many cores? One big job or many small jobs?</li>
+                        <li><strong>Memory:</strong> How much RAM per job? (e.g., 8GB, 64GB, 256GB)</li>
+                        <li><strong>Storage:</strong> How much data? How long to keep it?</li>
+                        <li><strong>GPUs:</strong> Do you need GPUs? For what type of work?</li>
+                        <li><strong>Runtime:</strong> Minutes, hours, days, or weeks per job?</li>
+                        <li><strong>Quantity:</strong> One job at a time or hundreds/thousands?</li>
+                    </ul>
+                    <p><em>It's okay if you don't know exact numbers! We'll help you figure this out during consultation.</em></p>
+                </div>
+                
+                <h3>Data Sensitivity & Compliance (Critical!)</h3>
+                
+                <div class="warning-box">
+                    <p><strong>We must know about any data sensitivity or compliance requirements upfront.</strong></p>
+                    
+                    <p><strong>Tell us if your data involves:</strong></p>
+                    <ul>
+                        <li><strong>Protected health information (PHI):</strong> HIPAA requirements</li>
+                        <li><strong>Student data:</strong> FERPA requirements</li>
+                        <li><strong>Export-controlled data:</strong> ITAR, EAR restrictions</li>
+                        <li><strong>Controlled unclassified information (CUI):</strong> Federal data requirements</li>
+                        <li><strong>Personally identifiable information (PII):</strong> Privacy requirements</li>
+                        <li><strong>Grant-specific requirements:</strong> NIH, NSF, DOD data agreements</li>
+                    </ul>
+                    
+                    <p><strong>Why this is critical:</strong></p>
+                    <ul>
+                        <li>Different resources have different security configurations</li>
+                        <li>Some data types cannot be used on certain resources</li>
+                        <li>Compliance violations can affect your research and the university</li>
+                        <li>We need to configure appropriate access controls and logging</li>
+                    </ul>
+                    
+                    <p><strong>When in doubt, tell us!</strong> We'd rather discuss data requirements that turn out not to be applicable than miss critical compliance needs.</p>
+                </div>
+                
+                <h3>Workflow & Software Information</h3>
+                <ul>
+                    <li>What software or tools will you use? (Python, R, MATLAB, custom code, etc.)</li>
+                    <li>Do you need interactive access or can work be batch-submitted?</li>
+                    <li>Are there specific software licensing requirements?</li>
+                    <li>Have you used HPC/HTC clusters before?</li>
+                </ul>
+                
+                <h2>Sample Request Email</h2>
+                
+                <div class="info-box">
+                    <p><strong>To:</strong> <a href="mailto:researchcomputing@syr.edu">researchcomputing@syr.edu</a><br>
+                    <strong>Subject:</strong> Research Computing Resource Request</p>
+                    
+                    <p style="margin-top: 15px; font-family: 'Courier New', monospace; background: #f8f9fa; padding: 15px; border-radius: 5px;">
+Hi Research Computing Team,<br><br>
+
+I'm requesting access to research computing resources for my project.<br><br>
+
+<strong>Research Overview:</strong><br>
+Project: [Brief description of your research]<br>
+Department: [Your department]<br>
+PI/Advisor: [Name, if applicable]<br>
+Timeline: [When you need to start]<br><br>
+
+<strong>Computational Needs:</strong><br>
+- CPUs: [e.g., 4 cores per job, running 100 jobs]<br>
+- Memory: [e.g., 16GB per job]<br>
+- Storage: [e.g., 500GB dataset]<br>
+- GPUs: [Yes/No - if yes, what for?]<br>
+- Runtime: [e.g., 6 hours per job]<br><br>
+
+<strong>Data Sensitivity:</strong><br>
+- Sensitive data: [Yes/No - if yes, what type?]<br>
+- Compliance requirements: [HIPAA/FERPA/None/etc.]<br>
+- Grant data agreements: [Any specific requirements from funding source]<br>
+- IRB approval: [If working with human subjects data]<br><br>
+
+<strong>Software & Workflow:</strong><br>
+- Software: [Python, R, TensorFlow, etc.]<br>
+- Batch-friendly: [Can your work be submitted as jobs?]<br>
+- Previous experience: [New to clusters / have used HPC before]<br><br>
+
+Looking forward to discussing the best computing solution for my research!<br><br>
+
+Best,<br>
+[Your name]
+                    </p>
+                </div>
+                
+                <h2>What Happens Next?</h2>
+                
+                <ol>
+                    <li><strong>We'll respond within 1-2 business days</strong> to schedule a consultation</li>
+                    <li><strong>Consultation meeting</strong> (typically 30-60 minutes, remote or in-person)</li>
+                    <li><strong>We'll discuss:</strong>
+                        <ul>
+                            <li>Your research workflow in detail</li>
+                            <li>Data compliance and security needs</li>
+                            <li>Computational requirements</li>
+                            <li>Recommended resource(s)</li>
+                            <li>Timeline for getting started</li>
+                        </ul>
+                    </li>
+                    <li><strong>Account setup</strong> (typically 1-3 days after consultation)</li>
+                    <li><strong>Welcome email</strong> with login credentials and getting-started instructions</li>
+                    <li><strong>Ongoing support</strong> as you get up and running</li>
+                </ol>
+                
+                <div class="highlight-box">
+                    <h3>💡 What Makes a Good Consultation</h3>
+                    <p><strong>Come prepared to discuss:</strong></p>
+                    <ul>
+                        <li>What you're trying to compute, not just what resources you think you need</li>
+                        <li>Your workflow from start to finish</li>
+                        <li>Any data sensitivity or compliance concerns</li>
+                        <li>Your timeline and pressure points</li>
+                        <li>Previous computing experience (helps us tailor support)</li>
+                    </ul>
+                    <p><strong>We'll help you:</strong> Match to the right resource, understand batch computing, optimize your workflow, meet compliance needs, and get started successfully.</p>
+                </div>
+                
+                <h2>Ready to Get Started?</h2>
+                
+                <p><strong>📧 Email:</strong> <a href="mailto:researchcomputing@syr.edu">researchcomputing@syr.edu</a></p>
+                
+                <p>We look forward to supporting your research computing needs!</p>
+            </section>
+        </main>
+    </div>
+    
+    <script>
+        const navItems = document.querySelectorAll('.nav-item');
+        const sections = document.querySelectorAll('.section');
+        
+        navItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const targetSection = item.getAttribute('data-section');
+                
+                navItems.forEach(nav => nav.classList.remove('active'));
+                sections.forEach(section => section.classList.remove('active'));
+                
+                item.classList.add('active');
+                document.getElementById(targetSection).classList.add('active');
+                
+                document.querySelector('.main-content').scrollTop = 0;
+            });
+        });
+    </script>
+</body>
+</html>

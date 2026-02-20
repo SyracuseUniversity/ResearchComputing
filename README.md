@@ -4,7 +4,7 @@ Welcome to Syracuse University's Research Computing documentation. This reposito
 
 ---
 
-## 🚀 Getting Started
+## 🚀 Quick Start
 
 ### Need Computing Resources?
 
@@ -26,6 +26,7 @@ Your welcome email contains login information and instructions specific to your 
 ### Looking for Something Specific?
 
 Jump directly to what you need:
+- [🖥️ Computing Resources Overview](./resources-overview.html) - All available resources explained
 - [📊 Cluster Specifications](#cluster-specifications) - CPUs, GPUs, partitions, limits
 - [💻 Code Examples](#code-examples) - Ready-to-use job scripts
 - [📚 Full Documentation](#documentation) - Complete guides
@@ -63,6 +64,16 @@ Technical details for our HTC and HPC clusters.
 
 ### Zest (Slurm) - High-Performance Computing
 
+**Cluster Type:** High-performance computing cluster with over 25,000 cores and InfiniBand interconnect
+
+**Best For:**
+- Multi-node parallel jobs (MPI)
+- Tightly-coupled computations requiring fast interconnect
+- Large-scale parallel workloads (hundreds of cores)
+- GPU-accelerated research
+- Long-running jobs (up to 40 days)
+- High-memory workloads
+
 **Partitions & Runtimes:**
 
 | Partition | Purpose | Max Runtime | Default |
@@ -74,7 +85,7 @@ Technical details for our HTC and HPC clusters.
 | gpu_zone2 | GPU computations | 20 days | |
 
 **Available GPUs:**
-- NVIDIA A40 (primary)
+- NVIDIA A40 (primary, via SUrge)
 - Other models available - use constraints to specify
 
 **Storage:**
@@ -82,6 +93,7 @@ Technical details for our HTC and HPC clusters.
 - Create scratch directories within your home for temporary job files
 
 **Resources:**
+- Over 25,000 cores interconnected with InfiniBand
 - Use `sinfo` command for current node availability
 - Multiple partitions optimized for different workloads
 
@@ -166,10 +178,11 @@ Essential guides for new users.
 ### Computing Resources
 
 - [GPU Resources Overview](./resources/gpu-resources.md) - Where and how to use GPUs
-- [Azure Cloud Options](./resources/azure.md) - Paid cloud computing
+- [All Resources Overview](./resources-overview.html) - Complete guide to clusters, VMs, and cloud
+- [Azure Cloud Options](./resources/azure.md) - Cloud computing partnerships
 - [Google Colab Guide](./resources/google-colab.md) - Development and prototyping
 - [Storage Options](./resources/storage.md) - Where to keep your data
-- [Custom VMs](./resources/custom-vms.md) - AVHE and Crush environments
+- [Data Sensitivity & Compliance](./resources/data-compliance.md) - Understanding data requirements
 
 ### Workflows & Use Cases
 
@@ -283,10 +296,11 @@ rm file                   # Delete file
 📧 Email [researchcomputing@syr.edu](mailto:researchcomputing@syr.edu) with:
 - Brief description of your research
 - What you're trying to compute
-- Any specific requirements (GPUs, long runtime, etc.)
+- **Data sensitivity or compliance requirements** (HIPAA, FERPA, grant agreements, etc.)
+- Any specific requirements (GPUs, long runtime, large storage, etc.)
 - Your department and PI/advisor
 
-We'll schedule a consultation to match you to the right resource.
+We'll schedule a consultation to match you to the right resource and ensure compliance needs are met.
 
 ### Technical Support
 Already have access and need help?

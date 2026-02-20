@@ -26,11 +26,10 @@ Your welcome email contains login information and instructions specific to your 
 ### Looking for Something Specific?
 
 Jump directly to what you need:
-- [🖥️ Computing Resources Overview](./resources-overview.html) - All available resources explained
+- [🖥️ Computing Resources Overview](https://syracuseuniversity.github.io/ResearchComputing/resources-overview.html) - All available resources explained
 - [📊 Cluster Specifications](#cluster-specifications) - CPUs, GPUs, partitions, limits
 - [💻 Code Examples](#code-examples) - Ready-to-use job scripts
-- [📚 Full Documentation](#documentation) - Complete guides
-- [❓ Common Tasks](#common-tasks) - Quick answers
+- [❓ Common Tasks](#common-tasks) - Quick command reference
 
 ---
 
@@ -131,75 +130,19 @@ Ready-to-use examples for common tasks.
 
 ## Documentation
 
-### Getting Started
-Essential guides for new users.
+### Interactive Guides
+Comprehensive, navigable tutorials with everything you need.
 
-- [**Getting Started Guide**](./getting-started.html) - Interactive tutorial (START HERE if you have credentials!)
-- [Linux Command Line Basics](./getting-started/linux-basics.md)
-- [Understanding Batch Computing](./getting-started/batch-computing.md)
-- [Your First Job Walkthrough](./getting-started/first-job.md)
+- [**Getting Started Guide**](https://syracuseuniversity.github.io/ResearchComputing/getting-started.html) - Complete tutorial for new cluster users (batch computing, Linux basics, connecting, first jobs)
+- [**Resources Overview**](https://syracuseuniversity.github.io/ResearchComputing/resources-overview.html) - All computing resources explained (OrangeGrid, Zest, SUrge, AVHE, Crush, Azure)
 
-### Connection & Access
+### Cluster Technical Specifications
 
-- [**SSH Key Setup**](./access/ssh-keys.md) - Secure, password-free login
-- [Connecting from Off-Campus](./access/off-campus.md) - RDS and VPN
-- [Remote Desktop Services Guide](./access/rds.md)
-- [File Transfer Guide](./access/file-transfer.md) - SCP, WinSCP, rsync
+- [OrangeGrid Specifications](./resources/orangegrid-specifications.md) - Pool details, GPUs, job submission
+- [Zest Specifications](./resources/zest-specifications.md) - Partitions, InfiniBand, GPUs, modules
 
-### Cluster-Specific Guides
-
-#### OrangeGrid (HTCondor)
-- [OrangeGrid Specifications](./resources/orangegrid-specifications.md) - Pool details, resources
-- [Connecting to OrangeGrid](./clusters/orangegrid/connecting.md)
-- [HTCondor Commands Reference](./clusters/orangegrid/htcondor-commands.md)
-- [Job Submission Guide](./clusters/orangegrid/job-submission.md)
-- [GPU Jobs on OrangeGrid](./clusters/orangegrid/gpu-jobs.md)
-- [Multiple Jobs & Arrays](./clusters/orangegrid/multiple-jobs.md)
-
-#### Zest (Slurm)
-- [Zest Specifications](./resources/zest-specifications.md) - Partitions, GPUs, resources
-- [Connecting to Zest](./clusters/zest/connecting.md)
-- [Slurm Commands Reference](./clusters/zest/slurm-commands.md)
-- [Job Submission Guide](./clusters/zest/job-submission.md)
-- [GPU Jobs on Zest](./clusters/zest/gpu-jobs.md)
-- [Using Lmod Modules](./clusters/zest/modules.md)
-- [Advanced SBATCH Options](./clusters/zest/advanced-sbatch.md)
-
-### Software & Environments
-
-- [Conda Environments](./software/conda.md) - Python package management
-- [UV Package Manager](./software/uv.md) - Modern Python packaging
-- [Singularity Containers](./software/singularity.md) - Complex software stacks
-- [Available Modules (Lmod)](./software/modules.md) - Pre-installed software
-- [Python Setup Guide](./software/python.md)
-- [R Setup Guide](./software/r.md)
-- [Julia Setup Guide](./software/julia.md)
-
-### Computing Resources
-
-- [GPU Resources Overview](./resources/gpu-resources.md) - Where and how to use GPUs
-- [All Resources Overview](./resources-overview.html) - Complete guide to clusters, VMs, and cloud
-- [Azure Cloud Options](./resources/azure.md) - Cloud computing partnerships
-- [Google Colab Guide](./resources/google-colab.md) - Development and prototyping
-- [Storage Options](./resources/storage.md) - Where to keep your data
-- [Data Sensitivity & Compliance](./resources/data-compliance.md) - Understanding data requirements
-
-### Workflows & Use Cases
-
-- [Machine Learning Workflows](./guides/machine-learning.md) - PyTorch, TensorFlow, training
-- [LLM Work](./guides/llms.md) - Ollama, LlamaCPP, fine-tuning, inference
-- [Parallel Computing](./guides/parallel-computing.md) - MPI jobs, multi-node
-- [Long-Running Jobs](./guides/long-jobs.md) - Checkpointing, job management
-- [Data Processing Pipelines](./guides/data-pipelines.md) - Batch workflows
-- [Molecular Dynamics](./guides/molecular-dynamics.md) - GROMACS, simulations
-
-### Support
-
-- [Getting Help](./support/getting-help.md) - Contact information
-- [FAQ](./support/faq.md) - Common questions
-- [Troubleshooting](./support/troubleshooting.md) - Solving common issues
-- [Workshops & Training](./support/workshops.md) - Upcoming events
-- [External Resources](./support/external-resources.md) - Slurm, HTCondor docs
+### Additional Documentation
+Additional guides and documentation pages will be added here as they are created. For now, the interactive guides above cover everything new users need to get started.
 
 ---
 
@@ -305,8 +248,8 @@ We'll schedule a consultation to match you to the right resource and ensure comp
 ### Technical Support
 Already have access and need help?
 - 📧 Email: [researchcomputing@syr.edu](mailto:researchcomputing@syr.edu)
-- 📖 Check: [FAQ](./support/faq.md) and [Troubleshooting](./support/troubleshooting.md)
-- 💬 Attend: [Workshops and office hours](./support/workshops.md)
+- 📖 Check the [Getting Started Guide](https://syracuseuniversity.github.io/ResearchComputing/getting-started.html) for common topics
+- 💬 Attend workshops and office hours (see [Events page](https://researchcomputing.syr.edu/events/))
 
 ### Found an Issue?
 Documentation problem or suggestion? [Open an issue](https://github.com/SyracuseUniversity/ResearchComputing/issues) or submit a pull request!

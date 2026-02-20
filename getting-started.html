@@ -241,6 +241,7 @@
                     <h3>✅ You've Been Assigned a Cluster Account!</h3>
                     <p>You've been assigned access to one of Syracuse University's research computing clusters. This guide will help you transition from interactive computing to batch computing on your assigned resource.</p>
                     <p><strong>Check your welcome email</strong> for your specific login information, assigned cluster, and home directory details.</p>
+                    <p><strong>Want to understand all our computing options?</strong> See our <a href="resources-overview.html" target="_blank">complete resource overview</a>.</p>
                 </div>
                 
                 <div class="highlight-box">
@@ -565,7 +566,7 @@ queue 1</code></pre>
                             <li>Cancel: <code>condor_rm jobid</code></li>
                         </ul>
                         
-                        <p><strong>GPUs:</strong> A100, L40S, A6000, and other models</p>
+                        <p><strong>GPUs:</strong> A100, L40S, A6000 (via SUrge)</p>
                         
                         <p>💻 <strong><a href="https://github.com/SyracuseUniversity/OrangeGridExamples" target="_blank">Code Examples</a></strong></p>
                     </div>
@@ -587,11 +588,13 @@ queue 1</code></pre>
                             <li>Cancel: <code>scancel jobid</code></li>
                         </ul>
                         
-                        <p><strong>GPUs:</strong> Primarily A40s</p>
+                        <p><strong>GPUs:</strong> Primarily A40s (via SUrge)</p>
                         
                         <p>💻 <strong><a href="https://github.com/SyracuseUniversity/ZestExamples" target="_blank">Code Examples</a></strong></p>
                     </div>
                 </div>
+                
+                <p><strong>Want more details about all our computing resources?</strong> See our <a href="resources-overview.html" target="_blank">complete resource overview</a>, which includes information about clusters, virtual machines, and cloud solutions.</p>
                 
                 <p><strong>📊 For detailed technical specifications, resource limits, and partition details:</strong></p>
                 <ul>
@@ -824,16 +827,16 @@ queue 1</code></pre>
                     <p>If you need GPU access or want to discuss GPU options, email <a href="mailto:researchcomputing@syr.edu">researchcomputing@syr.edu</a>.</p>
                 </div>
                 
-                <p>Syracuse Research Computing offers extensive GPU resources across multiple platforms. With the surge in LLM and machine learning work, we've expanded our GPU capabilities significantly.</p>
+                <p>Syracuse Research Computing offers extensive GPU resources across multiple platforms. Through our SUrge infrastructure with hundreds of GPUs, we support GPU-enabled applications on both OrangeGrid and Zest clusters. With the surge in LLM and machine learning work, we've expanded our GPU capabilities significantly.</p>
                 
-                <h2>🎯 Primary Option: Cluster GPUs (Free)</h2>
+                <h2>🎯 Primary Option: Cluster GPUs (No Charge)</h2>
                 
                 <div class="info-box">
                     <h3>Why Clusters Are Usually the Best Choice</h3>
                     <ul>
-                        <li><strong>✅ No Cost</strong> - Free for Syracuse researchers</li>
+                        <li><strong>✅ No direct cost to researchers</strong> - No budget required, no billing complexity</li>
                         <li><strong>✅ More GPUs</strong> - Access to our largest GPU pool</li>
-                        <li><strong>✅ Better Hardware</strong> - A40, A100, and other high-end GPUs</li>
+                        <li><strong>✅ Better Hardware</strong> - A100, L40S, A40, A6000, and other high-end GPUs</li>
                         <li><strong>✅ Scalability</strong> - Run multiple jobs, queue as many as needed</li>
                         <li><strong>✅ Proven Solutions</strong> - Works great for LLM fine-tuning, inference, training, and more</li>
                     </ul>
@@ -849,6 +852,9 @@ queue 1</code></pre>
                 </ul>
                 
                 <h3>Available on Both Clusters</h3>
+                
+                <p>GPU resources are provided through our SUrge infrastructure, which supports hundreds of GPUs including A100, L40S, A6000, A40, and other NVIDIA models.</p>
+                
                 <table class="comparison-table">
                     <thead>
                         <tr>
@@ -859,14 +865,14 @@ queue 1</code></pre>
                     </thead>
                     <tbody>
                         <tr>
-                            <td><strong>Zest</strong></td>
-                            <td>Request with <code>--gres=gpu:1</code> in SBATCH</td>
-                            <td>Training jobs, multi-GPU, long-running workloads</td>
-                        </tr>
-                        <tr>
                             <td><strong>OrangeGrid</strong></td>
                             <td>Add <code>+request_gpus = 1</code> to submit file</td>
-                            <td>Many independent GPU jobs, inference batches</td>
+                            <td>Many independent GPU jobs, single-node training/inference</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Zest</strong></td>
+                            <td>Request with <code>--gres=gpu:1</code> in SBATCH</td>
+                            <td>Multi-GPU jobs, long GPU workloads, GPU-accelerated MPI</td>
                         </tr>
                     </tbody>
                 </table>
@@ -895,7 +901,7 @@ queue 1</code></pre>
                 
                 <p>In some situations, cluster GPUs may not be the right fit. We have other options available for specific circumstances.</p>
                 
-                <h3>Azure Cloud GPUs (Paid Option)</h3>
+                <h3>Azure Cloud GPUs (Usage-Based Cost)</h3>
                 <div class="info-box">
                     <p><strong>You might be assigned Azure if:</strong></p>
                     <ul>
@@ -906,11 +912,12 @@ queue 1</code></pre>
                     </ul>
                     <p><strong>How it works:</strong></p>
                     <ul>
+                        <li>Through our continued partnership with Microsoft Azure</li>
+                        <li>Usage-based costs that will be billed to your project</li>
                         <li>Requires working with our business office for billing setup</li>
-                        <li>You pay for Azure VMs or endpoints on-demand</li>
-                        <li>More expensive than the free cluster option</li>
-                        <li>Best for specific circumstances, not general use</li>
+                        <li>We'll review cost estimates and alternatives during consultation</li>
                     </ul>
+                    <p><strong>Learn more:</strong> See our <a href="resources-overview.html#cloud" target="_blank">cloud computing overview</a> for details on when cloud solutions are appropriate.</p>
                 </div>
                 
                 <h3>Google Colab (Development & Small Jobs)</h3>
@@ -919,13 +926,13 @@ queue 1</code></pre>
                     <ul>
                         <li>Initial development and testing of code</li>
                         <li>Short-term, small-scale experiments</li>
-                        <li>Learning and prototyping</li>
+                        <li>Learning and prototyping before moving to clusters</li>
                     </ul>
                     <p><strong>Limitations:</strong></p>
                     <ul>
                         <li>Limited compute time and resources</li>
-                        <li>Not suitable for production workloads</li>
-                        <li>Best used as a stepping stone to cluster deployment</li>
+                        <li>Not suitable for production workloads or sensitive data</li>
+                        <li>Best used as a development environment, then deploy to clusters</li>
                     </ul>
                     <p>See our guide: <a href="https://answers.atlassian.syr.edu/wiki/spaces/RESCOMP/pages/237371891/Using+Google+Colab+for+Research+Development" target="_blank">Using Google Colab for Research Development</a></p>
                 </div>
@@ -945,16 +952,16 @@ queue 1</code></pre>
                     <p>🚀 <strong>You start computing</strong> with the right GPU resources</p>
                 </div>
                 
-                <div class="highlight-box">
+                <div class="info-box">
                     <h3>Why Clusters Win for Most GPU Work</h3>
                     <p>Over 90% of GPU requests are successfully served by our clusters because:</p>
                     <ul>
-                        <li><strong>It's free</strong> - No budget required, no billing complexity</li>
+                        <li><strong>No direct cost</strong> - No budget required, no billing complexity</li>
                         <li><strong>It scales</strong> - More GPUs available, queue multiple jobs</li>
                         <li><strong>It works</strong> - Proven workflows for LLMs, ML, simulations, and more</li>
                         <li><strong>We support it</strong> - Extensive examples and documentation</li>
                     </ul>
-                    <p><strong>Even if you think you need interactive GPU access, let's discuss first.</strong> Many researchers are surprised to find that batch GPU jobs meet their needs perfectly - and save them significant time and money.</p>
+                    <p><strong>Even if you think you need interactive GPU access, let's discuss first.</strong> Many researchers are surprised to find that batch GPU jobs meet their needs perfectly - and save them significant time and budget.</p>
                 </div>
                 
                 <h2>Already Have GPU Access?</h2>

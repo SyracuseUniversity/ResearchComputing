@@ -2,9 +2,10 @@
 layout: default
 title: Home
 nav_order: 1
-description: "Syracuse University Research Computing documentation hub"
 permalink: /
 ---
+
+![Syracuse Research Computing](https://researchcomputing.syr.edu/wp-content/uploads/cropped-waveform-700x441.jpg)
 
 # Syracuse Research Computing Documentation
 
@@ -12,17 +13,41 @@ Welcome! This is your central hub for Syracuse University's research computing r
 
 ---
 
-## 🚀 New to Research Computing?
+## 🚀 Quick Start
 
-{: .highlight }
-> **Need computing resources?** Email [researchcomputing@syr.edu](mailto:researchcomputing@syr.edu) to request a consultation. **Accounts are not active by default** - all access begins with consultation to ensure proper resource assignment and compliance with data sensitivity requirements.
+### Need Computing Resources?
 
-{: .note }
-**Just received credentials?** Start with our [Getting Started Guide]({% link getting-started.md %}) to learn the basics of cluster computing.
+**📧 Request Access:** Email [researchcomputing@syr.edu](mailto:researchcomputing@syr.edu)
+
+Tell us about your research, computational needs, and any data sensitivity requirements. We'll schedule a consultation to match you to the right resource. 
+
+**Accounts are not active by default** - all access begins with consultation to ensure proper resource assignment and compliance.
+
+[**Complete request guide →**]({% link resources/requesting-access.md %})
+
+**Our Resources:** We operate two research computing clusters (OrangeGrid and Zest), private cloud environments (AVHE and Crush), GPU infrastructure (SUrge), and support cloud partnerships. Learn more in our [complete resource overview]({% link resources-overview.md %}).
+
+### Just Received Your Credentials?
+
+**📖 Start Here:** [Getting Started Guide]({% link getting-started.md %})
+
+Your welcome email contains login information and instructions specific to your assigned resource. The getting started guide will walk you through:
+- Understanding batch computing vs. interactive work
+- Connecting to your resource
+- Linux command-line basics
+- Submitting your first job
+- Software environments (conda, singularity)
+
+### Looking for Something Specific?
+
+Jump directly to what you need:
+- [🖥️ Computing Resources Overview]({% link resources-overview.md %}) - All available resources explained
+- [📊 OrangeGrid Specs]({% link resources/orangegrid-specifications.md %}) | [📊 Zest Specs]({% link resources/zest-specifications.md %})
+- [💻 OrangeGrid Examples](https://github.com/SyracuseUniversity/OrangeGridExamples){:target="_blank"} | [💻 Zest Examples](https://github.com/SyracuseUniversity/ZestExamples){:target="_blank"}
 
 ---
 
-## 📖 What's Different About Research Computing?
+## 💡 What's Different About Research Computing?
 
 Coming from a laptop or desktop? Research clusters work differently:
 
@@ -35,86 +60,82 @@ Coming from a laptop or desktop? Research clusters work differently:
 | Install software freely | Use conda/containers/modules |
 | Pick your own hardware | We match you to the right resource |
 
-**Why batch computing?**
-- Fair resource sharing among researchers
-- Running jobs too large for any single computer
-- Queuing hundreds of jobs automatically
-- Accessing specialized hardware (GPUs, high-memory nodes)
+**Why batch computing?** It enables fair resource sharing, running jobs too large for any single computer, queuing hundreds of jobs automatically, and accessing specialized hardware.
 
-**Why consultation?**
-- You get the right resource for your needs
-- Data sensitivity and compliance requirements are met
-- Your workflow matches the resource capabilities
-- You have the best support and examples for your platform
-
----
-
-## 🖥️ Our Computing Resources
-
-We operate two research computing clusters, private cloud environments, GPU infrastructure, and support cloud partnerships:
-
-- **OrangeGrid** - High-throughput computing cluster (over 80,000 cores)
-- **Zest** - High-performance computing cluster (over 25,000 cores)
-- **SUrge** - GPU infrastructure (hundreds of GPUs supporting both clusters)
-- **AVHE** - Private cloud for unique research needs
-- **Crush** - Virtual private cloud for computationally intense needs
-- **Azure** - Cloud partnership for specific use cases
-
-See our complete [Resources Overview]({% link resources-overview.md %}) to understand all options.
+**Why consultation?** We ensure you get the right resource, data sensitivity requirements are met, your workflow matches the resource capabilities, and you have the best support.
 
 {: .warning }
 **Data Sensitivity & Compliance:** Tell us about data requirements upfront! Many grants have specific data security agreements (HIPAA, FERPA, export controls, etc.). This significantly impacts which resources are appropriate.
 
 ---
 
-## 📊 Cluster Specifications
+## 🖥️ Our Computing Resources
+
+### Clusters (No Charge)
+
+**OrangeGrid** - High-throughput computing cluster with over 80,000 cores  
+[Learn more →]({% link resources/orangegrid.md %})
+
+**Zest** - High-performance computing cluster with over 25,000 cores  
+[Learn more →]({% link resources/zest.md %})
+
+### Infrastructure & Cloud
+
+**SUrge** - GPU infrastructure with hundreds of GPUs supporting both clusters  
+[Learn more →]({% link resources/surge.md %})
+
+**AVHE** - Private cloud for unique research needs  
+**Crush** - Virtual private cloud for computationally intense needs  
+**Azure** - Cloud partnership (usage-based costs)
+
+[View all resources →]({% link resources-overview.md %})
+
+---
+
+## 📊 Cluster Quick Reference
 
 ### OrangeGrid (HTCondor)
 
-**Scale:** Over 80,000 cores | **Scheduler:** HTCondor
+**Scale:** Over 80,000 cores | **Scheduler:** HTCondor | **Access:** `its-og-loginX.syr.edu`
 
-**Best for:** Many independent jobs, parameter sweeps, batch processing, single-node GPU jobs
-
-**Resources:**
-- AMD and Intel processors
-- High-memory nodes available
-- GPU nodes: A100, L40S, A6000 (via SUrge)
-- Storage: 4TB home directory (default)
+**Best for:** Many independent jobs, parameter sweeps, batch processing
 
 **Key commands:**
-- Submit: `condor_submit job.sub`
-- Status: `condor_q netid`
-- Cancel: `condor_rm jobid`
+```bash
+condor_submit job.sub     # Submit job
+condor_q netid            # Check status
+condor_rm jobid           # Cancel job
+```
 
-📊 [Detailed specifications]({% link resources/orangegrid-specifications.md %})
+**GPUs:** A100, L40S, A6000 (via SUrge) - Request with `+request_gpus = 1`
+
+[OrangeGrid Details →]({% link resources/orangegrid.md %}) | [Technical Specs →]({% link resources/orangegrid-specifications.md %})
 
 ### Zest (Slurm)
 
-**Scale:** Over 25,000 cores with InfiniBand | **Scheduler:** Slurm
+**Scale:** Over 25,000 cores with InfiniBand | **Scheduler:** Slurm | **Access:** `its-zest-loginX.syr.edu`
 
-**Best for:** Multi-node parallel jobs, MPI, tightly-coupled work, long runtimes
-
-**Resources:**
-- InfiniBand interconnect for fast node-to-node communication
-- Multiple partitions (20-40 day max runtime)
-- GPU nodes: A40 (via SUrge)
-- Storage: 4TB home directory (default)
+**Best for:** Multi-node parallel, MPI, tightly-coupled work, long runtimes
 
 **Key commands:**
-- Submit: `sbatch script.sh`
-- Status: `squeue -u netid`
-- Cancel: `scancel jobid`
+```bash
+sbatch script.sh          # Submit job
+squeue -u netid           # Check status
+scancel jobid             # Cancel job
+```
 
-📊 [Detailed specifications]({% link resources/zest-specifications.md %})
+**GPUs:** A40 (primary, via SUrge) - Request with `#SBATCH --gres=gpu:1`
+
+[Zest Details →]({% link resources/zest.md %}) | [Technical Specs →]({% link resources/zest-specifications.md %})
 
 ---
 
 ## 💻 Code Examples
 
-Ready-to-use job scripts and examples:
+Ready-to-use job scripts:
 
-- [**OrangeGrid Examples**](https://github.com/SyracuseUniversity/OrangeGridExamples) - Python, PyTorch, Ollama, R, Julia, and more
-- [**Zest Examples**](https://github.com/SyracuseUniversity/ZestExamples) - Python, MPI, GPU jobs, GROMACS
+- [**OrangeGrid Examples**](https://github.com/SyracuseUniversity/OrangeGridExamples){:target="_blank"} - Python, PyTorch, Ollama, R, Julia
+- [**Zest Examples**](https://github.com/SyracuseUniversity/ZestExamples){:target="_blank"} - Python, MPI, GPU jobs, GROMACS
 
 Clone to your cluster home:
 ```bash
@@ -134,10 +155,6 @@ git clone https://github.com/SyracuseUniversity/ZestExamples.git
 - OrangeGrid: `condor_q netid`
 - Zest: `squeue -u netid`
 
-**Cancel a job:**
-- OrangeGrid: `condor_rm jobid`
-- Zest: `scancel jobid`
-
 **Use GPUs:**
 - OrangeGrid: Add `+request_gpus = 1` to submit file
 - Zest: Add `#SBATCH --gres=gpu:1` to script
@@ -151,26 +168,20 @@ scp file.txt netid@cluster:~/path/
 rsync -avz --progress /local/data/ netid@cluster:~/data/
 ```
 
-**For large data transfers (TBs):** Contact [researchcomputing@syr.edu](mailto:researchcomputing@syr.edu) for optimized options.
-
 ---
 
 ## 📞 Getting Help
 
 ### Request Access
-📧 Email [researchcomputing@syr.edu](mailto:researchcomputing@syr.edu) with:
-- Brief description of your research
-- What you're trying to compute
-- **Data sensitivity or compliance requirements** (HIPAA, FERPA, grant agreements, etc.)
-- Your department and PI/advisor
+📧 Email [researchcomputing@syr.edu](mailto:researchcomputing@syr.edu) with your research description, computational needs, and any data sensitivity requirements.
 
-We'll schedule a consultation to match you to the right resource.
+[Complete request guide →]({% link resources/requesting-access.md %})
 
 ### Technical Support
 - 📧 Email: [researchcomputing@syr.edu](mailto:researchcomputing@syr.edu)
-- 📅 Events: [Workshops and office hours](https://researchcomputing.syr.edu/events/)
+- 📅 Events: [Workshops and office hours](https://researchcomputing.syr.edu/events/){:target="_blank"}
 
 ### External Documentation
-- [Slurm Documentation](https://slurm.schedmd.com/)
-- [HTCondor Documentation](https://htcondor.readthedocs.io/)
-- [Singularity User Guide](https://docs.sylabs.io/guides/latest/user-guide/)
+- [Slurm Documentation](https://slurm.schedmd.com/){:target="_blank"}
+- [HTCondor Documentation](https://htcondor.readthedocs.io/){:target="_blank"}
+- [Singularity User Guide](https://docs.sylabs.io/guides/latest/user-guide/){:target="_blank"}

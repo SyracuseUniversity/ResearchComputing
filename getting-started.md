@@ -21,4 +21,4 @@ The login node is NOT where your work runs. When you SSH in, you're on a shared 
 Use the navigation on the left to explore each topic, or work through them in order for a complete introduction to cluster computing.
 
 {: .note }
-**Want to understand all our computing options?** See our [complete resource overview]({% link resources-overview.md %}) for information about clusters, virtual machines, GPU infrastructure, and cloud solutions.
+**Want to understand all our computing options?** See our [complete resource overview](../resources-overview) for information about clusters, virtual machines, GPU infrastructure, and cloud solutions.

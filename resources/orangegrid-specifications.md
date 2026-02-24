@@ -1,3 +1,11 @@
+---
+layout: default
+title: Technical Specifications
+parent: OrangeGrid (HTC)
+grand_parent: Resources Overview
+nav_order: 1
+---
+
 # OrangeGrid Cluster Specifications
 
 Technical specifications for the OrangeGrid High-Throughput Computing (HTC) cluster.

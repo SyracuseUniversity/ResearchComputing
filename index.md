@@ -75,24 +75,15 @@ Coming from a laptop or desktop? Research clusters work differently:
 
 ## 🖥️ Our Computing Resources
 
-### Clusters (No Charge)
+We operate two research computing clusters, private cloud environments, GPU infrastructure, and support cloud partnerships:
 
-**OrangeGrid** - High-throughput computing cluster with over 80,000 cores  
-[Learn more →]({% link resources/orangegrid.md %})
+- **OrangeGrid** - High-throughput computing cluster (over 80,000 cores)
+- **Zest** - High-performance computing cluster (over 25,000 cores)
+- **SUrge** - GPU infrastructure (hundreds of GPUs)
+- **AVHE** & **Crush** - Private clouds
+- **Azure** - Cloud partnership
 
-**Zest** - High-performance computing cluster with over 25,000 cores  
-[Learn more →]({% link resources/zest.md %})
-
-### Infrastructure & Cloud
-
-**SUrge** - GPU infrastructure with hundreds of GPUs supporting both clusters  
-[Learn more →]({% link resources/surge.md %})
-
-**AVHE** - Private cloud for unique research needs  
-**Crush** - Virtual private cloud for computationally intense needs  
-**Azure** - Cloud partnership (usage-based costs)
-
-[View all resources →]({% link resources-overview.md %})
+[View complete resource overview →]({% link resources-overview.md %})
 
 ---
 

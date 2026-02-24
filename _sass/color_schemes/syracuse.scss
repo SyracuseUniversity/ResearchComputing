@@ -1,4 +1,3 @@
-
 // Syracuse University Color Scheme for just-the-docs
 
 // SU Brand Colors
@@ -10,6 +9,9 @@ $su-white: #FFFFFF;
 $link-color: $su-orange;
 $btn-primary-color: $su-orange;
 
+// Site header - fix blue on blue issue
+$site-title-color: $su-orange;  // Make site title orange instead of blue
+
 // Sidebar
 $sidebar-color: $su-blue;
 $nav-child-link-color: $su-white;
@@ -20,13 +22,17 @@ $body-background-color: #f5f5f5;
 $body-text-color: #555;
 $body-heading-color: $su-blue;
 
-// Code blocks
-$code-background-color: $su-blue;
-$code-linenumber-color: #ecf0f1;
+// Code blocks - white background for accessibility
+$code-background-color: #ffffff;
+$code-text-color: #000E54;
+$border-color: #ddd;
+
+// Inline code
+$inline-code-background-color: #f4f4f4;
+$inline-code-color: $su-orange;
 
 // Tables
 $table-background-color: $su-white;
-$border-color: #ddd;
 
 // Buttons
 $btn-primary-color: $su-orange;
@@ -35,5 +41,9 @@ $btn-primary-color: $su-orange;
 $search-background-color: $su-white;
 $search-result-preview-color: #555;
 
-// Feedback/Callouts
+// Feedback/Callouts - ensure good contrast
 $feedback-color: $su-orange;
+
+// Make sure all text on dark blue has white/light color
+$nav-list-link-color: $su-white;
+$nav-list-expander-color: $su-white;

@@ -35,20 +35,8 @@ Through our continued partnerships, we also support research computing needs in 
 | **Crush** | Private Cloud | Not required | Intense computing, dynamic solutions |
 | **Azure** | Cloud Partnership | Funding required | Specific needs, cloud services |
 
----
-
-## Detailed Information
-
-Click on any resource below to learn more:
-
-- [**OrangeGrid (HTC)**]({% link resources/orangegrid.md %}) - Over 80,000 cores, many independent jobs
-- [**Zest (HPC)**]({% link resources/zest.md %}) - Over 25,000 cores, MPI, InfiniBand
-- [**SUrge (GPU Infrastructure)**]({% link resources/surge.md %}) - Hundreds of GPUs
-- [**Requesting Access**]({% link resources/requesting-access.md %}) - How to get started
-
-**Technical Specifications:**
-- [OrangeGrid Technical Details]({% link resources/orangegrid-specifications.md %})
-- [Zest Technical Details]({% link resources/zest-specifications.md %})
+{: .warning }
+**Data Sensitivity & Compliance:** Before requesting resources, tell us about your data. Sensitive data (HIPAA, FERPA, controlled exports, etc.) or grant requirements significantly impact which computing resources are appropriate. Some resources cannot be used for certain data types. We need this information during consultation to ensure compliance and proper resource selection.
 
 ---
 
@@ -88,4 +76,4 @@ Tell us if your data involves:
 
 📧 Email [researchcomputing@syr.edu](mailto:researchcomputing@syr.edu) to request a consultation.
 
-See our complete [requesting access guide]({% link resources/requesting-access.md %}) for what to include in your request.
+See our complete [requesting access guide](resources/requesting-access) for what to include in your request.

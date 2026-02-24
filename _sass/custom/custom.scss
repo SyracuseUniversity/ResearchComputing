@@ -1,14 +1,23 @@
 // Custom SCSS for Syracuse Research Computing
 
-// Narrow the sidebar
+// Adjust sidebar width to be narrower but use responsive approach
 @media (min-width: 50rem) {
   .side-bar {
-    width: 220px !important;  // Narrower than default 264px
+    width: 16% !important;  // Percentage-based for consistency
+    min-width: 200px !important;  // Minimum width for readability
+    max-width: 240px !important;  // Maximum to prevent too wide
   }
   
   .main {
-    margin-left: 220px !important;
+    margin-left: 16% !important;
+    max-width: calc(84% - 2rem) !important;
   }
+}
+
+// Ensure main content area doesn't have extra padding causing indentation
+.main-content {
+  padding-left: 2rem !important;
+  padding-right: 2rem !important;
 }
 
 // Site title color fix - make it more visible
@@ -25,4 +34,15 @@ pre {
 code {
   background-color: #f4f4f4 !important;
   color: #000E54 !important;
+}
+
+// Fix any list indentation issues
+.main-content ul,
+.main-content ol {
+  margin-left: 1.5rem !important;
+}
+
+// Ensure paragraphs don't have weird indentation
+.main-content p {
+  text-indent: 0 !important;
 }

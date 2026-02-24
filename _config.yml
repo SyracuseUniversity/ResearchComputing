@@ -1,8 +1,36 @@
-title: Syracuse University Research Computing
-description: Documentation hub for computing clusters, GPU access, and research computing support
-show_downloads: false
-github:
-   is_project_page: false
 
-# Remove the title to avoid redundancy with README header
-title: ""
+title: Syracuse University Research Computing
+description: Documentation for computing clusters, GPU access, and research computing support
+
+# Use just-the-docs theme
+remote_theme: just-the-docs/just-the-docs@v0.8.2
+
+# SU color scheme
+color_scheme: syracuse
+
+# Enable features
+search_enabled: true
+search:
+  heading_level: 2
+  previews: 3
+  preview_words_before: 5
+  preview_words_after: 10
+
+# Footer content
+footer_content: "Syracuse University Research Computing | <a href='https://researchcomputing.syr.edu'>Website</a> | <a href='mailto:researchcomputing@syr.edu'>Email</a> | <a href='https://researchcomputing.syr.edu/events/'>Events</a>"
+
+# Aux links (top right)
+aux_links:
+  "Research Computing Website":
+    - "https://researchcomputing.syr.edu"
+  "Contact Us":
+    - "mailto:researchcomputing@syr.edu"
+  "Events":
+    - "https://researchcomputing.syr.edu/events/"
+
+# Back to top button
+back_to_top: true
+back_to_top_text: "Back to top"
+
+# Enable heading anchors
+heading_anchors: true

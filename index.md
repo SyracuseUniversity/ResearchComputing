@@ -15,21 +15,23 @@ Welcome! This is your central hub for Syracuse University's research computing r
 
 ## 🚀 Quick Start
 
-### Need Computing Resources?
+**Need Computing Resources?**
 
-**📧 Request Access:** Email [researchcomputing@syr.edu](mailto:researchcomputing@syr.edu)
+📧 **Request Access:** Email [researchcomputing@syr.edu](mailto:researchcomputing@syr.edu)
 
 Tell us about your research, computational needs, and any data sensitivity requirements. We'll schedule a consultation to match you to the right resource. 
 
 **Accounts are not active by default** - all access begins with consultation to ensure proper resource assignment and compliance.
 
-[**Complete request guide →**]({% link resources/requesting-access.md %})
+**[📝 Complete request guide - What to include in your email →]({% link resources/requesting-access.md %})**
 
 **Our Resources:** We operate two research computing clusters (OrangeGrid and Zest), private cloud environments (AVHE and Crush), GPU infrastructure (SUrge), and support cloud partnerships. Learn more in our [complete resource overview]({% link resources-overview.md %}).
 
-### Just Received Your Credentials?
+---
 
-**📖 Start Here:** [Getting Started Guide]({% link getting-started.md %})
+**Just Received Your Credentials?**
+
+📖 **Start Here:** [Getting Started Guide]({% link getting-started.md %})
 
 Your welcome email contains login information and instructions specific to your assigned resource. The getting started guide will walk you through:
 - Understanding batch computing vs. interactive work
@@ -38,7 +40,9 @@ Your welcome email contains login information and instructions specific to your 
 - Submitting your first job
 - Software environments (conda, singularity)
 
-### Looking for Something Specific?
+---
+
+**Looking for Something Specific?**
 
 Jump directly to what you need:
 - [🖥️ Computing Resources Overview]({% link resources-overview.md %}) - All available resources explained
@@ -168,20 +172,22 @@ scp file.txt netid@cluster:~/path/
 rsync -avz --progress /local/data/ netid@cluster:~/data/
 ```
 
+**For large data transfers (TBs):** Contact [researchcomputing@syr.edu](mailto:researchcomputing@syr.edu) for optimized options.
+
 ---
 
 ## 📞 Getting Help
 
-### Request Access
+**Request Access:**  
 📧 Email [researchcomputing@syr.edu](mailto:researchcomputing@syr.edu) with your research description, computational needs, and any data sensitivity requirements.
 
 [Complete request guide →]({% link resources/requesting-access.md %})
 
-### Technical Support
+**Technical Support:**
 - 📧 Email: [researchcomputing@syr.edu](mailto:researchcomputing@syr.edu)
 - 📅 Events: [Workshops and office hours](https://researchcomputing.syr.edu/events/){:target="_blank"}
 
-### External Documentation
+**External Documentation:**
 - [Slurm Documentation](https://slurm.schedmd.com/){:target="_blank"}
 - [HTCondor Documentation](https://htcondor.readthedocs.io/){:target="_blank"}
 - [Singularity User Guide](https://docs.sylabs.io/guides/latest/user-guide/){:target="_blank"}

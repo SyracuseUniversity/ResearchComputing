@@ -14,20 +14,12 @@ Syracuse University operates two computing clusters, each optimized for differen
 
 ---
 
-## Our Two Clusters: Side by Side
-
-<table>
-<tr>
-<td width="50%" style="background: #fff3e0; padding: 20px; border-left: 5px solid #F76900;">
-
-<h3>OrangeGrid (HTCondor)</h3>
-
-**High-Throughput Computing (HTC)**
-
-**Best for:** Many independent jobs, parameter sweeps, batch processing, embarrassingly parallel workloads
+## OrangeGrid (HTCondor) - High-Throughput Computing
 
 **Scheduler:** HTCondor  
 **Login:** `its-og-loginX.syr.edu`
+
+**Best for:** Many independent jobs, parameter sweeps, batch processing, embarrassingly parallel workloads
 
 **Key Commands:**
 - Submit: `condor_submit job.sub`
@@ -38,19 +30,16 @@ Syracuse University operates two computing clusters, each optimized for differen
 
 **Examples:** Processing thousands of images, Monte Carlo simulations, batch data analysis, Ollama inference
 
-💻 [OrangeGrid Code Examples](https://github.com/SyracuseUniversity/OrangeGridExamples)
+💻 [OrangeGrid Code Examples](https://github.com/SyracuseUniversity/OrangeGridExamples){:target="_blank"}
 
-</td>
-<td width="50%" style="background: #e3f2fd; padding: 20px; border-left: 5px solid #2196F3;">
+---
 
-<h3>Zest (Slurm)</h3>
-
-**High-Performance Computing (HPC)**
-
-**Best for:** Parallel jobs, MPI, tightly-coupled computations, long-running workloads
+## Zest (Slurm) - High-Performance Computing
 
 **Scheduler:** Slurm  
 **Login:** `its-zest-loginX.syr.edu`
+
+**Best for:** Parallel jobs, MPI, tightly-coupled computations, long-running workloads
 
 **Key Commands:**
 - Submit: `sbatch script.sh`
@@ -61,14 +50,12 @@ Syracuse University operates two computing clusters, each optimized for differen
 
 **Examples:** GROMACS simulations, deep learning training, computational fluid dynamics, molecular dynamics
 
-💻 [Zest Code Examples](https://github.com/SyracuseUniversity/ZestExamples)
+💻 [Zest Code Examples](https://github.com/SyracuseUniversity/ZestExamples){:target="_blank"}
 
-</td>
-</tr>
-</table>
+---
 
 {: .note }
-**Want more details?** See our [complete resource overview](../resources-overview) for information about all computing resources including clusters, virtual machines, and cloud solutions. For technical specifications, see [OrangeGrid Specifications](../resources/orangegrid-specifications) and [Zest Specifications](../resources/zest-specifications).
+**Want more details?** See our [complete resource overview](../resources-overview) for information about all computing resources. For technical specifications, see [OrangeGrid Specifications](../resources/orangegrid-specifications) and [Zest Specifications](../resources/zest-specifications).
 
 ---
 

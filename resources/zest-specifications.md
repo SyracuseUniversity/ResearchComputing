@@ -1,3 +1,11 @@
+---
+layout: default
+title: Technical Specifications
+parent: Zest (HPC)
+grand_parent: Resources Overview
+nav_order: 1
+---
+
 # Zest Cluster Specifications
 
 Technical specifications for the Zest High-Performance Computing (HPC) cluster.

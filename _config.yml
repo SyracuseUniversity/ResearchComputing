@@ -5,7 +5,7 @@ description: Documentation for computing clusters, GPU access, and research comp
 remote_theme: just-the-docs/just-the-docs@v0.8.2
 
 # Logo configuration
-logo: "https://fastly.cdn.syracuse.edu/logos/horizontal-white.svg"
+logo: "SYRACUSE_Horizontal_2Line_ORANGE_RGB.png"
 
 # SU color scheme
 color_scheme: syracuse

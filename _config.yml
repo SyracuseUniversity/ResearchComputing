@@ -5,7 +5,7 @@ description: Documentation for computing clusters, GPU access, and research comp
 remote_theme: just-the-docs/just-the-docs@v0.8.2
 
 # Logo configuration
-logo: "SYRACUSE_Horizontal_2Line_ORANGE_RGB.png"
+logo: "/ResearchComputing/assets/images/SYRACUSE_Horizontal_2Line_ORANGE_RGB.png"
 
 # SU color scheme
 color_scheme: syracuse
@@ -18,17 +18,19 @@ search:
   preview_words_before: 5
   preview_words_after: 10
 
-# Footer content
-footer_content: "Syracuse University Research Computing | <a href='https://researchcomputing.syr.edu'>Website</a> | <a href='mailto:researchcomputing@syr.edu'>Email</a> | <a href='https://researchcomputing.syr.edu/events/'>Events</a>"
+# Footer content with accessibility link
+footer_content: "Syracuse University Research Computing | <a href='https://researchcomputing.syr.edu' target='_blank'>Website</a> | <a href='mailto:researchcomputing@syr.edu'>Email</a> | <a href='https://researchcomputing.syr.edu/events/' target='_blank'>Events</a> | <a href='https://www.syracuse.edu/about/accessibility/' target='_blank'>Accessibility</a>"
 
-# Aux links (top right)
+# Aux links (top right) - open in new tabs
 aux_links:
   "Website":
-    - "https://researchcomputing.syr.edu"
+    - "//researchcomputing.syr.edu"
   "Email":
     - "mailto:researchcomputing@syr.edu"
   "Events":
-    - "https://researchcomputing.syr.edu/events/"
+    - "//researchcomputing.syr.edu/events/"
+
+aux_links_new_tab: true
 
 # Back to top button
 back_to_top: true

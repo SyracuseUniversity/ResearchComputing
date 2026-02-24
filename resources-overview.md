@@ -8,9 +8,9 @@ has_children: true
 # Syracuse Research Computing Resources
 
 {: .highlight }
-> **Consultation-Based Resource Assignment**  
-> We don't offer à la carte services. We work with you to understand your research needs and match you to the optimal computing solution. This ensures you have the right resources, proper support, and meet any compliance requirements.  
-> **📧 Start here:** [researchcomputing@syr.edu](mailto:researchcomputing@syr.edu)
+**Consultation-Based Resource Assignment**  
+We don't offer à la carte services. We work with you to understand your research needs and match you to the optimal computing solution. This ensures you have the right resources, proper support, and meet any compliance requirements.  
+**📧 Start here:** [researchcomputing@syr.edu](mailto:researchcomputing@syr.edu)
 
 Syracuse Research Computing provides a range of computing resources to support diverse research needs:
 

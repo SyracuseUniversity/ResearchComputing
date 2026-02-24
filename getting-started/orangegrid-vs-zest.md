@@ -68,7 +68,7 @@ Syracuse University operates two computing clusters, each optimized for differen
 </table>
 
 {: .note }
-**Want more details?** See our [complete resource overview]({% link resources-overview.md %}) for information about all computing resources including clusters, virtual machines, and cloud solutions. For technical specifications, see [OrangeGrid Specifications]({% link resources/orangegrid-specifications.md %}) and [Zest Specifications]({% link resources/zest-specifications.md %}).
+**Want more details?** See our [complete resource overview](../resources-overview) for information about all computing resources including clusters, virtual machines, and cloud solutions. For technical specifications, see [OrangeGrid Specifications](../resources/orangegrid-specifications) and [Zest Specifications](../resources/zest-specifications).
 
 ---
 

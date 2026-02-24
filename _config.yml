@@ -1,9 +1,11 @@
-
-title: Syracuse University Research Computing
+title: Research Computing
 description: Documentation for computing clusters, GPU access, and research computing support
 
 # Use just-the-docs theme
 remote_theme: just-the-docs/just-the-docs@v0.8.2
+
+# Logo configuration
+logo: "https://fastly.cdn.syracuse.edu/logos/horizontal-white.svg"
 
 # SU color scheme
 color_scheme: syracuse
@@ -21,9 +23,9 @@ footer_content: "Syracuse University Research Computing | <a href='https://resea
 
 # Aux links (top right)
 aux_links:
-  "Research Computing Website":
+  "Website":
     - "https://researchcomputing.syr.edu"
-  "Contact Us":
+  "Email":
     - "mailto:researchcomputing@syr.edu"
   "Events":
     - "https://researchcomputing.syr.edu/events/"

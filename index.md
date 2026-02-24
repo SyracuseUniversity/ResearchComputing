@@ -33,19 +33,13 @@ Tell us about your research, computational needs, and any data sensitivity requi
 
 📖 **Start Here:** [Getting Started Guide]({% link getting-started.md %})
 
-Your welcome email contains login information and instructions specific to your assigned resource. The getting started guide will walk you through:
-- Understanding batch computing vs. interactive work
-- Connecting to your resource
-- Linux command-line basics
-- Submitting your first job
-- Software environments (conda, singularity)
+Your welcome email contains login information and instructions specific to your assigned resource.
 
 ---
 
 **Looking for Something Specific?**
 
-Jump directly to what you need:
-- [🖥️ Computing Resources Overview]({% link resources-overview.md %}) - All available resources explained
+- [🖥️ Computing Resources Overview]({% link resources-overview.md %})
 - [📊 OrangeGrid Specs]({% link resources/orangegrid-specifications.md %}) | [📊 Zest Specs]({% link resources/zest-specifications.md %})
 - [💻 OrangeGrid Examples](https://github.com/SyracuseUniversity/OrangeGridExamples){:target="_blank"} | [💻 Zest Examples](https://github.com/SyracuseUniversity/ZestExamples){:target="_blank"}
 
@@ -83,102 +77,4 @@ We operate two research computing clusters, private cloud environments, GPU infr
 - **AVHE** & **Crush** - Private clouds
 - **Azure** - Cloud partnership
 
-[View complete resource overview →]({% link resources-overview.md %})
-
----
-
-## 📊 Cluster Quick Reference
-
-### OrangeGrid (HTCondor)
-
-**Scale:** Over 80,000 cores | **Scheduler:** HTCondor | **Access:** `its-og-loginX.syr.edu`
-
-**Best for:** Many independent jobs, parameter sweeps, batch processing
-
-**Key commands:**
-```bash
-condor_submit job.sub     # Submit job
-condor_q netid            # Check status
-condor_rm jobid           # Cancel job
-```
-
-**GPUs:** A100, L40S, A6000 (via SUrge) - Request with `+request_gpus = 1`
-
-[OrangeGrid Details →]({% link resources/orangegrid.md %}) | [Technical Specs →]({% link resources/orangegrid-specifications.md %})
-
-### Zest (Slurm)
-
-**Scale:** Over 25,000 cores with InfiniBand | **Scheduler:** Slurm | **Access:** `its-zest-loginX.syr.edu`
-
-**Best for:** Multi-node parallel, MPI, tightly-coupled work, long runtimes
-
-**Key commands:**
-```bash
-sbatch script.sh          # Submit job
-squeue -u netid           # Check status
-scancel jobid             # Cancel job
-```
-
-**GPUs:** A40 (primary, via SUrge) - Request with `#SBATCH --gres=gpu:1`
-
-[Zest Details →]({% link resources/zest.md %}) | [Technical Specs →]({% link resources/zest-specifications.md %})
-
----
-
-## 💻 Code Examples
-
-Ready-to-use job scripts:
-
-- [**OrangeGrid Examples**](https://github.com/SyracuseUniversity/OrangeGridExamples){:target="_blank"} - Python, PyTorch, Ollama, R, Julia
-- [**Zest Examples**](https://github.com/SyracuseUniversity/ZestExamples){:target="_blank"} - Python, MPI, GPU jobs, GROMACS
-
-Clone to your cluster home:
-```bash
-git clone https://github.com/SyracuseUniversity/OrangeGridExamples.git
-git clone https://github.com/SyracuseUniversity/ZestExamples.git
-```
-
----
-
-## ❓ Common Tasks
-
-**Submit a job:**
-- OrangeGrid: `condor_submit job.sub`
-- Zest: `sbatch script.sh`
-
-**Check job status:**
-- OrangeGrid: `condor_q netid`
-- Zest: `squeue -u netid`
-
-**Use GPUs:**
-- OrangeGrid: Add `+request_gpus = 1` to submit file
-- Zest: Add `#SBATCH --gres=gpu:1` to script
-
-**Transfer files:**
-```bash
-# Small files
-scp file.txt netid@cluster:~/path/
-
-# Large files (resumable)
-rsync -avz --progress /local/data/ netid@cluster:~/data/
-```
-
-**For large data transfers (TBs):** Contact [researchcomputing@syr.edu](mailto:researchcomputing@syr.edu) for optimized options.
-
----
-
-## 📞 Getting Help
-
-**Request Access:**  
-📧 Email [researchcomputing@syr.edu](mailto:researchcomputing@syr.edu) with your research description, computational needs, and any data sensitivity requirements.
-
-[Complete request guide →]({% link resources/requesting-access.md %})
-
-**Technical Support:**
-- 📧 Email: [researchcomputing@syr.edu](mailto:researchcomputing@syr.edu)
-- 📅 Events: [Workshops and office hours](https://researchcomputing.syr.edu/events/){:target="_blank"}
-
-**External Documentation:**
-- [Slurm Documentation](https://slurm.schedmd.com/){:target="_blank"}
-- [HTCondor Documentation](https://htcondor.readthedocs.io/){:target="_blank"}
-- [Singularity User Guide](https://docs.sylabs.io/guides/latest/user-guide/){:target="_blank"}
+[View complete resource

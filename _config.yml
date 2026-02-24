@@ -1,43 +1,41 @@
+# Site title (shows in browser tab and search engines)
 title: Research Computing
+
+# Site description (for SEO)
 description: Documentation for computing clusters, GPU access, and research computing support
 
-# Use just-the-docs theme
+# Use just-the-docs theme from GitHub
 remote_theme: just-the-docs/just-the-docs@v0.8.2
 
-# Logo configuration - try without leading slash
-logo: "assets/images/SYRACUSE_Horizontal_2Line_ORANGE_RGB.png"
+# Path to your logo image (relative to site root)
+# Make sure this file exists in your repo at this exact path
+logo: "/assets/images/SYRACUSE_Horizontal_2Line_ORANGE_RGB.png"
 
-# SU color scheme
+# Use your custom SU color scheme (defined in _sass/color_schemes/syracuse.scss)
 color_scheme: syracuse
 
-# Enable features
+# Enable the search box
 search_enabled: true
-search:
-  heading_level: 2
-  previews: 3
-  preview_words_before: 5
-  preview_words_after: 10
 
-# Footer content with accessibility link
+# Footer links - appears at bottom of every page
+# target='_blank' makes external links open in new tabs
 footer_content: "Syracuse University Research Computing | <a href='https://researchcomputing.syr.edu' target='_blank'>Website</a> | <a href='mailto:researchcomputing@syr.edu'>Email</a> | <a href='https://researchcomputing.syr.edu/events/' target='_blank'>Events</a> | <a href='https://www.syracuse.edu/about/accessibility/' target='_blank'>Accessibility</a>"
 
-# Aux links (top right) - open in new tabs
+# Top-right corner links
 aux_links:
   "Website":
-    - "//researchcomputing.syr.edu"
+    - "https://researchcomputing.syr.edu"
   "Email":
     - "mailto:researchcomputing@syr.edu"
   "Events":
-    - "//researchcomputing.syr.edu/events/"
+    - "https://researchcomputing.syr.edu/events/"
 
+# Make aux links open in new tabs
 aux_links_new_tab: true
 
-# Back to top button
+# Show "back to top" button on long pages
 back_to_top: true
 back_to_top_text: "Back to top"
 
-# Enable heading anchors
+# Make headings clickable (adds # links)
 heading_anchors: true
-
-# Disable showing "edit this page" link
-gh_edit_link: false

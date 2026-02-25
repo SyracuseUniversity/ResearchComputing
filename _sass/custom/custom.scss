@@ -1,11 +1,11 @@
 // Custom SCSS for Syracuse Research Computing
 
-// Adjust sidebar width to be narrower but use responsive approach
+// Adjust sidebar width - responsive approach
 @media (min-width: 50rem) {
   .side-bar {
-    width: 16% !important;  // Percentage-based for consistency
-    min-width: 200px !important;  // Minimum width for readability
-    max-width: 240px !important;  // Maximum to prevent too wide
+    width: 16% !important;
+    min-width: 200px !important;
+    max-width: 240px !important;
   }
   
   .main {
@@ -14,13 +14,50 @@
   }
 }
 
-// Ensure main content area doesn't have extra padding causing indentation
-.main-content {
-  padding-left: 2rem !important;
-  padding-right: 2rem !important;
+// Mobile-specific fixes
+@media (max-width: 49.99rem) {
+  .main-content {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+    max-width: 100% !important;
+  }
+  
+  // Ensure tables scroll on mobile
+  table {
+    display: block !important;
+    overflow-x: auto !important;
+    white-space: nowrap !important;
+  }
+  
+  // Ensure code blocks wrap or scroll on mobile
+  pre {
+    overflow-x: auto !important;
+    max-width: 100% !important;
+  }
+  
+  // Prevent text from overflowing
+  .main-content {
+    overflow-wrap: break-word !important;
+    word-wrap: break-word !important;
+  }
 }
 
-// Site title color fix - make it more visible
+// Ensure main content area doesn't have extra padding
+.main-content {
+  padding-left: 2rem;
+  padding-right: 2rem;
+  max-width: 100%;
+}
+
+// Mobile: reduce padding
+@media (max-width: 49.99rem) {
+  .main-content {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+}
+
+// Site title color fix
 .site-title {
   color: #F76900 !important;
 }
@@ -29,6 +66,7 @@
 pre {
   background-color: #ffffff !important;
   border: 1px solid #ddd !important;
+  overflow-x: auto !important;
 }
 
 code {
@@ -36,7 +74,7 @@ code {
   color: #000E54 !important;
 }
 
-// Fix any list indentation issues
+// Fix list indentation
 .main-content ul,
 .main-content ol {
   margin-left: 1.5rem !important;
@@ -45,4 +83,19 @@ code {
 // Ensure paragraphs don't have weird indentation
 .main-content p {
   text-indent: 0 !important;
+}
+
+// Make sure callout boxes don't overflow on mobile
+.highlight,
+.note,
+.warning,
+.important {
+  max-width: 100% !important;
+  overflow-wrap: break-word !important;
+}
+
+// Ensure images are responsive
+img {
+  max-width: 100% !important;
+  height: auto !important;
 }

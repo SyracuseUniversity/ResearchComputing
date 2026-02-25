@@ -1,7 +1,7 @@
 // Custom SCSS for Syracuse Research Computing
 
-// Adjust sidebar width - responsive approach
-@media (min-width: 50rem) {
+// Only customize sidebar on LARGE screens - let theme handle mobile/zoom
+@media (min-width: 66.5rem) {
   .side-bar {
     width: 16%;
     min-width: 200px;
@@ -13,49 +13,15 @@
   }
 }
 
-// Ensure main content is fully responsive
-.main-content {
-  padding-left: 2rem;
-  padding-right: 2rem;
-  max-width: 100%;
-  width: 100%;
-}
-
-// Mobile: reduce padding
-@media (max-width: 49.99rem) {
-  .main-content {
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
-  
-  // Ensure tables scroll on mobile
-  table {
-    display: block;
-    overflow-x: auto;
-    white-space: nowrap;
-    -webkit-overflow-scrolling: touch;
-  }
-  
-  // Ensure code blocks scroll
-  pre {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-  }
-}
-
-// Remove all !important flags that might break zooming
-.main-content {
-  overflow-wrap: break-word;
-  word-wrap: break-word;
-  word-break: break-word;
-}
+// At medium sizes, let just-the-docs handle it naturally
+// Don't override anything - let theme's responsive behavior work
 
 // Site title color
 .site-title {
   color: #F76900 !important;
 }
 
-// Code block styling
+// Code block styling with good contrast
 pre {
   background-color: #ffffff !important;
   border: 1px solid #ddd !important;
@@ -67,40 +33,23 @@ code {
   color: #000E54 !important;
 }
 
-// Fix list indentation
-.main-content ul,
-.main-content ol {
-  margin-left: 1.5rem;
-}
-
-// No text indent on paragraphs
-.main-content p {
-  text-indent: 0;
-}
-
 // Responsive images
 img {
   max-width: 100%;
   height: auto;
 }
 
-// Make callout boxes responsive
-.highlight,
-.note,
-.warning,
-.important {
-  max-width: 100%;
+// Ensure content doesn't overflow
+.main-content {
   overflow-wrap: break-word;
+  word-wrap: break-word;
 }
 
-// Fix content width to be truly responsive
+// Make tables scroll on small screens
 @media (max-width: 66.5rem) {
-  .main {
-    max-width: 100%;
+  table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
   }
-}
-
-// Ensure no fixed widths break zoom
-* {
-  max-width: 100%;
 }

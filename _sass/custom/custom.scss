@@ -3,70 +3,63 @@
 // Adjust sidebar width - responsive approach
 @media (min-width: 50rem) {
   .side-bar {
-    width: 16% !important;
-    min-width: 200px !important;
-    max-width: 240px !important;
+    width: 16%;
+    min-width: 200px;
+    max-width: 240px;
   }
   
   .main {
-    margin-left: 16% !important;
-    max-width: calc(84% - 2rem) !important;
+    margin-left: 16%;
   }
 }
 
-// Mobile-specific fixes
-@media (max-width: 49.99rem) {
-  .main-content {
-    padding-left: 1rem !important;
-    padding-right: 1rem !important;
-    max-width: 100% !important;
-  }
-  
-  // Ensure tables scroll on mobile
-  table {
-    display: block !important;
-    overflow-x: auto !important;
-    white-space: nowrap !important;
-  }
-  
-  // Ensure code blocks wrap or scroll on mobile
-  pre {
-    overflow-x: auto !important;
-    max-width: 100% !important;
-  }
-  
-  // Prevent text from overflowing
-  .main-content {
-    overflow-wrap: break-word !important;
-    word-wrap: break-word !important;
-  }
-}
-
-// Ensure main content area doesn't have extra padding
+// Ensure main content is fully responsive
 .main-content {
   padding-left: 2rem;
   padding-right: 2rem;
   max-width: 100%;
+  width: 100%;
 }
 
 // Mobile: reduce padding
 @media (max-width: 49.99rem) {
   .main-content {
-    padding-left: 1rem !important;
-    padding-right: 1rem !important;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  // Ensure tables scroll on mobile
+  table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  // Ensure code blocks scroll
+  pre {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
   }
 }
 
-// Site title color fix
+// Remove all !important flags that might break zooming
+.main-content {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
+}
+
+// Site title color
 .site-title {
   color: #F76900 !important;
 }
 
-// Ensure good contrast on code blocks
+// Code block styling
 pre {
   background-color: #ffffff !important;
   border: 1px solid #ddd !important;
-  overflow-x: auto !important;
+  overflow-x: auto;
 }
 
 code {
@@ -77,25 +70,37 @@ code {
 // Fix list indentation
 .main-content ul,
 .main-content ol {
-  margin-left: 1.5rem !important;
+  margin-left: 1.5rem;
 }
 
-// Ensure paragraphs don't have weird indentation
+// No text indent on paragraphs
 .main-content p {
-  text-indent: 0 !important;
+  text-indent: 0;
 }
 
-// Make sure callout boxes don't overflow on mobile
+// Responsive images
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+// Make callout boxes responsive
 .highlight,
 .note,
 .warning,
 .important {
-  max-width: 100% !important;
-  overflow-wrap: break-word !important;
+  max-width: 100%;
+  overflow-wrap: break-word;
 }
 
-// Ensure images are responsive
-img {
-  max-width: 100% !important;
-  height: auto !important;
+// Fix content width to be truly responsive
+@media (max-width: 66.5rem) {
+  .main {
+    max-width: 100%;
+  }
+}
+
+// Ensure no fixed widths break zoom
+* {
+  max-width: 100%;
 }

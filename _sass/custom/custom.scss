@@ -1,18 +1,55 @@
 // Custom SCSS for Syracuse Research Computing
-// Minimal overrides - let just-the-docs handle all responsive behavior
 
-// SU Brand Colors Only
+// Only customize sidebar on LARGE screens - let theme handle mobile/zoom
+@media (min-width: 66.5rem) {
+  .side-bar {
+    width: 16%;
+    min-width: 200px;
+    max-width: 240px;
+  }
+  
+  .main {
+    margin-left: 16%;
+  }
+}
+
+// At medium sizes, let just-the-docs handle it naturally
+// Don't override anything - let theme's responsive behavior work
+
+// Site title color
 .site-title {
   color: #F76900 !important;
 }
 
-// Code block styling for accessibility
+// Code block styling with good contrast
 pre {
   background-color: #ffffff !important;
   border: 1px solid #ddd !important;
+  overflow-x: auto;
 }
 
 code {
   background-color: #f4f4f4 !important;
   color: #000E54 !important;
+}
+
+// Responsive images
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+// Ensure content doesn't overflow
+.main-content {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
+// Make tables scroll on small screens
+@media (max-width: 66.5rem) {
+  table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
 }

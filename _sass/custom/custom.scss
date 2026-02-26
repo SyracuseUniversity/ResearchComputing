@@ -1,33 +1,40 @@
 // Custom SCSS for Syracuse Research Computing
 
-// Make sidebar width responsive using clamp() - scales smoothly with zoom
-@media (min-width: 66.5rem) {
+// Force hamburger menu at higher threshold to handle zoom better
+// 80rem = ~1280px, so at 150% zoom on 1920px screen, it will hamburger
+@media (min-width: 80rem) {
   .side-bar {
-    // Responsive width: min 200px, preferred 16vw, max 240px
-    // This scales with viewport/zoom automatically
-    width: clamp(200px, 16vw, 240px) !important;
+    width: 16%;
+    min-width: 200px;
+    max-width: 240px;
   }
   
   .main {
-    // Match the sidebar width
-    margin-left: clamp(200px, 16vw, 240px) !important;
+    margin-left: 16%;
   }
 }
 
-// Ensure sidebar collapses properly below breakpoint
-@media (max-width: 66.49rem) {
+// Below 80rem: force mobile/hamburger mode
+@media (max-width: 79.99rem) {
+  .side-bar {
+    display: none;
+  }
+  
+  .site-nav {
+    display: block !important;
+  }
+  
   .main {
-    margin-left: 0 !important;
+    margin-left: 0;
+    max-width: 100%;
   }
 }
 
-// Ensure main content area is responsive
+// Ensure main content is responsive
 .main-content {
   padding-left: 2rem;
   padding-right: 2rem;
   max-width: 100%;
-  overflow-wrap: break-word;
-  word-wrap: break-word;
 }
 
 // Mobile: reduce padding
@@ -37,17 +44,14 @@
     padding-right: 1rem;
   }
   
-  // Scrollable tables on mobile
   table {
     display: block;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
   }
   
-  // Scrollable code blocks
   pre {
     overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
   }
 }
 
@@ -56,11 +60,10 @@
   color: #F76900 !important;
 }
 
-// Code block styling for accessibility
+// Code blocks
 pre {
   background-color: #ffffff !important;
   border: 1px solid #ddd !important;
-  overflow-x: auto;
 }
 
 code {
@@ -68,28 +71,13 @@ code {
   color: #000E54 !important;
 }
 
-// Responsive images
+// Responsive content
+.main-content {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
 img {
   max-width: 100%;
   height: auto;
-}
-
-// Fix list indentation
-.main-content ul,
-.main-content ol {
-  margin-left: 1.5rem;
-}
-
-// No weird paragraph indents
-.main-content p {
-  text-indent: 0;
-}
-
-// Callout boxes responsive
-.highlight,
-.note,
-.warning,
-.important {
-  max-width: 100%;
-  overflow-wrap: break-word;
 }

@@ -1,7 +1,7 @@
 // Custom SCSS for Syracuse Research Computing
 
-// Force hamburger menu at higher threshold to handle zoom better
-// 80rem = ~1280px, so at 150% zoom on 1920px screen, it will hamburger
+// Only customize sidebar on VERY large screens
+// Below this, let just-the-docs handle responsive behavior naturally
 @media (min-width: 80rem) {
   .side-bar {
     width: 16%;
@@ -13,23 +13,10 @@
   }
 }
 
-// Below 80rem: force mobile/hamburger mode
-@media (max-width: 79.99rem) {
-  .side-bar {
-    display: none;
-  }
-  
-  .site-nav {
-    display: block !important;
-  }
-  
-  .main {
-    margin-left: 0;
-    max-width: 100%;
-  }
-}
+// Don't override anything below 80rem - let just-the-docs do its thing
+// This allows the theme's natural hamburger menu to work
 
-// FIX: Make sidebar content wrap and respect width
+// Make sidebar content wrap
 .side-bar {
   overflow-wrap: break-word !important;
   word-wrap: break-word !important;
@@ -38,7 +25,7 @@
 .nav-list-link {
   overflow-wrap: break-word !important;
   word-wrap: break-word !important;
-  white-space: normal !important;  // Allow text to wrap instead of single line
+  white-space: normal !important;
 }
 
 .site-title {

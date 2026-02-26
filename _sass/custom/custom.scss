@@ -1,24 +1,27 @@
 // Custom SCSS for Syracuse Research Computing
 
-// Strategy: Make sidebar narrower on desktop, but collapse to hamburger EARLIER
-// This avoids the cramped 150% zoom issue
-
-// Only show sidebar on VERY large screens (>90rem = ~1440px)
-// At 150% zoom on 1920px screen, this triggers hamburger
-@media (min-width: 90rem) {
+// Make sidebar width responsive using clamp() - scales smoothly with zoom
+@media (min-width: 66.5rem) {
   .side-bar {
-    width: 220px !important;
+    // Responsive width: min 200px, preferred 16vw, max 240px
+    // This scales with viewport/zoom automatically
+    width: clamp(200px, 16vw, 240px) !important;
   }
   
   .main {
-    margin-left: 220px !important;
+    // Match the sidebar width
+    margin-left: clamp(200px, 16vw, 240px) !important;
   }
 }
 
-// Below 90rem: use just-the-docs mobile mode (hamburger)
-// This catches 150% zoom and uses hamburger instead of cramped sidebar
+// Ensure sidebar collapses properly below breakpoint
+@media (max-width: 66.49rem) {
+  .main {
+    margin-left: 0 !important;
+  }
+}
 
-// Ensure main content is responsive
+// Ensure main content area is responsive
 .main-content {
   padding-left: 2rem;
   padding-right: 2rem;
@@ -34,12 +37,14 @@
     padding-right: 1rem;
   }
   
+  // Scrollable tables on mobile
   table {
     display: block;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
   }
   
+  // Scrollable code blocks
   pre {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
@@ -51,10 +56,11 @@
   color: #F76900 !important;
 }
 
-// Code blocks
+// Code block styling for accessibility
 pre {
   background-color: #ffffff !important;
   border: 1px solid #ddd !important;
+  overflow-x: auto;
 }
 
 code {
@@ -68,12 +74,22 @@ img {
   height: auto;
 }
 
-// Lists
+// Fix list indentation
 .main-content ul,
 .main-content ol {
   margin-left: 1.5rem;
 }
 
+// No weird paragraph indents
 .main-content p {
   text-indent: 0;
+}
+
+// Callout boxes responsive
+.highlight,
+.note,
+.warning,
+.important {
+  max-width: 100%;
+  overflow-wrap: break-word;
 }

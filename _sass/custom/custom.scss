@@ -1,11 +1,11 @@
 // Custom SCSS for Syracuse Research Computing
 
-// Force hamburger menu at higher threshold to handle zoom better
-// 80rem = ~1280px, so at 150% zoom on 1920px screen, it will hamburger
-@media (min-width: 80rem) {
+// Narrow sidebar - let it shrink naturally with zoom (no min-width!)
+@media (min-width: 66.5rem) {
   .side-bar {
     width: 16%;
     max-width: 240px;
+    // Removed min-width - this was causing the cutoff at 150% zoom!
   }
   
   .main {
@@ -13,23 +13,7 @@
   }
 }
 
-// Below 80rem: force mobile/hamburger mode
-@media (max-width: 79.99rem) {
-  .side-bar {
-    display: none;
-  }
-  
-  .site-nav {
-    display: block !important;
-  }
-  
-  .main {
-    margin-left: 0;
-    max-width: 100%;
-  }
-}
-
-// Ensure main content is responsive
+// Ensure main content doesn't have extra padding causing indentation
 .main-content {
   padding-left: 2rem;
   padding-right: 2rem;
@@ -51,15 +35,16 @@
   
   pre {
     overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
   }
 }
 
-// Site title color
+// Site title color fix
 .site-title {
   color: #F76900 !important;
 }
 
-// Code blocks
+// Ensure good contrast on code blocks
 pre {
   background-color: #ffffff !important;
   border: 1px solid #ddd !important;
@@ -70,12 +55,24 @@ code {
   color: #000E54 !important;
 }
 
-// Responsive content
+// Fix list indentation
+.main-content ul,
+.main-content ol {
+  margin-left: 1.5rem;
+}
+
+// Ensure paragraphs don't have weird indentation
+.main-content p {
+  text-indent: 0;
+}
+
+// Ensure content wraps properly
 .main-content {
   overflow-wrap: break-word;
   word-wrap: break-word;
 }
 
+// Responsive images
 img {
   max-width: 100%;
   height: auto;

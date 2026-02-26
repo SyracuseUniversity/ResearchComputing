@@ -29,11 +29,30 @@
   }
 }
 
+// FIX: Make sidebar content wrap and respect width
+.side-bar {
+  overflow-wrap: break-word !important;
+  word-wrap: break-word !important;
+}
+
+.nav-list-link {
+  overflow-wrap: break-word !important;
+  word-wrap: break-word !important;
+  white-space: normal !important;  // Allow text to wrap instead of single line
+}
+
+.site-title {
+  overflow-wrap: break-word !important;
+  word-wrap: break-word !important;
+}
+
 // Ensure main content is responsive
 .main-content {
   padding-left: 2rem;
   padding-right: 2rem;
   max-width: 100%;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
 }
 
 // Mobile: reduce padding
@@ -70,12 +89,7 @@ code {
   color: #000E54 !important;
 }
 
-// Responsive content
-.main-content {
-  overflow-wrap: break-word;
-  word-wrap: break-word;
-}
-
+// Responsive images
 img {
   max-width: 100%;
   height: auto;

@@ -2,7 +2,7 @@
 
 // Force hamburger menu at higher threshold to handle zoom better
 // 80rem = ~1280px, so at 150% zoom on 1920px screen, it will hamburger
-@media {
+@media (min-width: 80rem) {
   .side-bar {
     width: 16%;
     max-width: 240px;

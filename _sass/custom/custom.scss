@@ -1,7 +1,9 @@
 // Custom SCSS for Syracuse Research Computing
 
-// Only customize sidebar on LARGE screens - let theme handle mobile/zoom
+// Adjust the breakpoint for hamburger menu to trigger earlier
+// This fixes the 150-200% zoom range issue
 @media (min-width: 66.5rem) {
+  // Only show sidebar on truly large screens
   .side-bar {
     width: 16%;
     min-width: 200px;
@@ -13,24 +15,73 @@
   }
 }
 
-// At medium sizes, let just-the-docs handle it naturally
-// Don't override anything - let theme's responsive behavior work
+// Between 50rem and 66.5rem: hide sidebar, show hamburger
+// This catches the 150-200% zoom range
+@media (max-width: 66.49rem) {
+  .side-bar {
+    // Let just-the-docs collapse to mobile view
+    position: fixed;
+    transform: translateX(-100%);
+  }
+  
+  .main {
+    margin-left: 0;
+  }
+  
+  // Ensure nav toggle (hamburger) shows
+  .site-nav {
+    display: block;
+  }
+}
+
+// Ensure main content is fully responsive at all zoom levels
+.main-content {
+  padding-left: 2rem;
+  padding-right: 2rem;
+  max-width: 100%;
+}
+
+// Mobile: reduce padding
+@media (max-width: 49.99rem) {
+  .main-content {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  // Scrollable tables on small screens
+  table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  // Scrollable code blocks
+  pre {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
 
 // Site title color
 .site-title {
   color: #F76900 !important;
 }
 
-// Code block styling with good contrast
+// Code block styling
 pre {
   background-color: #ffffff !important;
   border: 1px solid #ddd !important;
-  overflow-x: auto;
 }
 
 code {
   background-color: #f4f4f4 !important;
   color: #000E54 !important;
+}
+
+// Ensure content wraps
+.main-content {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
 }
 
 // Responsive images
@@ -39,17 +90,12 @@ img {
   height: auto;
 }
 
-// Ensure content doesn't overflow
-.main-content {
-  overflow-wrap: break-word;
-  word-wrap: break-word;
+// Lists
+.main-content ul,
+.main-content ol {
+  margin-left: 1.5rem;
 }
 
-// Make tables scroll on small screens
-@media (max-width: 66.5rem) {
-  table {
-    display: block;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-  }
+.main-content p {
+  text-indent: 0;
 }

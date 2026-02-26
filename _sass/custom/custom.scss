@@ -1,7 +1,6 @@
 // Custom SCSS for Syracuse Research Computing
 
-// Only customize sidebar on VERY large screens
-// Below this, let just-the-docs handle responsive behavior naturally
+// Only customize sidebar on very large screens
 @media (min-width: 80rem) {
   .side-bar {
     width: 16%;
@@ -12,9 +11,6 @@
     margin-left: 16%;
   }
 }
-
-// Don't override anything below 80rem - let just-the-docs do its thing
-// This allows the theme's natural hamburger menu to work
 
 // Make sidebar content wrap
 .side-bar {
@@ -33,11 +29,15 @@
   word-wrap: break-word !important;
 }
 
-// Ensure main content is responsive
+// IMPORTANT: Let content use full available width
+.main-content-wrap {
+  max-width: 100% !important;
+}
+
 .main-content {
   padding-left: 2rem;
   padding-right: 2rem;
-  max-width: 100%;
+  max-width: 100% !important;  // Use full width instead of theme's default constraint
   overflow-wrap: break-word;
   word-wrap: break-word;
 }

@@ -29,17 +29,31 @@
   word-wrap: break-word !important;
 }
 
-// IMPORTANT: Let content use full available width
-.main-content-wrap {
-  max-width: 100% !important;
-}
-
+// Ensure main content wraps EVERYTHING
 .main-content {
   padding-left: 2rem;
   padding-right: 2rem;
-  max-width: 100% !important;  // Use full width instead of theme's default constraint
-  overflow-wrap: break-word;
-  word-wrap: break-word;
+  max-width: 100% !important;
+  overflow-wrap: break-word !important;
+  word-wrap: break-word !important;
+  word-break: break-word !important;
+}
+
+// Make sure ALL text elements wrap
+.main-content p,
+.main-content li,
+.main-content td,
+.main-content th,
+.main-content div,
+.main-content span {
+  overflow-wrap: break-word !important;
+  word-wrap: break-word !important;
+  word-break: break-word !important;
+}
+
+// Content wrapper uses full width
+.main-content-wrap {
+  max-width: 100% !important;
 }
 
 // Mobile: reduce padding
@@ -69,11 +83,13 @@
 pre {
   background-color: #ffffff !important;
   border: 1px solid #ddd !important;
+  overflow-x: auto !important;
 }
 
 code {
   background-color: #f4f4f4 !important;
   color: #000E54 !important;
+  word-break: break-all !important;
 }
 
 // Responsive images

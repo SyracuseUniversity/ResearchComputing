@@ -1,14 +1,32 @@
 // Custom SCSS for Syracuse Research Computing
 
-// Sidebar: Always 16% when visible, no breakpoint constraints
-// Let just-the-docs decide when to show hamburger
-.side-bar {
-  width: 16% !important;
-  max-width: 240px !important;
+// Force hamburger menu at higher threshold to handle zoom better
+// 80rem = ~1280px, so at 150% zoom on 1920px screen, it will hamburger
+@media {
+  .side-bar {
+    width: 16%;
+    max-width: 240px;
+  }
+  
+  .main {
+    margin-left: 16%;
+  }
 }
 
-.main {
-  margin-left: 16% !important;
+// Below 80rem: force mobile/hamburger mode
+@media (max-width: 79.99rem) {
+  .side-bar {
+    display: none;
+  }
+  
+  .site-nav {
+    display: block !important;
+  }
+  
+  .main {
+    margin-left: 0;
+    max-width: 100%;
+  }
 }
 
 // Ensure main content is responsive
@@ -16,8 +34,6 @@
   padding-left: 2rem;
   padding-right: 2rem;
   max-width: 100%;
-  overflow-wrap: break-word;
-  word-wrap: break-word;
 }
 
 // Mobile: reduce padding
@@ -35,7 +51,6 @@
   
   pre {
     overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
   }
 }
 
@@ -55,18 +70,13 @@ code {
   color: #000E54 !important;
 }
 
-// Responsive images
+// Responsive content
+.main-content {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
 img {
   max-width: 100%;
   height: auto;
-}
-
-// Lists
-.main-content ul,
-.main-content ol {
-  margin-left: 1.5rem;
-}
-
-.main-content p {
-  text-indent: 0;
 }

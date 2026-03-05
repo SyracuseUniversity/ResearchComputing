@@ -5,7 +5,7 @@ nav_order: 1
 permalink: /
 ---
 
-![Syracuse Research Computing](https://researchcomputing.syr.edu/wp-content/uploads/cropped-waveform-700x441.jpg)
+![Syracuse Research Computing](https://github.com/SyracuseUniversity/ResearchComputing/blob/main/assets/images/syracuse_campus.jpg)
 
 # Syracuse Research Computing Documentation
 

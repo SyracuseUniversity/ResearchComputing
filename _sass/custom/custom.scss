@@ -1,89 +1,12 @@
 // Custom SCSS for Syracuse Research Computing
+// Professional styling with bulletproof responsiveness
 
-// Show sidebar on large screens, hamburger at 150% zoom
-// 80rem = ~1280px
-@media (min-width: 80rem) {
-  .side-bar {
-    width: 16%;
-    max-width: 240px;
-    overflow: hidden;  // Prevent text from spilling out if cramped
-  }
-  
-  .main {
-    margin-left: 16%;
-  }
-}
-
-// Below 80rem: let just-the-docs handle hamburger menu naturally
-
-// Make sidebar content wrap
-.side-bar {
-  overflow-wrap: break-word !important;
-  word-wrap: break-word !important;
-}
-
-.nav-list-link {
-  overflow-wrap: break-word !important;
-  word-wrap: break-word !important;
-  white-space: normal !important;
-}
-
-.site-title {
-  overflow-wrap: break-word !important;
-  word-wrap: break-word !important;
-}
-
-// Ensure main content wraps everything
-.main-content {
-  padding-left: 2rem;
-  padding-right: 2rem;
-  max-width: 100% !important;
-  overflow-wrap: break-word !important;
-  word-wrap: break-word !important;
-  word-break: break-word !important;
-}
-
-// Make sure ALL text elements wrap
-.main-content p,
-.main-content li,
-.main-content td,
-.main-content th,
-.main-content div,
-.main-content span {
-  overflow-wrap: break-word !important;
-  word-wrap: break-word !important;
-  word-break: break-word !important;
-}
-
-// Content wrapper uses full width
-.main-content-wrap {
-  max-width: 100% !important;
-}
-
-// Mobile: reduce padding
-@media (max-width: 49.99rem) {
-  .main-content {
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
-  
-  table {
-    display: block;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-  }
-  
-  pre {
-    overflow-x: auto;
-  }
-}
-
-// Site title color
+// Syracuse University branding
 .site-title {
   color: #F76900 !important;
 }
 
-// Code blocks
+// Accessible code blocks
 pre {
   background-color: #ffffff !important;
   border: 1px solid #ddd !important;
@@ -93,7 +16,27 @@ pre {
 code {
   background-color: #f4f4f4 !important;
   color: #000E54 !important;
-  word-break: break-all !important;
+}
+
+// Content wrapping
+.main-content {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
+.main-content p,
+.main-content li,
+.main-content td,
+.main-content th {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
+// Sidebar text wrapping
+.nav-list-link {
+  white-space: normal !important;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
 }
 
 // Responsive images
@@ -102,18 +45,16 @@ img {
   height: auto;
 }
 
-// Make header image smaller on desktop, full-width on mobile
-.main-content > p:first-of-type > img,
-.main-content img[alt*="Syracuse Research Computing"] {
-  max-width: 100%;
-  height: auto;
-}
-
-@media (min-width: 50rem) {
-  .main-content > p:first-of-type > img,
-  .main-content img[alt*="Syracuse Research Computing"] {
-    max-width: 600px;  // Smaller on desktop
+// Scrollable tables on mobile
+@media (max-width: 49.99rem) {
+  table {
     display: block;
-    margin-left: 0;    // Left-aligned instead of centered
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .main-content {
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
 }

@@ -1,11 +1,12 @@
 // Custom SCSS for Syracuse Research Computing
 
-// Only show sidebar on VERY large screens
-// 95rem = ~1520px, so 150% zoom triggers hamburger
-@media (min-width: 95rem) {
+// Show sidebar on large screens, hamburger at 150% zoom
+// 80rem = ~1280px
+@media (min-width: 80rem) {
   .side-bar {
     width: 16%;
     max-width: 240px;
+    overflow: hidden;  // Prevent text from spilling out if cramped
   }
   
   .main {
@@ -13,7 +14,7 @@
   }
 }
 
-// Below 95rem: let just-the-docs handle hamburger menu naturally
+// Below 80rem: let just-the-docs handle hamburger menu naturally
 
 // Make sidebar content wrap
 .side-bar {

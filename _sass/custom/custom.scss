@@ -101,3 +101,19 @@ img {
   max-width: 100%;
   height: auto;
 }
+
+// Make header image smaller on desktop, full-width on mobile
+.main-content > p:first-of-type > img,
+.main-content img[alt*="Syracuse Research Computing"] {
+  max-width: 100%;
+  height: auto;
+}
+
+@media (min-width: 50rem) {
+  .main-content > p:first-of-type > img,
+  .main-content img[alt*="Syracuse Research Computing"] {
+    max-width: 600px;  // Smaller on desktop
+    display: block;
+    margin-left: 0;    // Left-aligned instead of centered
+  }
+}

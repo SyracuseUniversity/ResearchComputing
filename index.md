@@ -13,17 +13,17 @@ Welcome! This is your central hub for Syracuse University's research computing r
 
 ---
 
-## 🚀 Quick Start
+## Quick Start
 
 **Need Computing Resources?**
 
-📧 **Request Access:** Email [researchcomputing@syr.edu](mailto:researchcomputing@syr.edu)
+**Request Access:** Email [researchcomputing@syr.edu](mailto:researchcomputing@syr.edu)
 
 Tell us about your research, computational needs, and any data sensitivity requirements. We'll schedule a consultation to match you to the right resource. 
 
 **Accounts are not active by default** - all access begins with consultation to ensure proper resource assignment and compliance.
 
-**[📝 Complete request guide - What to include in your email →](resources/requesting-access)**
+**[Complete request guide - What to include in your email →](resources/requesting-access)**
 
 **Our Resources:** We operate two research computing clusters (OrangeGrid and Zest), private cloud environments (AVHE and Crush), GPU infrastructure (SUrge), and support cloud partnerships. Learn more in our [complete resource overview](resources-overview).
 
@@ -31,7 +31,7 @@ Tell us about your research, computational needs, and any data sensitivity requi
 
 **Just Received Your Credentials?**
 
-📖 **Start Here:** [Getting Started Guide](getting-started)
+**Start Here:** [Getting Started Guide](getting-started)
 
 Your welcome email contains login information and instructions specific to your assigned resource.
 
@@ -39,13 +39,13 @@ Your welcome email contains login information and instructions specific to your 
 
 **Looking for Something Specific?**
 
-- [🖥️ Computing Resources Overview](resources-overview)
-- [📊 OrangeGrid Specs](resources/orangegrid-specifications) | [📊 Zest Specs](resources/zest-specifications)
-- [💻 OrangeGrid Examples](https://github.com/SyracuseUniversity/OrangeGridExamples){:target="_blank"} | [💻 Zest Examples](https://github.com/SyracuseUniversity/ZestExamples){:target="_blank"}
+- [Computing Resources Overview](resources-overview)
+- [OrangeGrid Specs](resources/orangegrid-specifications) | [Zest Specs](resources/zest-specifications)
+- [OrangeGrid Examples](https://github.com/SyracuseUniversity/OrangeGridExamples){:target="_blank"} | [Zest Examples](https://github.com/SyracuseUniversity/ZestExamples){:target="_blank"}
 
 ---
 
-## 💡 What's Different About Research Computing?
+## What's Different About Research Computing?
 
 Coming from a laptop or desktop? Research clusters work differently:
 
@@ -67,7 +67,7 @@ Coming from a laptop or desktop? Research clusters work differently:
 
 ---
 
-## 🖥️ Our Computing Resources
+## Our Computing Resources
 
 We operate two research computing clusters, private cloud environments, GPU infrastructure, and support cloud partnerships:
 
@@ -81,7 +81,7 @@ We operate two research computing clusters, private cloud environments, GPU infr
 
 ---
 
-## 📊 Cluster Quick Reference
+## Cluster Quick Reference
 
 ### OrangeGrid (HTCondor)
 
@@ -119,7 +119,7 @@ scancel jobid             # Cancel job
 
 ---
 
-## 💻 Code Examples
+## Code Examples
 
 Ready-to-use job scripts:
 
@@ -134,7 +134,7 @@ git clone https://github.com/SyracuseUniversity/ZestExamples.git
 
 ---
 
-## ❓ Common Tasks
+## Common Tasks
 
 **Submit a job:**
 - OrangeGrid: `condor_submit job.sub`
@@ -161,16 +161,16 @@ rsync -avz --progress /local/data/ netid@cluster:~/data/
 
 ---
 
-## 📞 Getting Help
+## Getting Help
 
 **Request Access:**  
-📧 Email [researchcomputing@syr.edu](mailto:researchcomputing@syr.edu) with your research description, computational needs, and any data sensitivity requirements.
+Email [researchcomputing@syr.edu](mailto:researchcomputing@syr.edu) with your research description, computational needs, and any data sensitivity requirements.
 
 [Complete request guide →](resources/requesting-access)
 
 **Technical Support:**
-- 📧 Email: [researchcomputing@syr.edu](mailto:researchcomputing@syr.edu)
-- 📅 Events: [Workshops and office hours](https://researchcomputing.syr.edu/events/){:target="_blank"}
+- Email: [researchcomputing@syr.edu](mailto:researchcomputing@syr.edu)
+- Events: [Workshops and office hours](https://researchcomputing.syr.edu/events/){:target="_blank"}
 
 **External Documentation:**
 - [Slurm Documentation](https://slurm.schedmd.com/){:target="_blank"}

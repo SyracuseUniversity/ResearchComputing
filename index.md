@@ -5,7 +5,7 @@ nav_order: 1
 permalink: /
 ---
 
-![Syracuse Research Computing](https://github.com/SyracuseUniversity/ResearchComputing/blob/main/assets/images/syracuse_campus.jpg)
+![Syracuse Research Computing](https://researchcomputing.syr.edu/wp-content/uploads/cropped-waveform-700x441.jpg)
 
 # Syracuse Research Computing Documentation
 
@@ -39,9 +39,11 @@ Your welcome email contains login information and instructions specific to your 
 
 **Looking for Something Specific?**
 
-- [Computing Resources Overview](resources-overview)
-- [OrangeGrid Specs](resources/orangegrid-specifications) | [Zest Specs](resources/zest-specifications)
-- [OrangeGrid Examples](https://github.com/SyracuseUniversity/OrangeGridExamples){:target="_blank"} | [Zest Examples](https://github.com/SyracuseUniversity/ZestExamples){:target="_blank"}
+- [Computing Resources Overview](resources-overview) - All available resources explained
+- [OrangeGrid Technical Specifications](resources/orangegrid-specifications)
+- [Zest Technical Specifications](resources/zest-specifications)
+- [OrangeGrid Code Examples](https://github.com/SyracuseUniversity/OrangeGridExamples){:target="_blank"}
+- [Zest Code Examples](https://github.com/SyracuseUniversity/ZestExamples){:target="_blank"}
 
 ---
 

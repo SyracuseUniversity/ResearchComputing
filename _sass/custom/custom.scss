@@ -19,6 +19,16 @@
   background-color: transparent !important;
 }
 
+// ── Menu button: no orange highlight on hover ────────────────────────────────
+button.site-button,
+button.site-button:hover,
+button.site-button:focus {
+  background-color: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+// ─────────────────────────────────────────────────────────────────────────────
+
 // ── Aux-nav .site-button links: underline, no background, no orange ──────────
 .aux-nav-list-item a.site-button,
 .aux-nav-list-item a.site-button:visited {

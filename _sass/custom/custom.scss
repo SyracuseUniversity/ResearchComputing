@@ -6,6 +6,36 @@
   color: #F76900 !important;
 }
 
+// Make all navigation dark blue (no orange highlighting)
+.nav-list-link {
+  color: #000E54 !important;
+}
+
+.nav-list-link:hover {
+  color: #000E54 !important;  // Stay dark blue on hover
+  background-color: transparent !important;  // No background color change
+}
+
+// Top-level nav items - dark blue
+.navigation-list-link {
+  color: #000E54 !important;
+}
+
+// Aux links (top right) - dark blue
+.aux-nav .aux-nav-list-item a {
+  color: #000E54 !important;
+}
+
+.aux-nav .aux-nav-list-item a:hover {
+  color: #000E54 !important;  // Stay dark blue on hover
+}
+
+// Active page - very subtle gray background, no orange
+.nav-list-link.active {
+  background-color: #f0f0f0 !important;
+  color: #000E54 !important;
+}
+
 // Accessible code blocks
 pre {
   background-color: #ffffff !important;

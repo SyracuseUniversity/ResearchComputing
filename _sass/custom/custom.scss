@@ -50,6 +50,17 @@ button.site-button:focus {
 }
 // ─────────────────────────────────────────────────────────────────────────────
 
+// H2 headings - SU orange
+.main-content h2 {
+  color: #F76900 !important;
+}
+
+// Hamburger icon - SU orange
+.site-button svg {
+  color: #F76900 !important;
+  stroke: #F76900 !important;
+}
+
 // Make all navigation dark blue (no orange highlighting)
 .nav-list-link {
   color: #000E54 !important;

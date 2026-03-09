@@ -19,23 +19,24 @@
   background-color: transparent !important;
 }
 
-// ── Header / aux-nav links: underline always, transparent hover ──────────────
-.site-header a,
-.aux-nav-list-item a,
-.aux-nav-list-item a:visited {
-  text-decoration: underline !important;
+// ── Aux-nav .site-button links: underline, no background, no orange ──────────
+.aux-nav-list-item a.site-button,
+.aux-nav-list-item a.site-button:visited {
   background-color: transparent !important;
-  opacity: 1 !important;
+  color: #000E54 !important;
+  border: none !important;
+  box-shadow: none !important;
+  text-decoration: underline !important;
+  padding: 0 0.5rem !important;
 }
 
-.site-header a:hover,
-.site-header a:focus,
-.aux-nav-list-item a:hover,
-.aux-nav-list-item a:focus {
-  text-decoration: underline !important;
+.aux-nav-list-item a.site-button:hover,
+.aux-nav-list-item a.site-button:focus {
   background-color: transparent !important;
-  opacity: 1 !important;
   color: #000E54 !important;
+  border: none !important;
+  box-shadow: none !important;
+  text-decoration: underline !important;
 }
 // ─────────────────────────────────────────────────────────────────────────────
 

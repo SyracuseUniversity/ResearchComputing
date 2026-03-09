@@ -6,15 +6,24 @@
   color: #F76900 !important;
 }
 
-// Remove hover effect on logo
+// Remove ALL hover effects on logo area
 .site-logo,
-.site-logo:hover {
+.site-logo:hover,
+.site-logo:focus {
   opacity: 1 !important;
   background-color: transparent !important;
 }
 
-.site-header a:hover {
+.site-header,
+.site-header:hover {
   background-color: transparent !important;
+}
+
+.site-header a,
+.site-header a:hover,
+.site-header a:focus {
+  background-color: transparent !important;
+  opacity: 1 !important;
 }
 
 // Make all navigation dark blue (no orange highlighting)
@@ -23,8 +32,8 @@
 }
 
 .nav-list-link:hover {
-  color: #000E54 !important;  // Stay dark blue on hover
-  background-color: transparent !important;  // No background color change
+  color: #000E54 !important;
+  background-color: transparent !important;
 }
 
 // Top-level nav items - dark blue
@@ -38,12 +47,22 @@
 }
 
 .aux-nav .aux-nav-list-item a:hover {
-  color: #000E54 !important;  // Stay dark blue on hover
+  color: #000E54 !important;
 }
 
 // Active page - very subtle gray background, no orange
 .nav-list-link.active {
   background-color: #f0f0f0 !important;
+  color: #000E54 !important;
+}
+
+// FIX: Search results - proper hover contrast
+.search-result-link:hover {
+  background-color: #f0f0f0 !important;  // Light gray, not same as text
+  color: #000E54 !important;
+}
+
+.search-result-title:hover {
   color: #000E54 !important;
 }
 

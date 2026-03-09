@@ -1,49 +1,46 @@
-// Syracuse University Color Scheme for just-the-docs
+// Syracuse University Color Scheme - Professional Clean Version
 
 // SU Brand Colors
 $su-blue: #000E54;
 $su-orange: #F76900;
 $su-white: #FFFFFF;
+$su-light-gray: #f5f5f5;
+
+// Sidebar - clean white/light gray instead of dark blue
+$sidebar-color: $su-white;
+$nav-child-link-color: $su-blue;  // Dark blue text instead of white
+$border-color: #e5e5e5;
 
 // Primary colors
 $link-color: $su-orange;
 $btn-primary-color: $su-orange;
 
-// Site header - fix blue on blue issue
-$site-title-color: $su-orange;  // Make site title orange instead of blue
-
-// Sidebar
-$sidebar-color: $su-blue;
-$nav-child-link-color: $su-white;
-$sidebar-width: 280px;
-
 // Body and content
-$body-background-color: #f5f5f5;
-$body-text-color: #555;
+$body-background-color: $su-white;
+$body-text-color: #333;
 $body-heading-color: $su-blue;
 
-// Code blocks - white background for accessibility
-$code-background-color: #ffffff;
-$code-text-color: #000E54;
-$border-color: #ddd;
-
-// Inline code
-$inline-code-background-color: #f4f4f4;
-$inline-code-color: $su-orange;
+// Code blocks
+$code-background-color: #f8f8f8;
+$code-linenumber-color: #666;
 
 // Tables
 $table-background-color: $su-white;
-
-// Buttons
-$btn-primary-color: $su-orange;
 
 // Search
 $search-background-color: $su-white;
 $search-result-preview-color: #555;
 
-// Feedback/Callouts - ensure good contrast
-$feedback-color: $su-orange;
+// Navigation
+$nav-list-link-color: $su-blue;  // Dark blue text
+$nav-list-expander-color: $su-blue;
 
-// Make sure all text on dark blue has white/light color
-$nav-list-link-color: $su-white;
-$nav-list-expander-color: $su-white;
+// Remove hover highlighting or make it subtle
+$nav-list-link-color-hover: $su-blue;  // Stay same color, no orange
+$nav-list-link-color-active: $su-blue;
+
+// Top navigation (aux links)
+$aux-link-color: $su-blue;  // Dark blue
+
+// Feedback/Callouts
+$feedback-color: $su-orange;

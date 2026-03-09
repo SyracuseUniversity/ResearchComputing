@@ -1,7 +1,7 @@
 // Custom SCSS for Syracuse Research Computing
 // Professional styling with bulletproof responsiveness
-
 // Syracuse University branding
+
 .site-title {
   color: #F76900 !important;
 }
@@ -19,16 +19,32 @@
   background-color: transparent !important;
 }
 
+// ── Header / aux-nav links: underline always, transparent hover ──────────────
 .site-header a,
-.site-header a:hover,
-.site-header a:focus {
+.aux-nav-list-item a,
+.aux-nav-list-item a:visited {
+  text-decoration: underline !important;
   background-color: transparent !important;
   opacity: 1 !important;
 }
 
+.site-header a:hover,
+.site-header a:focus,
+.aux-nav-list-item a:hover,
+.aux-nav-list-item a:focus {
+  text-decoration: underline !important;
+  background-color: transparent !important;
+  opacity: 1 !important;
+  color: #000E54 !important;
+}
+// ─────────────────────────────────────────────────────────────────────────────
+
 // Make all navigation dark blue (no orange highlighting)
 .nav-list-link {
   color: #000E54 !important;
+  white-space: normal !important;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
 }
 
 .nav-list-link:hover {
@@ -58,7 +74,7 @@
 
 // FIX: Search results - proper hover contrast
 .search-result-link:hover {
-  background-color: #f0f0f0 !important;  // Light gray, not same as text
+  background-color: #f0f0f0 !important;
   color: #000E54 !important;
 }
 
@@ -92,13 +108,6 @@ code {
   word-wrap: break-word;
 }
 
-// Sidebar text wrapping
-.nav-list-link {
-  white-space: normal !important;
-  overflow-wrap: break-word;
-  word-wrap: break-word;
-}
-
 // Responsive images
 img {
   max-width: 100%;
@@ -112,7 +121,7 @@ img {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
   }
-  
+
   .main-content {
     padding-left: 1rem;
     padding-right: 1rem;

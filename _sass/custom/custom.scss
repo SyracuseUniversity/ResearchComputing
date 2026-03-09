@@ -6,6 +6,17 @@
   color: #F76900 !important;
 }
 
+// Remove hover effect on logo
+.site-logo,
+.site-logo:hover {
+  opacity: 1 !important;
+  background-color: transparent !important;
+}
+
+.site-header a:hover {
+  background-color: transparent !important;
+}
+
 // Make all navigation dark blue (no orange highlighting)
 .nav-list-link {
   color: #000E54 !important;

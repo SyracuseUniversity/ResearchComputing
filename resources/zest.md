@@ -92,5 +92,5 @@ Submit jobs using Slurm batch scripts:
 
 ## Learn More
 
-📊 [Zest Technical Specifications](zest-specifications)  
-💻 [Zest Code Examples](https://github.com/SyracuseUniversity/ZestExamples){:target="_blank"}
+[Zest Technical Specifications](zest-specifications)  
+[Zest Code Examples](https://github.com/SyracuseUniversity/ZestExamples){:target="_blank"}

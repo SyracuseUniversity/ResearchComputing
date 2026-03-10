@@ -123,7 +123,7 @@ rsync -avz --progress netid@cluster:~/results/ ./local_results/
 
 {: .note }
 **Planning to move terabytes of data?**  
-📧 Contact us first: [researchcomputing@syr.edu](mailto:researchcomputing@syr.edu)
+Contact us first: [researchcomputing@syr.edu](mailto:researchcomputing@syr.edu)
 
 **Why reach out?**
 - Azure VPN connections may timeout during multi-day transfers

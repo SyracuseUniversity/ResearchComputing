@@ -30,7 +30,7 @@ Syracuse University operates two computing clusters, each optimized for differen
 
 **Examples:** Processing thousands of images, Monte Carlo simulations, batch data analysis, Ollama inference
 
-💻 [OrangeGrid Code Examples](https://github.com/SyracuseUniversity/OrangeGridExamples){:target="_blank"}
+[OrangeGrid Code Examples](https://github.com/SyracuseUniversity/OrangeGridExamples){:target="_blank"}
 
 ---
 
@@ -50,7 +50,7 @@ Syracuse University operates two computing clusters, each optimized for differen
 
 **Examples:** GROMACS simulations, deep learning training, computational fluid dynamics, molecular dynamics
 
-💻 [Zest Code Examples](https://github.com/SyracuseUniversity/ZestExamples){:target="_blank"}
+[Zest Code Examples](https://github.com/SyracuseUniversity/ZestExamples){:target="_blank"}
 
 ---
 
@@ -74,7 +74,7 @@ Syracuse University operates two computing clusters, each optimized for differen
 ## What If My Needs Change?
 
 Research evolves! If your computational needs change:
-- 📧 Email us at [researchcomputing@syr.edu](mailto:researchcomputing@syr.edu)
+- Email us at [researchcomputing@syr.edu](mailto:researchcomputing@syr.edu)
 - We can discuss moving you to a different cluster if appropriate
 - We can provide access to both clusters if your work spans different types
 - We're here to ensure you always have the right tools

@@ -30,10 +30,8 @@ print(f"Mean: {result}")
 Instead, you create files and submit them as a job.
 
 {: .warning }
-**Common Mistake for New Users**  
-When you SSH into the cluster and see a command prompt, you might think: "Great! I'm on the cluster, let me just run `python my_script.py`!"  
-**❌ This is wrong!** You're on a shared login node. Running code directly impacts all other users.  
-**✅ The right way:** Create your script, create a submission file, and submit it as a job.
+**CRITICAL: Login Nodes vs. Compute Nodes**  
+The login node is NOT where your work runs. When you SSH in, you're on a shared login node used by all researchers to submit jobs. Login nodes are ONLY for: light text editing, creating conda/UV environments, testing singularity containers load, submitting jobs, and checking job status. Do NOT run computational code, install software outside conda/UV/singularity, use IDEs, leave tmux sessions running, or keep unused SSH connections open. Your work runs on dedicated compute nodes after you submit it as a job. Need a development environment? Email [researchcomputing@syr.edu](mailto:researchcomputing@syr.edu)
 
 ### Step 1: Create your Python script
 

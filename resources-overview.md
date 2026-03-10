@@ -9,8 +9,8 @@ has_children: true
 
 {: .highlight }
 **Consultation-Based Resource Assignment**  
-We don't offer à la carte services. We work with you to understand your research needs and match you to the optimal computing solution. This ensures you have the right resources, proper support, and meet any compliance requirements.  
-**📧 Start here:** [researchcomputing@syr.edu](mailto:researchcomputing@syr.edu)
+The research computing team meets with campus researchers to understand their research needs to match them with the optimal computing solution. This ensures you have the right resources, proper support, and meet any compliance requirements.  
+**Start here:** [researchcomputing@syr.edu](mailto:researchcomputing@syr.edu)
 
 Syracuse Research Computing provides a range of computing resources to support diverse research needs:
 
@@ -74,6 +74,6 @@ Tell us if your data involves:
 
 ## Ready to Get Started?
 
-📧 Email [researchcomputing@syr.edu](mailto:researchcomputing@syr.edu) to request a consultation.
+Email [researchcomputing@syr.edu](mailto:researchcomputing@syr.edu) to request a consultation.
 
 See our complete [requesting access guide](resources/requesting-access) for what to include in your request.

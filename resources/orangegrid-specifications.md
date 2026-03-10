@@ -377,4 +377,4 @@ Adjust your `request_memory` and `request_cpus` based on actual usage to get job
 
 Questions about OrangeGrid specifications or optimal job configuration?
 
-📧 Email [researchcomputing@syr.edu](mailto:researchcomputing@syr.edu)
+Email [researchcomputing@syr.edu](mailto:researchcomputing@syr.edu)

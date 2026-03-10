@@ -82,10 +82,10 @@ You don't request "SUrge access" directly. SUrge provides the GPU infrastructure
 
 ## GPU Job Examples
 
-📁 [OrangeGrid GPU Examples](https://github.com/SyracuseUniversity/OrangeGridExamples) - PyTorch, TensorFlow, Ollama  
-📁 [Zest GPU Examples](https://github.com/SyracuseUniversity/ZestExamples) - CUDA, GPU jobs
+[OrangeGrid GPU Examples](https://github.com/SyracuseUniversity/OrangeGridExamples) - PyTorch, TensorFlow, Ollama  
+[Zest GPU Examples](https://github.com/SyracuseUniversity/ZestExamples) - CUDA, GPU jobs
 
 {: .note }
 When you request cluster access and indicate GPU needs during consultation, we'll assign you to the appropriate cluster (OrangeGrid or Zest) based on your workflow. You'll then submit GPU jobs through that cluster's scheduler, and they'll run on SUrge GPU nodes.
 
-📧 Email [researchcomputing@syr.edu](mailto:researchcomputing@syr.edu) to discuss GPU computing needs.
+Email [researchcomputing@syr.edu](mailto:researchcomputing@syr.edu) to discuss GPU computing needs.

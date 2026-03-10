@@ -13,7 +13,24 @@ Welcome! This is your central hub for Syracuse University's research computing r
 
 ---
 
-## Quick Start
+## Quick Links
+
+- [Computing Resources Overview](resources-overview) - All available resources explained
+- [OrangeGrid Code Examples](https://github.com/SyracuseUniversity/OrangeGridExamples){:target="_blank"}
+- [Zest Code Examples](https://github.com/SyracuseUniversity/ZestExamples){:target="_blank"}
+- [OrangeGrid Technical Specifications](resources/orangegrid-specifications)
+- [Zest Technical Specifications](resources/zest-specifications)
+- [Getting Started](getting-started) - Guide for new cluster users
+
+---
+
+**Just Received Your Credentials?**
+
+**Start Here:** [Getting Started Guide](getting-started)
+
+Your welcome email contains login information and instructions specific to your assigned resource.
+
+---
 
 **Need Computing Resources?**
 
@@ -26,24 +43,6 @@ Tell us about your research, computational needs, and any data sensitivity requi
 **[Complete request guide - What to include in your email →](resources/requesting-access)**
 
 **Our Resources:** We operate two research computing clusters (OrangeGrid and Zest), private cloud environments (AVHE and Crush), GPU infrastructure (SUrge), and support cloud partnerships. Learn more in our [complete resource overview](resources-overview).
-
----
-
-**Just Received Your Credentials?**
-
-**Start Here:** [Getting Started Guide](getting-started)
-
-Your welcome email contains login information and instructions specific to your assigned resource.
-
----
-
-**Looking for Something Specific?**
-
-- [Computing Resources Overview](resources-overview) - All available resources explained
-- [OrangeGrid Technical Specifications](resources/orangegrid-specifications)
-- [Zest Technical Specifications](resources/zest-specifications)
-- [OrangeGrid Code Examples](https://github.com/SyracuseUniversity/OrangeGridExamples){:target="_blank"}
-- [Zest Code Examples](https://github.com/SyracuseUniversity/ZestExamples){:target="_blank"}
 
 ---
 

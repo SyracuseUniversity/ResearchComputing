@@ -20,11 +20,10 @@ Welcome! This is your central hub for Syracuse University's research computing r
 - [Zest Code Examples](https://github.com/SyracuseUniversity/ZestExamples){:target="_blank"}
 - [OrangeGrid Technical Specifications](resources/orangegrid-specifications)
 - [Zest Technical Specifications](resources/zest-specifications)
-- [Getting Started](getting-started) - Guide for new cluster users
 
 ---
 
-**Just Received Your Credentials?**
+**Just Received Your Cluster Credentials?**
 
 **Start Here:** [Getting Started Guide](getting-started)
 

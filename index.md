@@ -5,7 +5,7 @@ nav_order: 1
 permalink: /
 ---
 
-![Syracuse Research Computing](assets/images/syracuse_campus.jpg)
+![Syracuse Research Computing](assets/images/Drone_shot_of_Syracuse_University_Campus_.jpg)
 
 # Syracuse Research Computing Documentation
 

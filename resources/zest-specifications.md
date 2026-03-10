@@ -272,4 +272,4 @@ mpirun my_parallel_program
 
 Questions about Zest specifications or optimal job configuration?
 
-📧 Email [researchcomputing@syr.edu](mailto:researchcomputing@syr.edu)
+Email [researchcomputing@syr.edu](mailto:researchcomputing@syr.edu)

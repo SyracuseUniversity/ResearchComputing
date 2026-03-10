@@ -13,7 +13,7 @@ Access to Syracuse Research Computing resources begins with a consultation. This
 
 ## The Consultation Process
 
-1. Email us at researchcomputing@syr.edu
+1. Email us at [researchcomputing@syr.edu](mailto:researchcomputing@syr.edu)
 2. We schedule a consultation (remote or in-person)
 3. We discuss your research, computational needs, and data requirements
 4. We recommend the optimal resource(s) for your work

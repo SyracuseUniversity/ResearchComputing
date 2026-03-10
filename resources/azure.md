@@ -90,7 +90,7 @@ During your consultation, we'll review:
 
 {: .highlight }
 **Interested in Azure Cloud Computing?**  
-📧 Email [researchcomputing@syr.edu](mailto:researchcomputing@syr.edu) with:
+Email [researchcomputing@syr.edu](mailto:researchcomputing@syr.edu) with:
 - Your research project and timeline
 - Why you're considering cloud computing
 - Your funding source, chartstring, and budget

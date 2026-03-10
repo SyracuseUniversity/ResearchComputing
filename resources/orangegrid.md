@@ -78,5 +78,5 @@ Submit jobs using HTCondor submit files. Each job runs independently on an avail
 
 ## Learn More
 
-📊 [OrangeGrid Technical Specifications](orangegrid-specifications)  
-💻 [OrangeGrid Code Examples](https://github.com/SyracuseUniversity/OrangeGridExamples){:target="_blank"}
+[OrangeGrid Technical Specifications](orangegrid-specifications)  
+[OrangeGrid Code Examples](https://github.com/SyracuseUniversity/OrangeGridExamples){:target="_blank"}

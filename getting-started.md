@@ -7,7 +7,7 @@ has_children: true
 # Getting Started with Syracuse Research Cluster Computing
 
 {: .note }
-**This guide is for researchers who have been provided a cluster account.** If you haven't received access yet, see our [Requesting Access](/resources/requesting-access) page to get started. Not sure if this resource is right for you? Feel free to browse this guide as a preview of what working on the cluster looks like.
+**This guide is for researchers who have been provided a cluster account.** If you haven't received access yet, see our [Requesting Access](resources/requesting-access) page to get started. Not sure if this resource is right for you? Feel free to browse this guide as a preview of what working on the cluster looks like.
 
 {: .warning }
 **CRITICAL: Login Nodes vs. Compute Nodes**  

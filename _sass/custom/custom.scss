@@ -111,21 +111,22 @@ pre {
   overflow-x: auto !important;
 }
 
-code {
-  background-color: #f4f4f4 !important;
-  color: #000E54 !important;
-}
-
-// Remove alternating row highlight in code blocks (causes contrast failure)
-.highlight tr,
-.highlight td {
+pre.highlight,
+div.highlight,
+.highlighter-rouge .highlight {
   background-color: #ffffff !important;
 }
 
-// Darken comment text for contrast
+code {
+  background-color: #ffffff !important;
+  color: #000E54 !important;
+}
+
+// Darken comment spans for WCAG contrast
 .highlight .c,
 .highlight .c1,
-.highlight .cm {
+.highlight .cm,
+span.c {
   color: #595959 !important;
 }
 

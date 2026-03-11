@@ -122,21 +122,24 @@ code {
   color: #000E54 !important;
 }
 
-// Darken comment spans for WCAG contrast
-.highlighter-rouge span.c,
-div.highlight span.c {
-  color: #595959 !important;
-  font-style: italic;
-}
-
-// Fix orange Rouge tokens (nt, nb, etc.) for WCAG contrast
+// Fix all Rouge tokens to dark blue for WCAG contrast
 div.highlight span {
   color: #000E54 !important;
 }
 
-// Restore comments to grey after broad override
-div.highlight span.c {
+// Restore comments to grey
+div.highlight span.c,
+div.highlight span.c1,
+div.highlight span.cm {
   color: #595959 !important;
+  font-style: italic;
+}
+
+// Fix low-contrast sidebar footer text
+footer.site-footer,
+footer.site-footer a {
+  color: #595959 !important;
+  font-size: 0.75rem !important;
 }
 
 // Content wrapping

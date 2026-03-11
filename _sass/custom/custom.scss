@@ -116,6 +116,19 @@ code {
   color: #000E54 !important;
 }
 
+// Remove alternating row highlight in code blocks (causes contrast failure)
+.highlight tr,
+.highlight td {
+  background-color: #ffffff !important;
+}
+
+// Darken comment text for contrast
+.highlight .c,
+.highlight .c1,
+.highlight .cm {
+  color: #595959 !important;
+}
+
 // Content wrapping
 .main-content {
   overflow-wrap: break-word;

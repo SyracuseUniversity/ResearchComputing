@@ -55,6 +55,12 @@ button.site-button:focus {
   color: #F76900 !important;
 }
 
+// Table of contents h2 - override inline style, use dark blue for contrast
+.main-content h2.text-delta {
+  color: #000E54 !important;
+  opacity: 1 !important;
+}
+
 // Hamburger icon - SU orange
 .site-button svg {
   color: #F76900 !important;
@@ -120,12 +126,6 @@ div.highlight,
 code {
   background-color: #ffffff !important;
   color: #000E54 !important;
-}
-
-// Table of contents heading
-.text-delta {
-  color: #000E54 !important;
-  font-weight: 700 !important;
 }
 
 // Fix all Rouge tokens to dark blue for WCAG contrast

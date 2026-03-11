@@ -7,7 +7,7 @@ nav_order: 3
 
 # Linux Command Line Basics
 
-The clusters run Linux and use a command-line interface. There's no clicking, no windows - just commands.
+The clusters run Linux and use command-line interface (CLI). If you are new to Linux, this means there is no clicking, no windows, and runs with just commands. Below are some Linux basics. We also recommend this [Linux Command Line Basics guide](https://ryanstutorials.net/linuxtutorial/){:target="_blank"}.
 
 ---
 

@@ -122,23 +122,21 @@ code {
   color: #000E54 !important;
 }
 
-// Darken site footer text for WCAG contrast
-.site-footer {
-  color: #595959 !important;
-}
-
-.site-footer a {
-  color: #000E54 !important;
-}
-
 // Darken comment spans for WCAG contrast
-.highlight .c,
-.highlight .c1,
-.highlight .cm,
 .highlighter-rouge span.c,
 div.highlight span.c {
   color: #595959 !important;
   font-style: italic;
+}
+
+// Fix orange Rouge tokens (nt, nb, etc.) for WCAG contrast
+div.highlight span {
+  color: #000E54 !important;
+}
+
+// Restore comments to grey after broad override
+div.highlight span.c {
+  color: #595959 !important;
 }
 
 // Content wrapping

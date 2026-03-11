@@ -126,8 +126,10 @@ code {
 .highlight .c,
 .highlight .c1,
 .highlight .cm,
-span.c {
+.highlighter-rouge span.c,
+div.highlight span.c {
   color: #595959 !important;
+  font-style: italic;
 }
 
 // Content wrapping

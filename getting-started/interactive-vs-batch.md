@@ -2,7 +2,7 @@
 layout: default
 title: Interactive vs. Batch Computing
 parent: Getting Started
-nav_order: 1
+nav_order: 2
 ---
 
 # Interactive vs. Batch Computing

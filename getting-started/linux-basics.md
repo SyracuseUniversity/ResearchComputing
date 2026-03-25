@@ -2,7 +2,7 @@
 layout: default
 title: Linux CLI Basics
 parent: Getting Started
-nav_order: 3
+nav_order: 4
 ---
 
 # Linux Command Line Basics

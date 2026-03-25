@@ -2,7 +2,7 @@
 layout: default
 title: OrangeGrid vs. Zest
 parent: Getting Started
-nav_order: 4
+nav_order: 5
 ---
 
 # OrangeGrid vs. Zest: Understanding Your Cluster

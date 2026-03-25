@@ -9,7 +9,7 @@ has_children: true
 {: .note }
 **This guide is for researchers who have been provided a cluster account.** If you haven't received access yet, see our [Requesting Access](resources/requesting-access) page to get started. If you just need to connect, notate the connection details in your welcome email from our staff and follow the [Connecting Guide](getting-started/connecting).  
 
-Those without access are welcoem to review our guides to preview of what working on the cluster looks like.
+Those without access are welcome to review our guides to preview of what working on the cluster looks like.
 
 {: .warning }
 **Login Nodes vs. Compute Nodes**  

@@ -7,7 +7,7 @@ has_children: true
 # Getting Started with Syracuse Cluster Computing  
 
 {: .note }
-**This guide is for researchers who have been provided a cluster account.** If you haven't received access yet, see our [Requesting Access](resources/requesting-access) page to get started. Not sure if this resource is right for you? Feel free to browse this guide as a preview of what working on the cluster looks like.
+**This guide is for researchers who have been provided a cluster account.** If you haven't received access yet, see our [Requesting Access](resources/requesting-access) page to get started. If you just need to connect, notate the connection details in your email from our staff and following the [Connectin](getting-started/connecting) page. Those without access are welcoem to review our guides to preview of what working on the cluster looks like.
 
 {: .warning }
 **Login Nodes vs. Compute Nodes**  

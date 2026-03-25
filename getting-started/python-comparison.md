@@ -2,7 +2,7 @@
 layout: default
 title: Python - Local vs. Cluster
 parent: Getting Started
-nav_order: 2
+nav_order: 3
 ---
 
 # Python: Local vs. Cluster

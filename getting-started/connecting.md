@@ -2,7 +2,7 @@
 layout: default
 title: Connecting
 parent: Getting Started
-nav_order: 5
+nav_order: 1
 ---
 
 # Connecting to the Cluster

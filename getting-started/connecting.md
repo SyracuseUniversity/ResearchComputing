@@ -38,12 +38,13 @@ ssh netid@its-zest-login1.syr.edu
 You cannot connect directly from off-campus or while on campus Wi-Fi. ITS recommends to connecting through [SU Remote Desktop (RDS)](https://answers.atlassian.syr.edu/wiki/x/noOICQ), which provides a Windows environment with SSH and SCP tools pre-installed (e.g., Putty/WinSCP). Once on RDS, you can connect as if you are on campus as detailed above.  
 
 ### Alternative Remote Access Options  
-If RDS presents disruption to your workflow, please let us know and specify the operating system you are using (e.g. Windows 11, MacOS, Linux) as we have other off-campus connection options. Note that access is regulated and users do not have alternative access by default.    
+If RDS presents disruption to your workflow, please let us know and specify the operating system you are using (e.g. Windows 11, MacOS, Linux) as we have other off-campus connection options. 
 
 **Alternative Access Instructions:**
-For those who have or have been provided access. 
+For those who have or have been provided access (**Not available by default**). 
 - [Azure VPN Instructions](https://answers.atlassian.syr.edu/wiki/x/cYGICQ) (Windows 11 and MacOS)
 - Bastion Host Instructions (Linux)
+
 **Need help with remote access?** Contact [researchcomputing@syr.edu](mailto:researchcomputing@syr.edu) for additional connection options.
 
 ---

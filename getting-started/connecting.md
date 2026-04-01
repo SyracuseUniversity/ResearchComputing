@@ -7,7 +7,9 @@ nav_order: 1
 
 # Connecting to the Cluster
 
-How to connect to your assigned cluster and transfer files.
+This page details how to connect to your assigned cluster and transfer files to your home directory.  
+
+**Secure Connection Required** Your ssh connections will require being on the campus secure network. This often requires a campus Ethernet connection or managed device/laptop.  
 
 ---
 

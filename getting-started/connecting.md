@@ -9,7 +9,7 @@ nav_order: 1
 
 This page details how to connect to your assigned cluster and transfer files to your home directory.  
 
-**Secure Connection Required** Your ssh connections will require being on the campus secure network. This often requires a campus Ethernet connection or managed device/laptop.  
+**Secure Connection Required:** Your ssh connections will require being on the campus secure network. This often requires a campus Ethernet connection or working on a managed device/laptop.  
 
 ---
 
@@ -19,17 +19,17 @@ You'll connect using SSH (Secure Shell). Your welcome email contains your specif
 
 ### From Windows (Command Prompt or PowerShell)
 ```bash
-ssh netid@its-zest-login1.syr.edu
+ssh netid@its-og-login1.syr.edu
 ```
 
 ### From Mac/Linux (Terminal)
 ```bash
-ssh netid@its-zest-login1.syr.edu
+ssh netid@its-og-login1.syr.edu
 ```
 
 ### Using PuTTY (Windows)
 1. Download and install PuTTY
-2. Enter hostname: `its-zest-login1.syr.edu` (or your assigned node)
+2. Enter hostname: `its-og-login1.syr.edu` (or your assigned node)
 3. Click "Open" and enter your credentials
 
 ---

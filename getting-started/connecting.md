@@ -52,10 +52,7 @@ For those who have or have been provided access (**Not available by default**).
 
 1. Install Google Authenticator on your phone ([iOS](https://apps.apple.com/app/google-authenticator/id388497605) / [Android](https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2))
 
-2. SSH to the bastion host:
-```bash
-   ssh netid@its-condor-t1.syr.edu
-```
+2. SSH to the bastion host: `ssh <your-netid>@its-condor-t1.syr.edu`
 
 3. **Maximize your terminal window** (you'll need to scan a QR code)
 

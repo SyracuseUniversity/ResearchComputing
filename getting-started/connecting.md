@@ -43,8 +43,26 @@ You cannot connect directly from off-campus or while on campus Wi-Fi. ITS recomm
 If RDS presents disruption to your workflow, please let us know and specify the operating system you are using (e.g. Windows 11, MacOS, Linux) as we have other off-campus connection options. 
 
 **Alternative Access Instructions:**
-For those who have or have been provided access (**Not available by default**). 
-- [Azure VPN Instructions](https://answers.atlassian.syr.edu/wiki/x/cYGICQ) (Windows 11 and MacOS)
+For those who have or have been provided access (**Not available by default**).  
+[Azure VPN Instructions](https://answers.atlassian.syr.edu/wiki/x/cYGICQ) (Windows 11 and MacOS)
+<details>
+<summary>Bastion Host Instructions (Linux)</summary>
+
+**First-time setup:**
+
+1. Install Google Authenticator on your phone ([iOS](https://apps.apple.com/app/google-authenticator/id388497605) / [Android](https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2))
+2. SSH to the bastion host: `ssh <your-netid>@its-condor-t1.syr.edu`
+3. **Maximize your terminal window** (you'll need to scan a QR code)
+4. Log in with your NetID and password
+5. Follow the prompts — when the QR code appears, scan it with Google Authenticator (or manually enter the key)
+
+**Subsequent logins:**
+
+1. SSH to `its-condor-t1.syr.edu`
+2. Enter your NetID password at the `Password:` prompt
+3. Enter the 6-digit code from Google Authenticator at the `Verification:` prompt (no spaces)
+
+</details>
 
 **Need help with remote access?** Contact [researchcomputing@syr.edu](mailto:researchcomputing@syr.edu) for additional connection options.
 

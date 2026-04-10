@@ -44,9 +44,9 @@ If RDS presents disruption to your workflow, please let us know and specify the 
 
 **Alternative Access Instructions:**
 For those who have or have been provided access (**Not available by default**).  
-[Azure VPN Instructions](https://answers.atlassian.syr.edu/wiki/x/cYGICQ) (Windows 11 and MacOS)
-<details>
-<summary>Bastion Host Instructions (Linux)</summary>
+[Azure VPN Instructions](https://answers.atlassian.syr.edu/wiki/x/cYGICQ) (Windows 11 and MacOS)  
+<details markdown="1">
+<summary markdown="span">Bastion Host Instructions (Linux)</summary>
 
 **First-time setup:**
 
@@ -62,7 +62,7 @@ For those who have or have been provided access (**Not available by default**).
 2. Enter your NetID password at the `Password:` prompt
 3. Enter the 6-digit code from Google Authenticator at the `Verification:` prompt (no spaces)
 
-</details>
+</details>  
 
 **Need help with remote access?** Contact [researchcomputing@syr.edu](mailto:researchcomputing@syr.edu) for additional connection options.
 

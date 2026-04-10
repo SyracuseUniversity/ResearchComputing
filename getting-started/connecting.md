@@ -47,7 +47,7 @@ For those who have or have been provided access (**Not available by default**).
 
 - [Azure VPN Instructions](https://answers.atlassian.syr.edu/wiki/x/cYGICQ) (Windows 11 and MacOS)  
 <details markdown="1">
-<summary markdown="span"><u></u>Bastion Host Instructions (Linux)</u></summary>
+<summary markdown="span"><u>Bastion Host Instructions (Linux)</u></summary>
 
 **First-time setup:**
 

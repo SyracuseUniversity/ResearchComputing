@@ -5,6 +5,7 @@ parent: OrangeGrid (HTC)
 nav_order: 3
 nav_exclude: true
 search_exclude: true
+permalink: /Cloudbursting
 ---
 
 # OrangeGrid Cloud Bursting

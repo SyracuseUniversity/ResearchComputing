@@ -39,3 +39,7 @@ back_to_top_text: "Back to top"
 
 # Make headings clickable (adds # links)
 heading_anchors: true
+
+# Redirect Plugin
+plugins:
+  - jekyll-redirect-from

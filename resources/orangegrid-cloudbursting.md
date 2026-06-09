@@ -27,6 +27,7 @@ Cloud bursting extends OrangeGrid's capacity into cloud infrastructure, allowing
 | [NetBox](https://github.com/netbox-community/netbox) | IPAM / source of truth for Nebula IPs and worker state | github.com/netbox-community/netbox |
 | [FastAPI](https://github.com/fastapi/fastapi) | Python API framework for provisioner, signing service, and orchestrator | github.com/fastapi/fastapi |
 | [Docker Compose](https://github.com/docker/compose) | Compose stack orchestration | github.com/docker/compose |
+| [HPCC](https://github.com/icl-utk-edu/hpcc) | Validate performance of provisioned cloud workers | github.com/icl-utk-edu/hpcc |
 
 ---
 

@@ -9,7 +9,7 @@ search_exclude: true
 
 # OrangeGrid Cloud Bursting
 
-Cloud bursting extends OrangeGrid capacity into cloud infrastructure, allowing jobs to run on dynamically provisioned workers when on-premises resources are fully utilized.
+Cloud bursting extends OrangeGrid's capacity into cloud infrastructure, allowing cluster jobs to run on dynamically provisioned workers when on-premises resources are fully utilized.
 
 ---
 

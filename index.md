@@ -130,43 +130,15 @@ Clone to your cluster home:
 ```bash
 git clone https://github.com/SyracuseUniversity/OrangeGridExamples.git
 git clone https://github.com/SyracuseUniversity/ZestExamples.git
-```
+```  
 
----
+**For large data transfers (TBs):** Contact [researchcomputing@syr.edu](mailto:researchcomputing@syr.edu) for optimized options.  
 
-## Common Tasks
-
-**Submit a job:**
-- OrangeGrid: `condor_submit job.sub`
-- Zest: `sbatch script.sh`
-
-**Check job status:**
-- OrangeGrid: `condor_q netid`
-- Zest: `squeue -u netid`
-
-**Use GPUs:**
-- OrangeGrid: Add `+request_gpus = 1` to submit file
-- Zest: Add `#SBATCH --gres=gpu:1` to script
-
-**Transfer files:**
-```bash
-# Small files
-scp file.txt netid@cluster:~/path/
-
-# Large files (resumable)
-rsync -avz --progress /local/data/ netid@cluster:~/data/
-```
-
-**For large data transfers (TBs):** Contact [researchcomputing@syr.edu](mailto:researchcomputing@syr.edu) for optimized options.
-
----
+---  
 
 ## Getting Help
 
-**Request Access:**  
-Email [researchcomputing@syr.edu](mailto:researchcomputing@syr.edu) with your research description, computational needs, and any data sensitivity requirements.
-
-[Complete request guide →](resources/requesting-access)
+**Need Resource Access?** If you are seeking access, see our **[Requesting Access](resources/requesting-access) page** to get started.
 
 **Technical Support:**
 - Email: [researchcomputing@syr.edu](mailto:researchcomputing@syr.edu)

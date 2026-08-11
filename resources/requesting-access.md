@@ -7,7 +7,11 @@ nav_order: 7
 
 # Requesting Computing Resources
 
-Access to Syracuse Research Computing resources begins with a consultation. This ensures you're matched to the right resource and that we understand any compliance or data security requirements.
+Access to Syracuse Research Computing resources begins with a consultation. This ensures you're matched to the right resource and that we understand any compliance or data security requirements.  
+
+**Note:** Syracuse University Research Computing resources are available to those working for faculty sponsored research efforts. Students working independently and intending to either publish findings in academic publications or are seeking grant funding are encouraged to secure faculty sponsorship before requesting access.  
+ 
+Not sure if you qualify? Please don't hesitate to reach out. We are happy to review your computational needs and recommend next-steps.
 
 ---
 

@@ -77,7 +77,7 @@ We operate two research computing clusters, private cloud environments, GPU infr
 - **AVHE** & **Crush** - Private clouds
 - **Azure** - Cloud partnership
 
-[View complete resource overview →](resources-overview)
+[Resources Overview](resources-overview) 
 
 ---
 
@@ -96,7 +96,7 @@ condor_q netid            # Check status
 condor_rm jobid           # Cancel job
 ```
 
-**GPUs:** A100, L40S, A6000 (via SUrge) - Request with `+request_gpus = 1`
+**GPUs:** A100, L40S, A6000 (via SUrge)
 
 [OrangeGrid Details →](resources/orangegrid) | [Technical Specs →](resources/orangegrid-specifications)
 
@@ -113,7 +113,7 @@ squeue -u netid           # Check status
 scancel jobid             # Cancel job
 ```
 
-**GPUs:** A40 (primary, via SUrge) - Request with `#SBATCH --gres=gpu:1`
+**GPUs:** A40 (via SUrge)
 
 [Zest Details →](resources/zest) | [Technical Specs →](resources/zest-specifications)
 

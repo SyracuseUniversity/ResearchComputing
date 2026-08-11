@@ -5,12 +5,13 @@ nav_order: 2
 has_children: true
 ---
 
-# Syracuse Research Computing Resources
+# Syracuse Research Computing Resources  
 
-{: .highlight }
-**Consultation-Based Resource Assignment**  
-The research computing team meets with campus researchers to understand their research needs to match them with the optimal computing solution. This ensures you have the right resources, proper support, and meet any compliance requirements.  
-**Start here:** [researchcomputing@syr.edu](mailto:researchcomputing@syr.edu)
+Syracuse University Research Computing resources are available to those working for faculty sponsored research efforts. Students working independently and intending to either publish findings in academic publications or are seeking grant funding are encouraged to secure faculty sponsorship before requesting access.  
+ 
+Not sure if you qualify? Please don't hesitate to reach out. We are happy to review your computational needs and recommend next-steps.   
+
+**Need Access?** If you are seeking access, see our **[Requesting Access](resources/requesting-access) page** to get started.
 
 Syracuse Research Computing provides a range of computing resources to support diverse research needs:
 
@@ -18,7 +19,7 @@ Syracuse Research Computing provides a range of computing resources to support d
 - **Zest**, a high-performance computing (HPC) cluster
 - **Academic Virtual Hosting Environment** (AVHE), a private cloud focused on the unique needs of the research community
 - **Crush**, a virtual private cloud for computationally intense research computing needs
-- **SUrge**, a growing computing cluster with hundreds of GPUs, supporting GPU enabled applications
+- **SUrge**, a growing computing cluster with hundreds of GPUs located within our clusters, supporting GPU enabled applications  
 
 Through our continued partnerships, we also support research computing needs in the cloud, including Microsoft Azure.
 

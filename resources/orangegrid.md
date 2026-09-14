@@ -38,7 +38,7 @@ OrangeGrid is Syracuse University's largest computing cluster with **over 80,000
 **GPU Capabilities:**
 - GPU nodes available through SUrge infrastructure
 - Models include: NVIDIA A100, L40S, A6000, and others
-- Request with `+request_gpus = 1` in submit files
+- Request with **both** `Requirements = TotalGPUS > 0` and `+request_gpus = 1` in submit files (see [GPU Resources](orangegrid-specifications#gpu-resources))
 - Best for single-node GPU jobs (training, inference, rendering)
 
 **Job Characteristics:**

@@ -45,10 +45,14 @@ You don't request "SUrge access" directly. SUrge provides the GPU infrastructure
 - HTCondor scheduler assigns jobs to available SUrge GPU nodes
 - Great for many independent GPU jobs (batch inference, parameter sweeps with GPUs)
 
-**Request GPUs in submit file:**
+**Request GPUs in submit file (both lines are required):**
 ```
+Requirements = TotalGPUS > 0
 +request_gpus = 1
 ```
+
+{: .warning }
+**Two lines, not one.** `+request_gpus` tells GPU nodes they may accept your job, but CPU-only nodes will accept it too. The `Requirements` line restricts the job to nodes that actually have GPUs. Leave it out and your job can land on a CPU node and silently run without a GPU. Note the leading `+` on `request_gpus`; without it the job will sit idle. See [OrangeGrid GPU Resources](orangegrid-specifications#gpu-resources) for details and how to target specific GPU capabilities.
 
 ### Zest + SUrge
 - Submit Slurm jobs to GPU partitions

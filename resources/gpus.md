@@ -159,7 +159,3 @@ GPU access comes with cluster access. Follow the [Requesting Access](requesting-
 We will place you on the right cluster and point you to a working example that matches your workflow.
 
 Email [researchcomputing@syr.edu](mailto:researchcomputing@syr.edu) with any GPU questions.
-
----
-
-*Older Research Computing material may refer to this GPU hardware as "SUrge." It was never a separate cluster, and the GPUs are requested exactly as described on this page.*

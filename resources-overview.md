@@ -19,7 +19,7 @@ Syracuse Research Computing provides a range of computing resources to support d
 - **Zest**, a high-performance computing (HPC) cluster
 - **Academic Virtual Hosting Environment** (AVHE), a private cloud focused on the unique needs of the research community
 - **Crush**, a virtual private cloud for computationally intense research computing needs
-- **SUrge**, a growing computing cluster with hundreds of GPUs located within our clusters, supporting GPU enabled applications  
+- **GPU Computing**, hundreds of NVIDIA GPUs located within OrangeGrid and Zest, supporting GPU-accelerated applications (see [GPU Computing](resources/gpus))  
 
 Through our continued partnerships, we also support research computing needs in the cloud, including Microsoft Azure.
 
@@ -31,7 +31,7 @@ Through our continued partnerships, we also support research computing needs in 
 |:---------|:-----|:--------|:---------|
 | **OrangeGrid** | HTC Cluster | Not required | Many independent jobs |
 | **Zest** | HPC Cluster | Not required | Parallel, multi-node jobs |
-| **SUrge** | GPU Infrastructure | Not required | Provides GPUs to clusters |
+| **[GPU Computing](resources/gpus)** | GPUs in OrangeGrid and Zest | Not required | Training, inference, GPU-accelerated simulation |
 | **AVHE** | Private Cloud | Not required | CPU VMs, unique needs |
 | **Crush** | Private Cloud | Not required | Intense computing, dynamic solutions |
 | **Azure** | Cloud Partnership | Funding required | Specific needs, cloud services |

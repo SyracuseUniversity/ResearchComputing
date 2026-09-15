@@ -41,7 +41,7 @@ Tell us about your research, computational needs, and any data sensitivity requi
 
 **[Complete request guide - What to include in your email →](resources/requesting-access)**
 
-**Our Resources:** We operate two research computing clusters (OrangeGrid and Zest), private cloud environments (AVHE and Crush), GPU infrastructure (SUrge), and support cloud partnerships. Learn more in our [complete resource overview](resources-overview).
+**Our Resources:** We operate two research computing clusters (OrangeGrid and Zest) with hundreds of GPUs between them, private cloud environments (AVHE and Crush), and support cloud partnerships. Learn more in our [complete resource overview](resources-overview).
 
 ---
 
@@ -69,11 +69,11 @@ Coming from a laptop or desktop? Research clusters work differently:
 
 ## Our Computing Resources
 
-We operate two research computing clusters, private cloud environments, GPU infrastructure, and support cloud partnerships:
+We operate two research computing clusters with GPU acceleration, private cloud environments, and support cloud partnerships:
 
 - **OrangeGrid** - High-throughput computing cluster (over 80,000 cores)
 - **Zest** - High-performance computing cluster (over 25,000 cores)
-- **SUrge** - GPU infrastructure (hundreds of GPUs)
+- **GPU Computing** - Hundreds of NVIDIA GPUs inside OrangeGrid and Zest ([details](resources/gpus))
 - **AVHE** & **Crush** - Private clouds
 - **Azure** - Cloud partnership
 
@@ -96,7 +96,7 @@ condor_q netid            # Check status
 condor_rm jobid           # Cancel job
 ```
 
-**GPUs:** A100, L40S, A6000 (via SUrge)
+**GPUs:** H100, A100, L40S, A6000, A40 ([GPU Computing](resources/gpus))
 
 [OrangeGrid Details →](resources/orangegrid) | [Technical Specs →](resources/orangegrid-specifications)
 
@@ -113,7 +113,7 @@ squeue -u netid           # Check status
 scancel jobid             # Cancel job
 ```
 
-**GPUs:** A40 (via SUrge)
+**GPUs:** A40 ([GPU Computing](resources/gpus))
 
 [Zest Details →](resources/zest) | [Technical Specs →](resources/zest-specifications)
 

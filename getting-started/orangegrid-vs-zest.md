@@ -26,7 +26,7 @@ Syracuse University operates two computing clusters, each optimized for differen
 - Status: `condor_q`
 - Cancel: `condor_rm jobid`
 
-**GPUs:** A100, L40S, A6000 (via SUrge)
+**GPUs:** H100, A100, L40S, A6000, A40 (see [GPU Computing](../resources/gpus))
 
 **Examples:** Processing thousands of images, Monte Carlo simulations, batch data analysis, Ollama inference
 
@@ -46,7 +46,7 @@ Syracuse University operates two computing clusters, each optimized for differen
 - Status: `squeue`
 - Cancel: `scancel jobid`
 
-**GPUs:** Primarily A40s (via SUrge)
+**GPUs:** Primarily A40s (see [GPU Computing](../resources/gpus))
 
 **Examples:** GROMACS simulations, deep learning training, computational fluid dynamics, molecular dynamics
 

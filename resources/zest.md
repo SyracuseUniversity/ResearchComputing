@@ -45,7 +45,7 @@ Zest is Syracuse University's high-performance computing cluster with **over 25,
 - Extended runtimes (20-40 days depending on partition)
 
 **GPU Capabilities:**
-- GPU nodes available through SUrge infrastructure
+- Smaller GPU pool than OrangeGrid (see [GPU Computing](gpus))
 - Primarily NVIDIA A40 GPUs
 - Request with `--gres=gpu:1` in SBATCH scripts
 - GPU partitions available for accelerated computing

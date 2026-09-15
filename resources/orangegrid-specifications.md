@@ -48,7 +48,8 @@ request_cpus = 1
 request_memory = 4GB
 request_disk = 10GB
 
-# Optional: Request GPU
+# Optional: Request GPU (both lines are required, see GPU Resources below)
+Requirements = TotalGPUS > 0
 +request_gpus = 1
 
 # Output files
@@ -102,25 +103,75 @@ request_disk = 5GB
 
 ### Available GPUs
 
-OrangeGrid has GPU nodes with various models. The scheduler will match your job to an available GPU.
+OrangeGrid holds the bulk of Research Computing's GPUs. The scheduler will match your job to an available GPU. See [GPU Computing](gpus) for the full picture across both clusters.
 
 **GPU models in the pool:**
-- NVIDIA A100
-- NVIDIA L40S
-- NVIDIA A6000
-- Other models available
+- NVIDIA H100 (80 GB, 3-day runtime cap)
+- NVIDIA A100 (80 GB)
+- NVIDIA L40S (48 GB)
+- NVIDIA RTX A6000 (48 GB)
+- NVIDIA A40 (48 GB)
+- NVIDIA RTX 6000 and other smaller models
 
 ### Requesting GPUs
 
-```htcondor
-# Request any available GPU
-+request_gpus = 1
+{: .warning }
+**A GPU job needs two lines in the submit file, not one.** This is the most common cause of GPU jobs that never start or that run on a CPU node without a GPU.
 
-# Multiple GPUs (if your code supports it)
+```htcondor
+# 1. Only match nodes that have GPUs
+Requirements = TotalGPUS > 0
+
+# 2. Ask for a GPU on that node (note the leading +)
++request_gpus = 1
+```
+
+**Why both?** The two lines complete the match in opposite directions:
+- `+request_gpus = 1` tells HTCondor how many GPUs your job needs. GPU nodes only accept jobs that set this. However, CPU-only nodes will also accept the job, so on its own this line does not guarantee a GPU.
+- `Requirements = TotalGPUS > 0` restricts your job to nodes that actually have GPUs. Without it, your job can land on a CPU node, and frameworks like Ollama or PyTorch may silently fall back to CPU with no error.
+
+**Common mistakes:**
+
+| Submit file has | Result |
+|:----------------|:-------|
+| `request_gpus = 1` (no `+`) | Job sits idle indefinitely and never matches |
+| `+request_gpus = 1` only | Job may run on a CPU node with no GPU |
+| Both lines | Job runs on a GPU node |
+
+**Multiple GPUs** (only if your code can use them):
+
+```htcondor
+Requirements = TotalGPUS > 0
 +request_gpus = 2
 ```
 
-**Best Practice:** Let HTCondor assign any available GPU unless your code specifically requires a certain model.
+### Targeting GPU Capabilities
+
+By default, let HTCondor assign any available GPU. If your workload has real hardware needs, add them to the `Requirements` line. Ask for **capabilities** (memory, compute capability) rather than specific models, since capability-based requirements match more nodes and start sooner.
+
+```htcondor
+# Need at least 40 GB of GPU memory (e.g. large LLM inference)
+Requirements = TotalGPUS > 0 && CUDAGlobalMemoryMb >= 40000
++request_gpus = 1
+
+# Need compute capability 8.0 or newer (Ampere or later)
+Requirements = TotalGPUS > 0 && CUDACapability >= 8.0
++request_gpus = 1
+```
+
+{: .note }
+**You usually do not need a CUDA driver version requirement.** If you install CUDA through Conda or pip (for example a `+cu128` PyTorch build), your environment supplies its own CUDA runtime and works with the drivers on any GPU node. A strict requirement such as `CUDADriverVersion >= 12.8` only shrinks the set of nodes that can run your job. For CUDA 13 and newer, install the compatibility library described in the [CUDA13 example](https://github.com/SyracuseUniversity/OrangeGridExamples/tree/main/Examples/CUDA13){:target="_blank"}.
+
+**Trade-off:** Every additional requirement, and every additional GPU requested, reduces the number of nodes that can run your job and lengthens the wait in the queue. A job that fits on one general GPU will usually finish sooner overall than one waiting for a specific card.
+
+**Diagnosing an idle GPU job:**
+
+```bash
+# Shows how many machines match each requirement and which ones reject the job
+condor_q -better-analyze <jobid>
+```
+
+Working submit files are in the [Ollama](https://github.com/SyracuseUniversity/OrangeGridExamples/tree/main/Examples/Ollama){:target="_blank"}, [PyTorch](https://github.com/SyracuseUniversity/OrangeGridExamples/tree/main/Examples/PyTorch){:target="_blank"}, and [tensorflow](https://github.com/SyracuseUniversity/OrangeGridExamples/tree/main/Examples/tensorflow){:target="_blank"} examples.
 
 ---
 
@@ -273,6 +324,9 @@ arguments = train_model.py
 
 request_cpus = 4
 request_memory = 16GB
+
+# Both lines required for a GPU job
+Requirements = TotalGPUS > 0
 +request_gpus = 1
 
 output = gpu_job.$(cluster).$(process).out

@@ -103,13 +103,15 @@ request_disk = 5GB
 
 ### Available GPUs
 
-OrangeGrid has GPU nodes with various models. The scheduler will match your job to an available GPU.
+OrangeGrid holds the bulk of Research Computing's GPUs. The scheduler will match your job to an available GPU. See [GPU Computing](gpus) for the full picture across both clusters.
 
 **GPU models in the pool:**
-- NVIDIA A100
-- NVIDIA L40S
-- NVIDIA A6000
-- Other models available
+- NVIDIA H100 (80 GB, 3-day runtime cap)
+- NVIDIA A100 (80 GB)
+- NVIDIA L40S (48 GB)
+- NVIDIA RTX A6000 (48 GB)
+- NVIDIA A40 (48 GB)
+- NVIDIA RTX 6000 and other smaller models
 
 ### Requesting GPUs
 

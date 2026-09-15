@@ -47,7 +47,7 @@ Zest is Syracuse University's high-performance computing cluster with **over 25,
 
 **GPU Capabilities:**
 - Smaller GPU pool than OrangeGrid (see [GPU Computing](gpus))
-- NVIDIA A40 GPUs (46 GB), 4 per node
+- NVIDIA A40 GPUs (48 GB), 4 per node
 - Request with `--gres=gpu:1` in SBATCH scripts
 - GPU partitions available for accelerated computing
 

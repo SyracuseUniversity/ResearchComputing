@@ -38,7 +38,7 @@ OrangeGrid is Syracuse University's largest computing cluster with **over 80,000
 
 **GPU Capabilities:**
 - Home to the bulk of our GPUs (see [GPU Computing](gpus))
-- Models include: NVIDIA H100, A100, L40S, A6000, A40, and others
+- Models include: NVIDIA H100, A100, L40S, A40, and Quadro RTX 6000
 - Request with **both** `Requirements = TotalGPUS > 0` and `+request_gpus = 1` in submit files (see [GPU Resources](orangegrid-specifications#gpu-resources))
 - Best for single-node GPU jobs (training, inference, rendering)
 

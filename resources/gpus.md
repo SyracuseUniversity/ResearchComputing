@@ -23,24 +23,27 @@ redirect_from:
 
 The bulk of our GPUs are in OrangeGrid, with a smaller pool in Zest. Both clusters are free to use for faculty-sponsored research.
 
-| Cluster | GPU models | GPU memory | Scheduler | Notes |
-|:--------|:-----------|:-----------|:----------|:------|
-| **OrangeGrid** | NVIDIA H100 SXM | 80 GB | HTCondor | 16 GPUs across 2 nodes, NVLink within a node, **3-day runtime cap** |
-| | NVIDIA A100 | 80 GB | HTCondor | |
-| | NVIDIA L40S | 48 GB | HTCondor | |
-| | NVIDIA RTX A6000 | 48 GB | HTCondor | |
-| | NVIDIA A40 | 48 GB | HTCondor | |
-| | NVIDIA RTX 6000 and other models | 24 GB and smaller | HTCondor | Best for smaller models and inference |
-| **Zest** | NVIDIA A40 | 48 GB | Slurm | `gpu` and `gpu_zone2` partitions, up to 4 GPUs per job, 20-day runtime limit |
+| Cluster | GPU model | GPU memory | Scheduler | Notes |
+|:--------|:----------|:-----------|:----------|:------|
+| **OrangeGrid** | NVIDIA H100 80GB HBM3 | 80 GB | HTCondor | 16 GPUs across 2 nodes, NVLink within a node, **3-day runtime cap** |
+| | NVIDIA A100 80GB PCIe | 80 GB | HTCondor | Several nodes with 2 to 3 GPUs each |
+| | NVIDIA L40S | 48 GB | HTCondor | Largest share of the newer cards, 2 per node |
+| | NVIDIA A40 | 48 GB | HTCondor | Nodes with 1 to 4 GPUs |
+| | Quadro RTX 6000 | 24 GB | HTCondor | The most numerous GPU in the pool. Good fit for inference and smaller models |
+| | Quadro RTX 5000 | 16 GB | HTCondor | A few nodes |
+| **Zest** | NVIDIA A40 | 46 GB | Slurm | 96 GPUs: 24 nodes with 4 GPUs each, in the `gpu` and `gpu_zone2` partitions, up to 4 GPUs per job, 20-day runtime limit |
+
+{: .note }
+**Reported memory is a little under the marketed size.** A 48 GB card reports about 45,500 MB to the scheduler and an 80 GB card about 81,000 MB. When you set a memory requirement, leave headroom: `CUDAGlobalMemoryMb >= 40000` matches every 48 GB and 80 GB card, while `>= 48000` would exclude the L40S and A40.
 
 The pool changes as hardware is added. To see what is currently available:
 
 ```bash
-# OrangeGrid: list GPU nodes with model and memory
-condor_status -constraint 'TotalGPUs > 0' -af Machine CUDADeviceName CUDAGlobalMemoryMb
+# OrangeGrid: one line per GPU node with GPU count, model, and memory in MB
+condor_status -constraint 'TotalGPUs > 0' -af Machine TotalGPUs CUDADeviceName CUDAGlobalMemoryMb | sort -u
 
-# Zest: list GPU partitions and nodes
-sinfo -p gpu,gpu_zone2 -o "%n %G %f"
+# Zest: GPU nodes, GPUs per node, and whether each node is idle, mixed, or allocated
+sinfo -p gpu,gpu_zone2 -N -o "%n %G %T"
 ```
 
 {: .note }
@@ -123,9 +126,9 @@ These are complete, tested job scripts you can copy and adapt.
 
 ## CUDA and GPU Software
 
-- **You choose your CUDA version.** Install the CUDA runtime your code needs into a Conda or pip environment (for example a `+cu128` PyTorch build). It will work with the drivers on any GPU node, so do not add a CUDA driver version requirement to your job.
+- **You choose your CUDA version on OrangeGrid.** Install the CUDA runtime your code needs into a Conda or pip environment (for example a `+cu128` PyTorch build). It will work with the drivers on any OrangeGrid GPU node, so do not add a CUDA driver version requirement to your job.
 - **CUDA 13 and newer** need one extra compatibility package. Follow the [CUDA13 example](https://github.com/SyracuseUniversity/OrangeGridExamples/tree/main/Examples/CUDA13){:target="_blank"}.
-- **On Zest**, `module load cuda` provides the CUDA toolkit. Use `module spider cuda` to see versions.
+- **On Zest, use CUDA 12 builds.** Pick the CUDA 12 variant of your framework (for example PyTorch's `cu126` wheel, or `tensorflow[and-cuda]` and `jax[cuda12]`, which already are). `module load cuda` provides the CUDA 12 toolkit for compiling. See the [Zest GPU example](https://github.com/SyracuseUniversity/ZestExamples/tree/main/GPU){:target="_blank"}.
 - **Containers** (Apptainer/Singularity) with GPU support run on both clusters. See the [Apptainer example](https://github.com/SyracuseUniversity/OrangeGridExamples/tree/main/Examples/Apptainer){:target="_blank"}.
 - **Common frameworks**: PyTorch, TensorFlow, JAX, Ollama, vLLM, GROMACS, NAMD, LAMMPS with Kokkos, MATLAB with Parallel Computing Toolbox, Blender.
 

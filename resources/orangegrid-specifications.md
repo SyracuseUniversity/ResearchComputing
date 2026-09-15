@@ -106,12 +106,18 @@ request_disk = 5GB
 OrangeGrid holds the bulk of Research Computing's GPUs. The scheduler will match your job to an available GPU. See [GPU Computing](gpus) for the full picture across both clusters.
 
 **GPU models in the pool:**
-- NVIDIA H100 (80 GB, 3-day runtime cap)
-- NVIDIA A100 (80 GB)
+- NVIDIA H100 80GB HBM3 (80 GB, 3-day runtime cap)
+- NVIDIA A100 80GB PCIe (80 GB)
 - NVIDIA L40S (48 GB)
-- NVIDIA RTX A6000 (48 GB)
 - NVIDIA A40 (48 GB)
-- NVIDIA RTX 6000 and other smaller models
+- Quadro RTX 6000 (24 GB, the most numerous)
+- Quadro RTX 5000 (16 GB)
+
+To see the live pool with GPU counts, models, and memory:
+
+```bash
+condor_status -constraint 'TotalGPUs > 0' -af Machine TotalGPUs CUDADeviceName CUDAGlobalMemoryMb | sort -u
+```
 
 ### Requesting GPUs
 

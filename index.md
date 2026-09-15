@@ -96,7 +96,7 @@ condor_q netid            # Check status
 condor_rm jobid           # Cancel job
 ```
 
-**GPUs:** H100, A100, L40S, A6000, A40 ([GPU Computing](resources/gpus))
+**GPUs:** H100, A100, L40S, A40, RTX 6000 ([GPU Computing](resources/gpus))
 
 [OrangeGrid Details →](resources/orangegrid) | [Technical Specs →](resources/orangegrid-specifications)
 

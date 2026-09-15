@@ -52,8 +52,12 @@ Zest has multiple partitions optimized for different workloads. If no partition 
 
 ### Available GPU Models
 
-- **NVIDIA A40** - Primary GPU (most common)
-- Other models may be available
+Every Zest GPU node has the same hardware, so there is no GPU model to choose:
+
+- **NVIDIA A40 (46 GB)** - 4 per node
+- Available in the `gpu` and `gpu_zone2` partitions
+
+For the full picture of GPUs across both clusters, see [GPU Computing](gpus).
 
 ### Requesting GPUs
 
@@ -63,19 +67,19 @@ Zest has multiple partitions optimized for different workloads. If no partition 
 #SBATCH --gres=gpu:1
 ```
 
-**Request specific GPU model (if required by your code):**
-```bash
-#SBATCH --partition=gpu_zone2,gpu
-#SBATCH --gres=gpu:1
-#SBATCH --constraint=gpu_type:A40
-```
+Listing both partitions lets Slurm place the job on whichever has a free GPU first.
 
-**Multiple GPUs:**
+**Multiple GPUs (up to 4, all on one node):**
 ```bash
 #SBATCH --gres=gpu:2
 ```
 
-**Best Practice:** Only specify GPU model if your code requires it. Leaving it unspecified allows the scheduler to assign any available GPU, which can get your job running faster.
+**Best Practice:** Request only the GPUs your code can actually use. Every extra GPU narrows the set of nodes that can start your job.
+
+**Check GPU node availability:**
+```bash
+sinfo -p gpu,gpu_zone2 -N -o "%n %G %T"
+```
 
 ---
 

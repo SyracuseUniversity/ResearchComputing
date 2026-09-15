@@ -4,6 +4,7 @@ title: OrangeGrid (HTC)
 parent: Resources Overview
 nav_order: 1
 has_children: true
+has_toc: false
 ---
 
 # OrangeGrid - High-Throughput Computing

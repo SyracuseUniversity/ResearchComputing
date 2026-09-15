@@ -9,6 +9,9 @@ has_children: true
 {: .note }
 **This guide is for researchers who have been provided a cluster account.** If you are new to the cluster, notate the connection details in your welcome email from our staff and follow the **[Connecting Guide](getting-started/connecting)**.  
 
+{: .highlight }
+**You are sharing these clusters with hundreds of other researchers.** What you run on a login node, how many resources you request, and how long you hold them all affect everyone else's work. Before you start, please read our short **[Good Neighbor Policy](good-neighbor-policy)** and keep an eye on how your activity impacts others as you go.
+
 **Need Access?** If you are seeking access, see our **[Requesting Access](resources/requesting-access)** page to get started. Those without access are free to review our guides and information to preview what working on the cluster looks like. 
 
 {: .warning }

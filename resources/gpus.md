@@ -33,9 +33,6 @@ The bulk of our GPUs are in OrangeGrid, with a smaller pool in Zest. Both cluste
 | | Quadro RTX 5000 | 16 GB | HTCondor | |
 | **Zest** | NVIDIA A40 | 48 GB | Slurm | `gpu` and `gpu_zone2` partitions, up to 4 GPUs per job, 20-day runtime limit |
 
-{: .note }
-**Reported memory is a little under the marketed size.** A 48 GB card reports about 45,500 MB to the scheduler and an 80 GB card about 81,000 MB. When you set a memory requirement, leave headroom: `CUDAGlobalMemoryMb >= 40000` matches every 48 GB and 80 GB card, while `>= 48000` would exclude the L40S and A40.
-
 The pool changes as hardware is added. To see what is currently available:
 
 ```bash

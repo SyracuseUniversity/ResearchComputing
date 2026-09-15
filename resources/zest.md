@@ -4,6 +4,7 @@ title: Zest (HPC)
 parent: Resources Overview
 nav_order: 2
 has_children: true
+has_toc: false
 ---
 
 # Zest - High-Performance Computing

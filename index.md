@@ -27,7 +27,7 @@ Welcome! This is your central hub for Syracuse University's research computing r
 
 **Start Here:** [Getting Started Guide](getting-started)
 
-Your welcome email contains login information and instructions specific to your assigned resource.
+Your welcome email contains login information and instructions specific to your assigned resource. Our clusters are shared by hundreds of researchers, so before you run anything please read our short [Good Neighbor Policy](good-neighbor-policy) and keep in mind how your activity affects others.
 
 ---
 

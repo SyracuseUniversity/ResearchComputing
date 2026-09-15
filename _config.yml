@@ -1,6 +1,9 @@
 # Site title (shows in browser tab and search engines)
 title: Research Computing
 
+# Canonical site URL (used for redirects and absolute links)
+url: https://docs.syr.edu
+
 # Site description (for SEO)
 description: Documentation for computing clusters, GPU access, and research computing support
 

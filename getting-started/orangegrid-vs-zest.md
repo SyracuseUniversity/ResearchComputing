@@ -46,7 +46,7 @@ Syracuse University operates two computing clusters, each optimized for differen
 - Status: `squeue`
 - Cancel: `scancel jobid`
 
-**GPUs:** 96 A40s, 4 per node (see [GPU Computing](../resources/gpus))
+**GPUs:** A40 (see [GPU Computing](../resources/gpus))
 
 **Examples:** GROMACS simulations, deep learning training, computational fluid dynamics, molecular dynamics
 

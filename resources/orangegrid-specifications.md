@@ -110,7 +110,7 @@ OrangeGrid holds the bulk of Research Computing's GPUs. The scheduler will match
 - NVIDIA A100 80GB PCIe (80 GB)
 - NVIDIA L40S (48 GB)
 - NVIDIA A40 (48 GB)
-- Quadro RTX 6000 (24 GB, the most numerous)
+- Quadro RTX 6000 (24 GB)
 - Quadro RTX 5000 (16 GB)
 
 To see the live pool with GPU counts, models, and memory:

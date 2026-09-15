@@ -54,8 +54,8 @@ Zest has multiple partitions optimized for different workloads. If no partition 
 
 Every Zest GPU node has the same hardware, so there is no GPU model to choose:
 
-- **NVIDIA A40 (46 GB)** - 4 per node, 24 nodes, 96 GPUs total
-- Split across the `gpu` and `gpu_zone2` partitions
+- **NVIDIA A40 (46 GB)** - 4 per node
+- Available in the `gpu` and `gpu_zone2` partitions
 
 For the full picture of GPUs across both clusters, see [GPU Computing](gpus).
 

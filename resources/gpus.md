@@ -26,12 +26,12 @@ The bulk of our GPUs are in OrangeGrid, with a smaller pool in Zest. Both cluste
 | Cluster | GPU model | GPU memory | Scheduler | Notes |
 |:--------|:----------|:-----------|:----------|:------|
 | **OrangeGrid** | NVIDIA H100 80GB HBM3 | 80 GB | HTCondor | 16 GPUs across 2 nodes, NVLink within a node, **3-day runtime cap** |
-| | NVIDIA A100 80GB PCIe | 80 GB | HTCondor | Several nodes with 2 to 3 GPUs each |
-| | NVIDIA L40S | 48 GB | HTCondor | Largest share of the newer cards, 2 per node |
-| | NVIDIA A40 | 48 GB | HTCondor | Nodes with 1 to 4 GPUs |
-| | Quadro RTX 6000 | 24 GB | HTCondor | The most numerous GPU in the pool. Good fit for inference and smaller models |
-| | Quadro RTX 5000 | 16 GB | HTCondor | A few nodes |
-| **Zest** | NVIDIA A40 | 46 GB | Slurm | 96 GPUs: 24 nodes with 4 GPUs each, in the `gpu` and `gpu_zone2` partitions, up to 4 GPUs per job, 20-day runtime limit |
+| | NVIDIA A100 80GB PCIe | 80 GB | HTCondor | |
+| | NVIDIA L40S | 48 GB | HTCondor | |
+| | NVIDIA A40 | 48 GB | HTCondor | |
+| | Quadro RTX 6000 | 24 GB | HTCondor | Good fit for inference and smaller models |
+| | Quadro RTX 5000 | 16 GB | HTCondor | |
+| **Zest** | NVIDIA A40 | 46 GB | Slurm | `gpu` and `gpu_zone2` partitions, up to 4 GPUs per job, 20-day runtime limit |
 
 {: .note }
 **Reported memory is a little under the marketed size.** A 48 GB card reports about 45,500 MB to the scheduler and an 80 GB card about 81,000 MB. When you set a memory requirement, leave headroom: `CUDAGlobalMemoryMb >= 40000` matches every 48 GB and 80 GB card, while `>= 48000` would exclude the L40S and A40.

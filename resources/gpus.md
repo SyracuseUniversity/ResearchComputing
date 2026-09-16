@@ -63,15 +63,16 @@ A GPU job needs **two** lines in the submit file. Both are required.
 ```htcondor
 Requirements = TotalGPUS > 0
 +request_gpus = 1
-```
-
-The first line restricts your job to nodes that have GPUs. The second tells HTCondor how many you need. Leave out the first and your job can land on a CPU node and silently run without a GPU. Leave off the `+` and your job will sit idle forever.
+```  
+{: .note }
+The first line restricts your job to nodes that have GPUs. The second tells HTCondor how many you need. 
+**If you have no requirements line, your job can land on a CPU node and silently run without a GPU. Leave off the `+` and your job may sit idle indefinitely.**
 
 To target GPU memory or compute capability, extend the `Requirements` line:
 
 ```htcondor
 # At least 40 GB of GPU memory
-Requirements = TotalGPUS > 0 && CUDAGlobalMemoryMb >= 40000
+Requirements = CUDAGlobalMemoryMb >= 40000
 +request_gpus = 1
 ```
 

@@ -94,7 +94,7 @@ Listing both partitions lets Slurm use whichever has a free GPU first. You can r
 
 ## Working Examples
 
-We have complete, tested job scripts you can copy and adapt in our ([OrangeGridExamples](https://github.com/SyracuseUniversity/OrangeGridExamples){:target="_blank"}) and ([ZestExamples](https://github.com/SyracuseUniversity/ZestExamples){:target="_blank"}) repositories. 
+We have complete, tested job scripts you can copy and adapt in our [OrangeGridExamples](https://github.com/SyracuseUniversity/OrangeGridExamples){:target="_blank"} and [ZestExamples](https://github.com/SyracuseUniversity/ZestExamples){:target="_blank"} repositories. 
 
 ---
 

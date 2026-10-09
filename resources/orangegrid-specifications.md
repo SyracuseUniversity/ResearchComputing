@@ -88,14 +88,7 @@ request_memory = 2048MB  # Same as 2GB
 
 ### Disk Space
 
-Do not set `request_disk`. Your job runs from your home directory, which is mounted on every execute node, so it needs no local scratch space. HTCondor's default sizes the request to what the job actually uses.
-
-The one exception is a job that turns on HTCondor file transfer (`should_transfer_files = YES`). That job runs in a temporary directory on the execute node, and `request_disk` should then match the output it really writes there:
-
-```htcondor
-# Only with should_transfer_files = YES; size it from DiskUsage in condor_history
-request_disk = 500MB
-```
+Do not set `request_disk`. Your home directory is mounted on every execute node, so your job reads its input and writes its output there directly and needs no local scratch space. HTCondor's default sizes the request to what the job actually uses. For the same reason, leave out `should_transfer_files` and the other file-transfer settings; they are not needed on OrangeGrid.
 
 {: .warning }
 Execute nodes have very little local disk, about 17 GB on the GPU nodes. A single job that requests 10 GB or more of disk blocks every other job on that node that needs disk, and leaves the node's remaining GPUs idle until it finishes.
